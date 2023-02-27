@@ -29,32 +29,64 @@ win = visual.Window(
 
 # circle stimulus
 circle_stim = visual.Circle(win, radius=1, fillColor='white')
-fb_stim = visual.Circle(win, radius=2, fillColor='red')
+fb_stim_correct = visual.Circle(win, radius=2, fillColor='green')
+fb_stim_incorrect = visual.Circle(win, radius=2, fillColor='red')
 
 mouse = event.Mouse(visible=False, win=win)
 
-state = 'stim_presentation'
+# initial state
+state = 'stim'
 
-timer = core.Clock()
+# state durations
+t_iti = 0.5
+t_fb_delay = 0.0
+t_fb_dur = 0.5
 
-while True:
+fb_acc = 'NA'
 
-    resp = event.getKeys()
+num_trials = 5
+current_trial = 0
+
+# create and start timers
+experiment_clock = core.Clock()
+state_clock = core.Clock()
+
+while current_trial < num_trials:
+
+    resp = event.getKeys(keyList=['d', 'k', 'escape'])
+    rt = state_clock.getTime()
+
     mouse_position = mouse.getPos()
 
-    if state == 'stim_presentation':
+    if state == 'stim':
         circle_stim.draw()
-        if 'a' in resp:
-            state = 'response_feedback'
-            timer.reset()
+        if ('d' in resp) or ('k' in resp):
+            state = 'response'
+            state_clock.reset()
 
-    if state == 'response_feedback':
-        fb_stim.draw()
-        if timer.getTime() > 3:
-           state = 'stim_presentation'
+    if state == 'response':
+        if state_clock.getTime() > t_fb_delay:
+            state = 'feedback'
+            fb_acc = 'correct'
+            state_clock.reset()
+           
+    if state == 'feedback':        
+        
+        if fb_acc == 'correct':
+            fb_stim_correct.draw()
+            
+        elif fb_acc == 'incorrect':
+            fb_stim_incorrect.draw()
+            
+        if state_clock.getTime() > t_fb_dur:
+            state = 'iti'
+            state_clock.reset()
 
     if state == 'iti':
-        pass
+        if state_clock.getTime() > t_iti:
+            state = 'stim'
+            state_clock.reset()
+            current_trial += 1
 
     if 'escape' in resp:
         win.close()
