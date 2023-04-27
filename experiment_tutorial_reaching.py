@@ -27,21 +27,19 @@ win = visual.Window(size=(500, 500),
                     units='cm')
 
 # circle stimulus
-circle_stim = visual.Circle(win, radius=1, fillColor='white')
-fb_stim_correct = visual.Circle(win, radius=2, fillColor='green')
-fb_stim_incorrect = visual.Circle(win, radius=2, fillColor='red')
+cursor_circle = visual.Circle(win, radius=1, fillColor='white')
+start_circle = visual.Circle(win, radius=1, fillColor='white')
+target_circle = visual.Circle(win, radius=1, fillColor='white')
+feedback_circle = visual.Circle(win, radius=1, fillColor='white')
 
 mouse = event.Mouse(visible=False, win=win)
 
 # initial state
-state = 'stim'
+state = 'search'
 
 # state durations
 t_iti = 0.5
-t_fb_delay = 0.0
-t_fb_dur = 0.5
-
-fb_acc = 'NA'
+t_feedback = 0.5
 
 num_trials = 5
 current_trial = 0
@@ -55,35 +53,39 @@ while current_trial < num_trials:
     resp = event.getKeys(keyList=['d', 'k', 'escape'])
     rt = state_clock.getTime()
 
-    mouse_position = mouse.getPos()
+    cursor_circle.pos = mouse.getPos()
 
-    if state == 'stim':
-        circle_stim.draw()
-        if ('d' in resp) or ('k' in resp):
-            state = 'response'
-            state_clock.reset()
+    if state == 'search':
+        cursor_circle.draw()
+        start_circle.draw()
+        if exit_state == True:
+            state = 'hold'
 
-    if state == 'response':
-        if state_clock.getTime() > t_fb_delay:
+    if state == 'hold':
+        cursor_circle.draw()
+        start_circle.draw()
+        if exit_state == True:
+            state = 'reach'
+
+
+    if state == 'reach':
+        cursor_circle.draw()
+        start_circle.draw()
+        target_circle.draw()
+        if exit_state == True:
             state = 'feedback'
-            fb_acc = 'correct'
-            state_clock.reset()
 
     if state == 'feedback':
-
-        if fb_acc == 'correct':
-            fb_stim_correct.draw()
-
-        elif fb_acc == 'incorrect':
-            fb_stim_incorrect.draw()
-
-        if state_clock.getTime() > t_fb_dur:
+        feedback_circle.draw()
+        start_circle.draw()
+        target_circle.draw()
+        if state_clock.getTime() > t_feedback:
             state = 'iti'
             state_clock.reset()
 
     if state == 'iti':
         if state_clock.getTime() > t_iti:
-            state = 'stim'
+            state = 'search'
             current_trial += 1
             state_clock.reset()
 
