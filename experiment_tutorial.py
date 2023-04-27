@@ -57,7 +57,7 @@ while current_trial < num_trials:
 
     mouse_position = mouse.getPos()
 
-    if state == 'stim':
+    if state == 'stim':k
         circle_stim.draw()
         if ('d' in resp) or ('k' in resp):
             state = 'response'

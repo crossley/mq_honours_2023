@@ -54,7 +54,10 @@ state_clock = core.Clock()
 target_distance = 6
 target_circle.pos = (0, target_distance)
 
-cursor_rotation = 30
+clamp_rotation = 30
+
+# decide on what bits we want to record
+trial_data = {'trial':[], 'endpoint_theta':[]}
 
 while current_trial < num_trials:
 
@@ -81,12 +84,13 @@ while current_trial < num_trials:
             state_clock.reset()
 
     if state == 'reach':
-        cursor_circle.pos = coordinatetools.pol2cart(theta + cursor_rotation, r)
+        cursor_circle.pos = coordinatetools.pol2cart(clamp_rotation, r)
         start_circle.draw()
         target_circle.draw()
         cursor_circle.draw()
         if mathtools.distance(start_circle.pos, cursor_circle.pos) >= target_distance:
-            feedback_circle.pos = coordinatetools.pol2cart(theta + cursor_rotation, target_distance)            
+            feedback_circle.pos = coordinatetools.pol2cart(clamp_rotation, target_distance)
+            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0], mouse.getPos()[1])[0]
             state = 'feedback'
             state_clock.reset()
 
@@ -101,6 +105,11 @@ while current_trial < num_trials:
     if state == 'iti':
         if state_clock.getTime() > t_iti:
             state = 'search'
+            trial_data['trial'].append(current_trial)
+            trial_data['endpoint_theta'].append(endpoint_theta)
+            
+            pd.DataFrame(trial_data).to_csv('./test_data_clamp.csv')
+            
             current_trial += 1
             state_clock.reset()
 
