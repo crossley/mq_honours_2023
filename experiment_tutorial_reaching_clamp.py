@@ -50,6 +50,7 @@ current_trial = 0
 # create and start timers
 experiment_clock = core.Clock()
 state_clock = core.Clock()
+midpoint_clock = core.Clock()
 
 target_distance = 6
 target_circle.pos = (0, target_distance)
@@ -88,6 +89,7 @@ while current_trial < num_trials:
         start_circle.draw()
         target_circle.draw()
         cursor_circle.draw()
+        
         if mathtools.distance(start_circle.pos, cursor_circle.pos) >= target_distance:
             feedback_circle.pos = coordinatetools.pol2cart(clamp_rotation, target_distance)
             endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0], mouse.getPos()[1])[0]

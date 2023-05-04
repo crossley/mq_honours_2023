@@ -43,21 +43,25 @@ t_fb_dur = 0.5
 
 fb_acc = 'NA'
 
-num_trials = 5
-current_trial = 0
-
 # create and start timers
 experiment_clock = core.Clock()
 state_clock = core.Clock()
 
-while current_trial < num_trials:
+config = pd.read_csv('config.csv')
+
+num_trials = config.shape[0]
+current_trial = 1
+
+while current_trial <= num_trials:
 
     resp = event.getKeys(keyList=['d', 'k', 'escape'])
     rt = state_clock.getTime()
 
     mouse_position = mouse.getPos()
+      
+    circle_stim.fillColor=config[config['trial'] == current_trial]['stim_colour'].to_numpy()[0]
 
-    if state == 'stim':k
+    if state == 'stim':
         circle_stim.draw()
         if ('d' in resp) or ('k' in resp):
             state = 'response'
