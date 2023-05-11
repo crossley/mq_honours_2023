@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from scipy.spatial import distance
 
 # NOTE: II
@@ -55,3 +56,21 @@ plt.show()
 # TODO: plot stim code etc from pizza
 # TODO: add cue column
 # TODO: add correct_cat column
+
+x = np.concatenate((xA1, xA2, xB1, xB2))
+y = np.concatenate((yA1, yA2, yB1, yB2))
+cat = np.concatenate((1 * np.ones(xA1.shape[0]), 1 * np.ones(xA2.shape[0]),
+                      2 * np.ones(xB1.shape[0]), 2 * np.ones(xB2.shape[0])))
+cat = cat.astype('int')
+trial = np.arange(1, x.shape[0] + 1, 1)
+
+d = pd.DataFrame({'trial': trial, 'x': x, 'y': y, 'cat': cat})
+
+# shuffle rows
+d = d.sample(frac=1).reset_index(drop=True)
+
+fig, ax = plt.subplots(1, 1, squeeze=False)
+sns.scatterplot(data=d, x='x', y='y', hue='cat', ax=ax[0, 0])
+plt.show()
+
+d.to_csv('config_cat_learn.csv', index=False)

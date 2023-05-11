@@ -47,9 +47,6 @@ t_hold = 1.0
 t_iti = 1.0
 t_feedback = 1.0
 
-num_trials = 5
-current_trial = 0
-
 # create and start timers
 experiment_clock = core.Clock()
 state_clock = core.Clock()
@@ -58,10 +55,31 @@ midpoint_clock = core.Clock()
 target_distance = 6
 target_circle.pos = (0, target_distance)
 
-clamp_rotation = 30
+config = pd.read_csv('config_reach.csv')
 
-# decide on what bits we want to record
-trial_data = {'trial': [], 'endpoint_theta': []}
+trial = config['trial'].to_numpy()
+cycle = config['cycle'].to_numpy()
+cursor_vis = config['cursor_vis'].to_numpy()
+midpoint_vis = config['cursor_vis'].to_numpy()
+endpoint_vis = config['cursor_vis'].to_numpy()
+clamp = config['clamp'].to_numpy()
+rot = config['rot'].to_numpy()
+target_angle = config['target_angle'].to_numpy()
+
+num_trials = config.shape[0]
+current_trial = 0
+
+trial_data = {
+    'trial': [],
+    'cycle': [],
+    'cursor_vis': [],
+    'midpoint_vis':[],
+    'endpoint_vis': [],
+    'clamp': [],
+    'rot': [],
+    'target_angle': [],
+    'endpoint_theta': []
+}
 
 while current_trial < num_trials:
 
@@ -87,26 +105,41 @@ while current_trial < num_trials:
         if state_clock.getTime() >= t_hold:
             state = 'reach'
             state_clock.reset()
+            target_circle.pos = coordinatetools.pol2cart(
+                target_angle[current_trial], target_distance)
 
     if state == 'reach':
-        cursor_circle.pos = coordinatetools.pol2cart(clamp_rotation, r)
+        if clamp[current_trial] == True:
+            cursor_circle.pos = coordinatetools.pol2cart(
+                target_angle[current_trial] + rot[current_trial], r)
+        else:
+            cursor_circle.pos = coordinatetools.pol2cart(
+                theta + rot[current_trial], r)
+
         start_circle.draw()
         target_circle.draw()
-        cursor_circle.draw()
+        
+        if cursor_vis[current_trial]:
+            cursor_circle.draw()
+            
+        if midpoint_vis[current_trial]:
+            if r > target_distance * 0.9 / 2 and r < target_distance * 1.1 / 2:
+                cursor_circle.draw()
 
-        if mathtools.distance(start_circle.pos,
-                              cursor_circle.pos) >= target_distance:
-            feedback_circle.pos = coordinatetools.pol2cart(
-                clamp_rotation, target_distance)
-            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],
-                                                      mouse.getPos()[1])[0]
+        if mathtools.distance(start_circle.pos, cursor_circle.pos) >= target_distance:
+            if clamp[current_trial] == True:
+                feedback_circle.pos = coordinatetools.pol2cart(target_angle[current_trial] + rot[current_trial], target_distance)
+            else:
+                feedback_circle.pos = coordinatetools.pol2cart(theta + rot[current_trial], target_distance)
+            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],mouse.getPos()[1])[0]
             state = 'feedback'
             state_clock.reset()
 
     if state == 'feedback':
         start_circle.draw()
         target_circle.draw()
-        feedback_circle.draw()
+        if endpoint_vis[current_trial]:
+            feedback_circle.draw()
         if state_clock.getTime() > t_feedback:
             state = 'iti'
             state_clock.reset()
@@ -114,9 +147,17 @@ while current_trial < num_trials:
     if state == 'iti':
         if state_clock.getTime() > t_iti:
             state = 'search'
+            
             trial_data['trial'].append(current_trial)
+            trial_data['cycle'].append(cycle[current_trial])
+            trial_data['cursor_vis'].append(cursor_vis[current_trial])
+            trial_data['midpoint_vis'].append(cursor_vis[current_trial])
+            trial_data['endpoint_vis'].append(cursor_vis[current_trial])
+            trial_data['clamp'].append(clamp[current_trial])
+            trial_data['rot'].append(rot[current_trial])
+            trial_data['target_angle'].append(target_angle[current_trial])
             trial_data['endpoint_theta'].append(endpoint_theta)
-
+            
             pd.DataFrame(trial_data).to_csv('./test_data_clamp.csv')
 
             current_trial += 1
@@ -125,5 +166,9 @@ while current_trial < num_trials:
     if 'escape' in resp:
         win.close()
         core.quit()
+        pd.DataFrame(trial_data).to_csv('./test_data_clamp.csv')
 
     win.flip()
+
+win.close()
+core.quit()
