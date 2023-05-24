@@ -72,4 +72,3 @@ ax[0, 0].vlines(np.cumsum(nn), 0, rot_amp + 5, 'k', '--')
 plt.show()
 
 d.to_csv('config_reach.csv', index=False)
-
