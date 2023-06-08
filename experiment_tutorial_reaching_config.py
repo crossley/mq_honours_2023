@@ -118,10 +118,10 @@ while current_trial < num_trials:
 
         start_circle.draw()
         target_circle.draw()
-        
+
         if cursor_vis[current_trial]:
             cursor_circle.draw()
-            
+
         if midpoint_vis[current_trial]:
             if r > target_distance * 0.9 / 2 and r < target_distance * 1.1 / 2:
                 cursor_circle.draw()
@@ -147,7 +147,7 @@ while current_trial < num_trials:
     if state == 'iti':
         if state_clock.getTime() > t_iti:
             state = 'search'
-            
+
             trial_data['trial'].append(current_trial)
             trial_data['cycle'].append(cycle[current_trial])
             trial_data['cursor_vis'].append(cursor_vis[current_trial])
@@ -157,7 +157,7 @@ while current_trial < num_trials:
             trial_data['rot'].append(rot[current_trial])
             trial_data['target_angle'].append(target_angle[current_trial])
             trial_data['endpoint_theta'].append(endpoint_theta)
-            
+
             pd.DataFrame(trial_data).to_csv('./test_data_clamp.csv')
 
             current_trial += 1
