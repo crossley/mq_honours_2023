@@ -37,6 +37,13 @@ start_circle = visual.Circle(win, radius=0.5, fillColor='blue')
 target_circle = visual.Circle(win, radius=0.5, fillColor='blue')
 feedback_circle = visual.Circle(win, radius=0.5, fillColor='white')
 
+cursor_cloud = []
+n_points = 50
+for i in range(n_points):
+    cursor_cloud.append(visual.Circle(win, 
+                                    radius=0.05, 
+                                    fillColor='white'))
+
 mouse = event.Mouse(visible=False, win=win)
 
 # initial state
@@ -63,24 +70,32 @@ clamp_rotation = 30
 # decide on what bits we want to record
 trial_data = {'trial': [], 'endpoint_theta': []}
 
-while current_trial < num_trials:
+update_cloud = True
 
+while current_trial < num_trials:
+    
     resp = event.getKeys(keyList=['d', 'k', 'escape'])
     rt = state_clock.getTime()
-
+    
     cursor_circle.pos = mouse.getPos()
     theta, r = coordinatetools.cart2pol(cursor_circle.pos[0],
                                         cursor_circle.pos[1])
-
+                                        
+    if update_cloud == True:
+        cloud_jitter = []
+        for i in range(n_points):
+            cloud_jitter.append(np.random.normal(0, 0.5, (1, 2)))
+        update_cloud = False
+    
     if state == 'search':
         search_circle.radius = r
         search_circle.draw()
-
+        
         # exit state if cursor and start circles overlap
         if mathtools.distance(start_circle.pos, cursor_circle.pos) < 0.2:
             state = 'hold'
             state_clock.reset()
-
+    
     if state == 'hold':
         start_circle.draw()
         cursor_circle.draw()
@@ -90,10 +105,15 @@ while current_trial < num_trials:
 
     if state == 'reach':
         cursor_circle.pos = coordinatetools.pol2cart(clamp_rotation, r)
+        
+        for i in range(n_points):
+            cursor_cloud[i].pos = coordinatetools.pol2cart(clamp_rotation, r) + cloud_jitter[i]
+            
         start_circle.draw()
         target_circle.draw()
         cursor_circle.draw()
-
+        [x.draw() for x in cursor_cloud]
+    
         if mathtools.distance(start_circle.pos,
                               cursor_circle.pos) >= target_distance:
             feedback_circle.pos = coordinatetools.pol2cart(
@@ -102,7 +122,7 @@ while current_trial < num_trials:
                                                       mouse.getPos()[1])[0]
             state = 'feedback'
             state_clock.reset()
-
+    
     if state == 'feedback':
         start_circle.draw()
         target_circle.draw()
@@ -110,20 +130,21 @@ while current_trial < num_trials:
         if state_clock.getTime() > t_feedback:
             state = 'iti'
             state_clock.reset()
-
+    
     if state == 'iti':
         if state_clock.getTime() > t_iti:
             state = 'search'
             trial_data['trial'].append(current_trial)
             trial_data['endpoint_theta'].append(endpoint_theta)
-
+    
             pd.DataFrame(trial_data).to_csv('./test_data_clamp.csv')
-
+    
             current_trial += 1
+            update_cloud = True
             state_clock.reset()
-
+    
     if 'escape' in resp:
         win.close()
         core.quit()
-
+    
     win.flip()
