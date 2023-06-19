@@ -1,8 +1,8 @@
 from __future__ import division
-from psychopy import visual, core, data, event, sound
-from psychopy.constants import *
-from psychopy.tools.monitorunittools import pix2cm
-from psychopy.monitors import Monitor
+# from psychopy import visual, core, data, event, sound
+# from psychopy.constants import *
+# from psychopy.tools.monitorunittools import pix2cm
+# from psychopy.monitors import Monitor
 import datetime
 import numpy as np
 import pandas as pd
@@ -11,6 +11,47 @@ from scipy.spatial.distance import mahalanobis
 import os
 import sys
 import csv
+
+
+def gen_II_cats(n):
+
+    meanA = [43, 57]
+    meanB = [57, 43]
+
+    varx = 100
+    vary = 100
+    cov = 90
+
+    cm = np.array([[varx, cov], [cov, vary]])
+
+    xyA = multivariate_normal_m_dist(meanA, cm, n//2, 2.5)
+    xyB = multivariate_normal_m_dist(meanB, cm, n//2, 2.5)
+
+    xA = xyA[:, 0]
+    yA = xyA[:, 1]
+    xB = xyB[:, 0]
+    yB = xyB[:, 1]
+
+    x = np.concatenate((xA, xB))
+    y = np.concatenate((yA, yB))
+
+    cat = np.concatenate((1 * np.ones(xA.shape[0]), 2 * np.ones(xB.shape[0])))
+    cat = cat.astype('int')
+
+    xAt, yAt = TransformStim(xA, yA)
+    xBt, yBt = TransformStim(xB, yB)
+    xt, yt = TransformStim(x, y)
+
+    # fig, ax = plt.subplots(1, 2, squeeze=False)
+    # ax[0, 0].plot(xA, yA, 'x')
+    # ax[0, 0].plot(xB, yB, 'x')
+    # ax[0, 1].plot(xAt, yAt, 'x')
+    # ax[0, 1].plot(xBt, yBt, 'x')
+    # plt.show()
+
+    # plot_category_exemplars_2(cat, xt, yt, x, y)
+
+    return pd.DataFrame({'x': x, 'y': y, 'xt': xt, 'yt': yt, 'cat': cat})
 
 
 def multivariate_normal_m_dist(mean, cov_mat, n, m_dist_max):
