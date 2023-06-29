@@ -5,6 +5,8 @@ import seaborn as sns
 from scipy.spatial import distance
 from util_funcs_config import *
 
+save_instruction_stim()
+
 # NOTE: RB CJ
 # meanA = [25, 50]
 # meanB = [35, 60]

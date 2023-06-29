@@ -83,9 +83,18 @@ TODO: Waiting on word from Laura's notes for trial numbers
 Laura is working on a project examining whether or not MIS training transfers to
 enhanced visuomotor adaptation abilities.
 
-- Condition 1: ???
-- Condition 2: ???
-- Condition 3: ???
+- Condition 1: camera rotation condition (participants undertake the peg
+  transfer task with camera rotation followed by the reaching task)
+
+- Condition 2: no camera rotation (participants undertake the peg transfer task
+  at one fixed viewpoint followed by the reaching task)
+
+- Condition 3: no peg transfer task (participants just undertake the reaching
+  task)
+
+Each participant will undertake 4 training sessions with target direction in
+the reaching task counterbalanced between participants and changed each
+training session.
 
 4 trained directions - randomised the sequence such that each participant
 gets all 4 targets in random order - preventing explicit strategies and

@@ -1,8 +1,8 @@
 from __future__ import division
-# from psychopy import visual, core, data, event, sound
-# from psychopy.constants import *
-# from psychopy.tools.monitorunittools import pix2cm
-# from psychopy.monitors import Monitor
+from psychopy import visual, core, data, event, sound
+from psychopy.constants import *
+from psychopy.tools.monitorunittools import pix2cm
+from psychopy.monitors import Monitor
 import datetime
 import numpy as np
 import pandas as pd
@@ -260,8 +260,8 @@ def plot_category_exemplars_2(cat, x, y, xpos, ypos):
     event.waitKeys(keyList=['escape'])
 
 
-def save_stim(x, y, contrast, name):
-    screen_size = 100
+def save_stim(x, y, fb, sub_task, name):
+    screen_size = 300
 
     win = visual.Window(size=(screen_size, screen_size),
                         fullscr=False,
@@ -269,7 +269,7 @@ def save_stim(x, y, contrast, name):
                         allowGUI=False,
                         allowStencil=False,
                         monitor='testMonitor',
-                        color=[0, 0, 0],
+                        color='black',
                         colorSpace='rgb',
                         blendMode='avg',
                         useFBO=False)
@@ -280,7 +280,7 @@ def save_stim(x, y, contrast, name):
     cm_per_pix = pix2cm(1, mon)
     # cm_per_pix = 0.01
 
-    cont = contrast
+    cont = 1.0
 
     grating = visual.GratingStim(win,
                                  units='pix',
@@ -292,8 +292,75 @@ def save_stim(x, y, contrast, name):
                                  size=(2 / cm_per_pix, 2 / cm_per_pix),
                                  interpolate=True,
                                  texRes=2048)
+                                 
+    fb_stim_correct = visual.Circle(win,
+                                units='pix',
+                                pos=(0, 0),
+                                radius=(1.1 / cm_per_pix, 1.1 / cm_per_pix),
+                                fillColor=None,
+                                lineColor='green',
+                                lineWidth=8,
+                                interpolate=True)
 
+    fb_stim_incorrect = visual.Circle(win,
+                                  units='pix',
+                                  pos=(0, 0),
+                                  radius=(1.1 / cm_per_pix, 1.1 / cm_per_pix),
+                                  fillColor=None,
+                                  lineColor='red',
+                                  lineWidth=8,
+                                  interpolate=True)
+                                  
+    sub_task_stim_1 = visual.Rect(win, units='pix', width=3 / cm_per_pix, height=3 / cm_per_pix, fillColor='gray', ori=0)
+    sub_task_stim_2 = visual.Rect(win, units='pix', width=3 / cm_per_pix, height=3 / cm_per_pix, fillColor='gray', ori=45)
+    
+    if sub_task == 1:
+        sub_task_stim_1.draw()
+    elif sub_task == 2:
+        sub_task_stim_2.draw()
+        
     grating.draw()
+    if fb == 'correct':
+        fb_stim_correct.draw()        
+    elif fb == 'incorrect':
+        fb_stim_incorrect.draw()
+    
     win.flip()
     win.getMovieFrame()
     win.saveMovieFrames(name)
+
+def save_instruction_stim():
+    x = np.array([10, 10, 90, 90])
+    y = np.array([10, 90, 10, 90])
+    
+    xt, yt = TransformStim(x, y)
+    
+    save_stim(xt[0], yt[0], 'correct', 1, '../example_stim/example_stim_1.png')
+    save_stim(xt[1], yt[1], 'correct', 1, '../example_stim/example_stim_2.png')
+    save_stim(xt[2], yt[2], 'correct', 1, '../example_stim/example_stim_3.png')
+    save_stim(xt[3], yt[3], 'correct', 1, '../example_stim/example_stim_4.png')
+    
+    save_stim(xt[0], yt[0], 'correct', 2, '../example_stim/example_stim_5.png')
+    save_stim(xt[1], yt[1], 'correct', 2, '../example_stim/example_stim_6.png')
+    save_stim(xt[2], yt[2], 'correct', 2, '../example_stim/example_stim_7.png')
+    save_stim(xt[3], yt[3], 'correct', 2, '../example_stim/example_stim_8.png')
+    
+    save_stim(xt[0], yt[0], 'incorrect', 1, '../example_stim/example_stim_9.png')
+    save_stim(xt[1], yt[1], 'incorrect', 1, '../example_stim/example_stim_10.png')
+    save_stim(xt[2], yt[2], 'incorrect', 1, '../example_stim/example_stim_11.png')
+    save_stim(xt[3], yt[3], 'incorrect', 1, '../example_stim/example_stim_12.png')
+    
+    save_stim(xt[0], yt[0], 'incorrect', 2, '../example_stim/example_stim_13.png')
+    save_stim(xt[1], yt[1], 'incorrect', 2, '../example_stim/example_stim_14.png')
+    save_stim(xt[2], yt[2], 'incorrect', 2, '../example_stim/example_stim_15.png')
+    save_stim(xt[3], yt[3], 'incorrect', 2, '../example_stim/example_stim_16.png')
+    
+    save_stim(xt[0], yt[0], None, 1, '../example_stim/example_stim_17.png')
+    save_stim(xt[1], yt[1], None, 1, '../example_stim/example_stim_18.png')
+    save_stim(xt[2], yt[2], None, 1, '../example_stim/example_stim_19.png')
+    save_stim(xt[3], yt[3], None, 1, '../example_stim/example_stim_20.png')
+    
+    save_stim(xt[0], yt[0], None, 2, '../example_stim/example_stim_21.png')
+    save_stim(xt[1], yt[1], None, 2, '../example_stim/example_stim_22.png')
+    save_stim(xt[2], yt[2], None, 2, '../example_stim/example_stim_23.png')
+    save_stim(xt[3], yt[3], None, 2, '../example_stim/example_stim_24.png')
