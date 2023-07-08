@@ -11,6 +11,7 @@ import time
 import struct
 import numpy as np
 import pandas as pd
+from instructions import *
 
 sub_num = 1
 
@@ -27,6 +28,10 @@ win = visual.Window(size=(800, 800),
                     blendMode='avg',
                     useFBO=False,
                     units='cm')
+
+# TODO display welcome message and wait for key press
+give_instructions(win)
+
 
 # TODO
 # Add text messages and logic to display them
