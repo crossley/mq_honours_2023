@@ -1,13 +1,15 @@
 from __future__ import division
-from psychopy import visual, core, data, event, sound
-from psychopy.constants import *
-from psychopy.tools.monitorunittools import pix2cm
-from psychopy.monitors import Monitor
+# from psychopy import visual, core, data, event, sound
+# from psychopy.constants import *
+# from psychopy.tools.monitorunittools import pix2cm
+# from psychopy.monitors import Monitor
 import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from scipy.spatial.distance import mahalanobis
+from scipy.spatial import distance
 import os
 import sys
 import csv

@@ -144,9 +144,9 @@ while current_trial < num_trials:
         else:
             state = 'hold'
             state_clock.reset()
-    
-    # TODO: This advances out of the hold state after t_hold seconds. We 
-    # want the time constraint but we also only want to advance after a 
+
+    # TODO: This advances out of the hold state after t_hold seconds. We
+    # want the time constraint but we also only want to advance after a
     # reach has been initiated.
     if state == 'hold':
         start_circle.draw()
@@ -227,7 +227,7 @@ while current_trial < num_trials:
         core.quit()
         pd.DataFrame(trial_data).to_csv('../data/data_' + str(sub_num) +
                                         '.csv')
-                                        
+
     # trajectories recorded every sample
 #    trial_move['trial'] = current_trial
 #    trial_move['state'] = state
