@@ -25,16 +25,16 @@ vary = 100
 cov = 90
 cm = np.array([[varx, cov], [cov, vary]])
 
-n_subs_per_cnd = 1
+n_subs_per_cnd = 5
 # conditions = ['two_finger_four_key', 'four_finger_four_key'] * n_subs_per_cnd
 conditions = ['2F4K', '4F4K'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 
-# n_trial_total = 560
-n_trial_total = 6
+n_trial_total = 560
+# n_trial_total = 6
 n_trial_per_sub_task = n_trial_total // 2
 
-block_size = 2
+block_size = 40
 
 for sub in range(len(conditions)):
 
@@ -85,7 +85,7 @@ for sub in range(len(conditions)):
     d['message'] = ['None'] * d.shape[0]
 
     d.loc[(0 + block_size)::block_size,
-          'message'] = 'Nice work! Press any key to continue.'
+          'message'] = 'Nice work! Press the space bar to continue.'
 
     fig, ax = plt.subplots(2, 2, squeeze=False)
 

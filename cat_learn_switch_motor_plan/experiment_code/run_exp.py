@@ -30,22 +30,22 @@ win = visual.Window(size=(1200,800),
                     units='cm')
 
 # stimuli
-sub_task_stim = visual.Rect(win, width=15, height=15, fillColor='gray', ori=0)
+sub_task_stim = visual.Rect(win, width=10, height=10, fillColor='gray', ori=0)
 
 grating_stim = visual.GratingStim(win,
-                                  size=8,
+                                  size=5,
                                   mask='circle',
                                   colorSpace='rgb',
                                   texRes=512)
                                   
 fb_stim_correct = visual.Circle(win,
-                                radius=5,
+                                radius=3,
                                 fillColor=None,
                                 lineColor='green',
                                 lineWidth=8)
                                 
 fb_stim_incorrect = visual.Circle(win,
-                                  radius=5,
+                                  radius=3,
                                   fillColor=None,
                                   lineColor='red',
                                   lineWidth=8)
@@ -102,17 +102,6 @@ config_msg = visual.TextStim(
 
 mouse = event.Mouse(visible=False, win=win)
 
-# initial state
-state = 'message'
-
-# state durations
-t_iti = 1.5
-t_fb_delay = 0.0
-t_fb_dur = 0.75
-t_too_slow = 5.0
-t_one_key_per_trial_msg = 1.5
-t_too_slow_msg = 1.5
-
 fb_acc = 'NA'
 
 config = pd.read_csv('../config/config_cat_learn_' + str(sub_num) + '.csv')
@@ -127,10 +116,7 @@ condition = config['condition'].to_numpy()
 trial = config['trial'].to_numpy()
 message = config['message'].to_numpy()
 
-print(message)
-
 num_trials = config.shape[0]
-current_trial = 0
 
 if np.unique(condition).shape[0] > 1:
     print('Error in condition assignment 1')
@@ -139,17 +125,25 @@ if np.unique(condition).shape[0] > 1:
     
 else:
     if np.unique(condition)[0] == '2F2K':
-        resp_keys = ['d', 'k', 'escape']
+        resp_keys = ['c', 'n', 'escape', 'space']
     elif np.unique(condition)[0] == '2F4K':
-        resp_keys = ['s', 'd', 'k', 'l', 'escape']
+        resp_keys = ['c', 'v', 'b', 'n', 'escape', 'space']
     elif np.unique(condition)[0] == '4F2K':
-        resp_keys = ['d', 'k', 'escape']
+        resp_keys = ['c', 'n', 'escape', 'space']
     elif np.unique(condition)[0] == '4F4K':
-        resp_keys = ['s', 'd', 'k', 'l', 'escape']
+        resp_keys = ['c', 'v', 'b', 'n', 'escape', 'space']
     else:
         print('Error in condition assignment 2')
         win.close()
         core.quit()
+
+# subtask cue img
+if condition[0] == '4F4K':
+    sub_task_1_img = visual.ImageStim(win, image='../img/4F4K/cue_1.png', pos=(0, -10), size=(5, 3))
+    sub_task_2_img = visual.ImageStim(win, image='../img/4F4K/cue_2.png', pos=(0, -10), size=(5, 3))
+elif condition[0] == '2F4K':
+    sub_task_1_img = visual.ImageStim(win, image='../img/2F4K/cue_1.png', pos=(0, -10), size=(5, 3))
+    sub_task_2_img = visual.ImageStim(win, image='../img/2F4K/cue_2.png', pos=(0, -10), size=(5, 3))
 
 trial_record = {
     'condition': [],
@@ -163,6 +157,18 @@ trial_record = {
     'resp': [],
     'rt': []
 }
+
+# state durations
+t_iti = 1.5
+t_fb_delay = 0.0
+t_fb_dur = 0.75
+t_too_slow = 5.0
+t_one_key_per_trial_msg = 1.5
+t_too_slow_msg = 1.5
+
+# initial state
+state = 'message'
+current_trial = 0
 
 # display instructions
 # give_instructions(win, np.unique(condition)[0])
@@ -198,15 +204,42 @@ while current_trial < num_trials:
         grating_stim.sf = xt[current_trial]
         grating_stim.ori = yt[current_trial]
         grating_stim.draw()
+        if sub_task[current_trial] == 1:
+            sub_task_1_img.draw()
+            resp_keys_sub_task = ['v', 'b']
+        elif sub_task[current_trial] == 2:
+            sub_task_2_img.draw()
+            resp_keys_sub_task = ['c', 'n']
         if len(resp) > 0:
             if len(resp) > 1:
-                state = one_key_per_trial
+                state = 'one_key_per_trial'
+                key_pressed = 'many'
                 state_clock.reset()
             else:
-                if (resp[0] in resp_keys):
+                if resp[0] in resp_keys_sub_task:
                     state = 'response'
+                    rt = state_clock.getTime()
+                    key_pressed = resp[0]
                     state_clock.reset()
-                    
+                    if rt > t_too_slow:
+                        state = 'too_slow'
+                        rt = t_too_slow
+                        key_pressed = resp[0]
+                        state_clock.reset()
+    
+    if state == 'response':
+        sub_task_stim.draw()
+        if state_clock.getTime() > t_fb_delay:
+            state = 'feedback'
+            # NOTE: The purpose of the -1 in the following line of code is to
+            # convert cat[current_trial] from (1, 2) into (0, 1) so that it can
+            # be used as an appropriate index into resp_keys.
+            if resp[0] == resp_keys[cat[current_trial] - 1]:
+                fb_acc = 'correct'
+            else:
+                fb_acc = 'incorrect'
+            state_clock.reset()
+    
     if state == 'one_key_per_trial':
         one_key_per_trial_msg.draw()
         if state_clock.getTime() > t_one_key_per_trial_msg:
@@ -220,35 +253,19 @@ while current_trial < num_trials:
             state = 'iti'
             state_clock.reset()
 
-    if state == 'response':
-        sub_task_stim.draw()
-        if state_clock.getTime() > t_fb_delay:
-            state = 'feedback'
-            # NOTE: The purpose of the -1 in the following line of code is to
-            # convert cat[current_trial] from (1, 2) into (0, 1) so that it can
-            # be used as an appropriate index into resp_keys.
-            if resp[0] == resp_keys[cat[current_trial] - 1]:
-                fb_acc = 'correct'
-            else:
-                fb_acc = 'incorrect'
-            key_pressed = resp[0]
-            rt = state_clock.getTime()
-            state_clock.reset()
-        elif state_clock.getTime() > t_too_slow:
-            state = 'too_slow'
-            rt = t_too_slow
-            state_clock.reset()
-
     if state == 'feedback':
         sub_task_stim.draw()
         grating_stim.draw()
-
+        if sub_task[current_trial] == 1:
+            sub_task_1_img.draw()
+        elif sub_task[current_trial] == 2:
+            sub_task_2_img.draw()
+        
         if fb_acc == 'correct':
             fb_stim_correct.draw()
-
         elif fb_acc == 'incorrect':
             fb_stim_incorrect.draw()
-
+        
         if state_clock.getTime() > t_fb_dur:
             state = 'iti'
             state_clock.reset()
@@ -272,14 +289,15 @@ while current_trial < num_trials:
             state_clock.reset()
 
     if 'escape' in resp:
-        pd.DataFrame(trial_record).to_csv('../data/cat_results.csv',
+        pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) + '.csv',
                                           index=False)
         win.close()
         core.quit()
 
     win.flip()
 
-pd.DataFrame(trial_record).to_csv('cat_results' + str(sub_num) + '.csv')
+print(trial_record)
+pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) + '.csv')
 
 # give_debrief(win, np.unique(condition)[0])
 
