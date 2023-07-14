@@ -15,16 +15,7 @@ import sys
 import csv
 
 
-def gen_II_cats(n):
-
-    meanA = [43, 57]
-    meanB = [57, 43]
-
-    varx = 100
-    vary = 100
-    cov = 90
-
-    cm = np.array([[varx, cov], [cov, vary]])
+def gen_cats(meanA, meanB, varx, vary, cm, n):
 
     xyA = multivariate_normal_m_dist(meanA, cm, n // 2, 2.5)
     xyB = multivariate_normal_m_dist(meanB, cm, n // 2, 2.5)

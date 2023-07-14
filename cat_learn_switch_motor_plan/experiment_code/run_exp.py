@@ -13,10 +13,10 @@ import numpy as np
 import pandas as pd
 from instructions import *
 
-sub_num = 1
+sub_num = 0
 
 # allocate window and graphics
-win = visual.Window(size=(1200,800),
+win = visual.Window(size=(1200, 800),
                     pos=(50, 50),
                     fullscr=False,
                     screen=0,
@@ -37,13 +37,13 @@ grating_stim = visual.GratingStim(win,
                                   mask='circle',
                                   colorSpace='rgb',
                                   texRes=512)
-                                  
+
 fb_stim_correct = visual.Circle(win,
                                 radius=3,
                                 fillColor=None,
                                 lineColor='green',
                                 lineWidth=8)
-                                
+
 fb_stim_incorrect = visual.Circle(win,
                                   radius=3,
                                   fillColor=None,
@@ -68,37 +68,35 @@ one_key_per_trial_msg = visual.TextStim(
     alignHoriz='center',
     alignVert='center')
 
-too_slow_msg = visual.TextStim(
-    win=win,
-    ori=0,
-    name='text',
-    text='Please respond faster.',
-    font='Arial',
-    pos=(0.0),
-    height=h,
-    wrapWidth=None,
-    color='white',
-    colorSpace='rgb',
-    opacity=1,
-    bold=False,
-    alignHoriz='center',
-    alignVert='center')
-    
-config_msg = visual.TextStim(
-    win=win,
-    ori=0,
-    name='text',
-    text='',
-    font='Arial',
-    pos=(0.0),
-    height=h,
-    wrapWidth=None,
-    color='white',
-    colorSpace='rgb',
-    opacity=1,
-    bold=False,
-    alignHoriz='center',
-    alignVert='center')
+too_slow_msg = visual.TextStim(win=win,
+                               ori=0,
+                               name='text',
+                               text='Please respond faster.',
+                               font='Arial',
+                               pos=(0.0),
+                               height=h,
+                               wrapWidth=None,
+                               color='white',
+                               colorSpace='rgb',
+                               opacity=1,
+                               bold=False,
+                               alignHoriz='center',
+                               alignVert='center')
+
+config_msg = visual.TextStim(win=win,
+                             ori=0,
+                             name='text',
+                             text='',
+                             font='Arial',
+                             pos=(0.0),
+                             height=h,
+                             wrapWidth=None,
+                             color='white',
+                             colorSpace='rgb',
+                             opacity=1,
+                             bold=False,
+                             alignHoriz='center',
+                             alignVert='center')
 
 mouse = event.Mouse(visible=False, win=win)
 
@@ -122,16 +120,17 @@ if np.unique(condition).shape[0] > 1:
     print('Error in condition assignment 1')
     win.close()
     core.quit()
-    
+
 else:
+    # NOTE: The order that these keys are listed matters (see state='response')
     if np.unique(condition)[0] == '2F2K':
         resp_keys = ['c', 'n', 'escape', 'space']
     elif np.unique(condition)[0] == '2F4K':
-        resp_keys = ['c', 'v', 'b', 'n', 'escape', 'space']
+        resp_keys = ['c', 'n', 'v', 'b', 'escape', 'space']
     elif np.unique(condition)[0] == '4F2K':
         resp_keys = ['c', 'n', 'escape', 'space']
     elif np.unique(condition)[0] == '4F4K':
-        resp_keys = ['c', 'v', 'b', 'n', 'escape', 'space']
+        resp_keys = ['c', 'n', 'v', 'b', 'escape', 'space']
     else:
         print('Error in condition assignment 2')
         win.close()
@@ -139,11 +138,23 @@ else:
 
 # subtask cue img
 if condition[0] == '4F4K':
-    sub_task_1_img = visual.ImageStim(win, image='../img/4F4K/cue_1.png', pos=(0, -10), size=(5, 3))
-    sub_task_2_img = visual.ImageStim(win, image='../img/4F4K/cue_2.png', pos=(0, -10), size=(5, 3))
+    sub_task_1_img = visual.ImageStim(win,
+                                      image='../img/4F4K/cue_1.png',
+                                      pos=(0, 0),
+                                      size=(5, 3))
+    sub_task_2_img = visual.ImageStim(win,
+                                      image='../img/4F4K/cue_2.png',
+                                      pos=(0, 0),
+                                      size=(5, 3))
 elif condition[0] == '2F4K':
-    sub_task_1_img = visual.ImageStim(win, image='../img/2F4K/cue_1.png', pos=(0, -10), size=(5, 3))
-    sub_task_2_img = visual.ImageStim(win, image='../img/2F4K/cue_2.png', pos=(0, -10), size=(5, 3))
+    sub_task_1_img = visual.ImageStim(win,
+                                      image='../img/2F4K/cue_1.png',
+                                      pos=(0, 0),
+                                      size=(5, 3))
+    sub_task_2_img = visual.ImageStim(win,
+                                      image='../img/2F4K/cue_2.png',
+                                      pos=(0, 0),
+                                      size=(5, 3))
 
 trial_record = {
     'condition': [],
@@ -159,12 +170,13 @@ trial_record = {
 }
 
 # state durations
-t_iti = 1.5
+t_iti = 1.0
 t_fb_delay = 0.0
-t_fb_dur = 0.75
+t_fb_dur = 1.0
 t_too_slow = 5.0
 t_one_key_per_trial_msg = 1.5
 t_too_slow_msg = 1.5
+t_subtask_cue = 1.0
 
 # initial state
 state = 'message'
@@ -186,7 +198,7 @@ while current_trial < num_trials:
         sub_task_stim.ori = 45
     elif sub_task[current_trial] == 2:
         sub_task_stim.ori = 0
-    
+
     if state == 'message':
         if message[current_trial] != 'None':
             config_msg.text = message[current_trial]
@@ -196,6 +208,16 @@ while current_trial < num_trials:
                     state = 'stim'
                     state_clock.reset()
         else:
+            state = 'subtask_cue'
+            state_clock.reset()
+    
+    if state == 'subtask_cue':
+        # sub_task_stim.draw()
+        if sub_task[current_trial] == 1:
+            sub_task_1_img.draw()
+        elif sub_task[current_trial] == 2:
+            sub_task_2_img.draw()
+        if state_clock.getTime() > t_subtask_cue:
             state = 'stim'
             state_clock.reset()
     
@@ -205,11 +227,9 @@ while current_trial < num_trials:
         grating_stim.ori = yt[current_trial]
         grating_stim.draw()
         if sub_task[current_trial] == 1:
-            sub_task_1_img.draw()
-            resp_keys_sub_task = ['v', 'b']
-        elif sub_task[current_trial] == 2:
-            sub_task_2_img.draw()
             resp_keys_sub_task = ['c', 'n']
+        elif sub_task[current_trial] == 2:
+            resp_keys_sub_task = ['v', 'b']
         if len(resp) > 0:
             if len(resp) > 1:
                 state = 'one_key_per_trial'
@@ -226,7 +246,7 @@ while current_trial < num_trials:
                         rt = t_too_slow
                         key_pressed = resp[0]
                         state_clock.reset()
-    
+
     if state == 'response':
         sub_task_stim.draw()
         if state_clock.getTime() > t_fb_delay:
@@ -234,19 +254,29 @@ while current_trial < num_trials:
             # NOTE: The purpose of the -1 in the following line of code is to
             # convert cat[current_trial] from (1, 2) into (0, 1) so that it can
             # be used as an appropriate index into resp_keys.
-            if resp[0] == resp_keys[cat[current_trial] - 1]:
-                fb_acc = 'correct'
-            else:
-                fb_acc = 'incorrect'
+            if sub_task[current_trial] == 1:
+                if resp[0] == resp_keys[cat[current_trial] - 1]:
+                    fb_acc = 'correct'
+                else:
+                    fb_acc = 'incorrect'
+            elif sub_task[current_trial] == 2:
+                # NOTE: The +2 in the following line comes from how resp_keys is
+                # defined at the top of the experiment and is why the order of key
+                # listings there matters.
+                if resp[0] == resp_keys[cat[current_trial] - 1 + 2]:
+                    fb_acc = 'correct'
+                else:
+                    fb_acc = 'incorrect'
+
             state_clock.reset()
-    
+
     if state == 'one_key_per_trial':
         one_key_per_trial_msg.draw()
         if state_clock.getTime() > t_one_key_per_trial_msg:
             state = 'iti'
-            current_trial = current_trial - 1 # do trial again
+            current_trial = current_trial - 1  # do trial again
             state_clock.reset()
-    
+
     if state == 'too_slow':
         too_slow_msg.draw()
         if state_clock.getTime() > t_too_slow_msg:
@@ -256,16 +286,17 @@ while current_trial < num_trials:
     if state == 'feedback':
         sub_task_stim.draw()
         grating_stim.draw()
-        if sub_task[current_trial] == 1:
-            sub_task_1_img.draw()
-        elif sub_task[current_trial] == 2:
-            sub_task_2_img.draw()
-        
+
+#        if sub_task[current_trial] == 1:
+#            sub_task_1_img.draw()
+#        elif sub_task[current_trial] == 2:
+#            sub_task_2_img.draw()
+
         if fb_acc == 'correct':
             fb_stim_correct.draw()
         elif fb_acc == 'incorrect':
             fb_stim_incorrect.draw()
-        
+
         if state_clock.getTime() > t_fb_dur:
             state = 'iti'
             state_clock.reset()
@@ -289,7 +320,8 @@ while current_trial < num_trials:
             state_clock.reset()
 
     if 'escape' in resp:
-        pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) + '.csv',
+        pd.DataFrame(trial_record).to_csv('../data/cat_results_' +
+                                          str(sub_num) + '.csv',
                                           index=False)
         win.close()
         core.quit()
@@ -297,7 +329,8 @@ while current_trial < num_trials:
     win.flip()
 
 print(trial_record)
-pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) + '.csv')
+pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) +
+                                  '.csv')
 
 # give_debrief(win, np.unique(condition)[0])
 

@@ -18,14 +18,22 @@ from util_funcs_config import *
 # cm = np.array([[varx, cov], [cov, vary]])
 
 # NOTE: II
-meanA = [43, 57]
-meanB = [57, 43]
-varx = 100
+# meanA = [43, 57]
+# meanB = [57, 43]
+# varx = 100
+# vary = 100
+# cov = 90
+# cm = np.array([[varx, cov], [cov, vary]])
+
+# NOTE: RB 1D
+meanA = [25, 50]
+meanB = [75, 50]
+varx = 2
 vary = 100
-cov = 90
+cov = 0
 cm = np.array([[varx, cov], [cov, vary]])
 
-n_subs_per_cnd = 5
+n_subs_per_cnd = 1
 # conditions = ['two_finger_four_key', 'four_finger_four_key'] * n_subs_per_cnd
 conditions = ['2F4K', '4F4K'] * n_subs_per_cnd
 np.random.shuffle(conditions)
@@ -38,7 +46,7 @@ block_size = 40
 
 for sub in range(len(conditions)):
 
-    d1 = gen_II_cats(n_trial_total)
+    d1 = gen_cats(meanA, meanB, varx, vary, cm, n_trial_total)
     d1 = d1.sample(frac=1).reset_index(drop=True)
 
     stay = ['stay'] * (n_trial_total // 2)
