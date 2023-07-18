@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-target_angle = np.arange(0, 180, 60)
+# target_angle = np.arange(0, 180, 60)
+# n_targets = target_angle.shape[0]
+
+target_angle = np.array([90])
 n_targets = target_angle.shape[0]
 
 n_fam = 1
@@ -20,27 +23,36 @@ n_wash = 1
 rot_amp = 30
 
 instruct = {
-    'fam':
-    'Please reach directly to the target such that the cursor slices through the target.',
-    'base':
-    'You will now only see your cursor at reach midpoint.\n' +
-    'Please continue to slice through the target as accurately as possible.',
-    'clamp':
-    'The cursor feedback is now clamped.\n' + 'It will always appear ' +
-    str(rot_amp) +
-    ' degrees away from the target no matter how accurately you move.\n' +
-    'Please do your best to ignore this cursor feedback and continue reaching directly to the target.',
-    'rot':
-    'Please reach directly to the target.' +
-    'Do not aim off-target in order to get the cursor to land on-target.',
-    'general':
-    'You will now be asked to reach to targets that you have not yet reached to.\n'
-    + 'You will not receive feedback of any kind for these reaches.' +
-    'Please continue to slice through the target as accurately as possible.',
-    'wash':
-    'You will not receive feedback of any kind for the following reaches.' +
-    'Please continue to slice through the target as accurately as possible.'
+    'fam': '',
+    'base': '',
+    'clamp': '',
+    'rot': '',
+    'general': '',
+    'wash': ''
 }
+
+# instruct = {
+#     'fam':
+#     'Please reach directly to the target such that the cursor slices through the target.',
+#     'base':
+#     'You will now only see your cursor at reach midpoint.\n' +
+#     'Please continue to slice through the target as accurately as possible.',
+#     'clamp':
+#     'The cursor feedback is now clamped.\n' + 'It will always appear ' +
+#     str(rot_amp) +
+#     ' degrees away from the target no matter how accurately you move.\n' +
+#     'Please do your best to ignore this cursor feedback and continue reaching directly to the target.',
+#     'rot':
+#     'Please reach directly to the target.' +
+#     'Do not aim off-target in order to get the cursor to land on-target.',
+#     'general':
+#     'You will now be asked to reach to targets that you have not yet reached to.\n'
+#     + 'You will not receive feedback of any kind for these reaches.' +
+#     'Please continue to slice through the target as accurately as possible.',
+#     'wash':
+#     'You will not receive feedback of any kind for the following reaches.' +
+#     'Please continue to slice through the target as accurately as possible.'
+# }
 
 instruct_fam = [instruct['fam']] + [''] * (n_fam * n_targets - 1)
 instruct_base = [instruct['base']] + [''] * (n_base * n_targets - 1)

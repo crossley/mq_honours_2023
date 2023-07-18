@@ -15,7 +15,7 @@ import pandas as pd
 
 sub_num = 0
 
-win = visual.Window(size=(800, 800),
+win = visual.Window(size=(700, 700),
                     pos=(100, 100),
                     fullscr=False,
                     screen=0,
@@ -31,23 +31,46 @@ win = visual.Window(size=(800, 800),
 search_circle = visual.Circle(win,
                               radius=0.5,
                               lineColor='white',
-                              fillColor='gray')
-cursor_circle = visual.Circle(win, radius=0.4, fillColor='white')
+                              fillColor=None)
+cursor_circle = visual.Circle(win, radius=0.35, fillColor='white')
+feedback_circle = visual.Circle(win, radius=0.35, fillColor='white')
 start_circle = visual.Circle(win, radius=0.5, fillColor='blue')
 target_circle = visual.Circle(win, radius=0.5, fillColor='blue')
-feedback_circle = visual.Circle(win, radius=0.5, fillColor='white')
+
+curor_cloud = [visual.Circle(win, radius=0.35, fillColor='white')] * 10
+
+# TODO: I'm apparently using deprecated arguments here.
+text_instruct = visual.TextStim(win=win,
+                                ori=0,
+                                name='text',
+                                text='',
+                                font='Arial',
+                                pos=(0, 8),
+                                height=1,
+                                wrapWidth=None,
+                                color='white',
+                                colorSpace='rgb',
+                                opacity=1,
+                                bold=False,
+                                alignHoriz='center',
+                                alignVert='center')
+
+text_state = visual.TextStim(win=win,
+                             ori=0,
+                             name='text',
+                             text='',
+                             font='Arial',
+                             pos=(0, 8),
+                             height=1,
+                             wrapWidth=None,
+                             color='white',
+                             colorSpace='rgb',
+                             opacity=1,
+                             bold=False,
+                             alignHoriz='center',
+                             alignVert='center')
 
 mouse = event.Mouse(visible=False, win=win)
-
-state = 'search'
-
-t_instruct = 5.0
-t_hold = 1.0
-t_iti = 1.0
-t_feedback = 1.0
-
-experiment_clock = core.Clock()
-state_clock = core.Clock()
 
 target_distance = 6
 target_circle.pos = (0, target_distance)
@@ -95,69 +118,116 @@ trial_move = {
     'y': []
 }
 
-# TODO: add instruct state
-# TODO: I'm apparently using deprecated arguments here.
-text_instruct = visual.TextStim(win=win,
-                                ori=0,
-                                name='text',
-                                text='',
-                                font='Arial',
-                                pos=(0.0),
-                                height=1,
-                                wrapWidth=None,
-                                color='white',
-                                colorSpace='rgb',
-                                opacity=1,
-                                bold=False,
-                                alignHoriz='center',
-                                alignVert='center')
+state = 'search_ring'
+
+t_instruct = 1.0
+t_hold = 1.0
+t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
+t_iti = 1.0
+t_feedback = 1.0
+t_mp = 0.3
+
+search_near_thresh = 0.1
+search_ring_thresh = 1.0
 
 current_trial = 0
 current_sample = 0
+
+experiment_clock = core.Clock()
+state_clock = core.Clock()
+mp_clock = core.Clock()
+
 while current_trial < num_trials:
 
-    resp = event.getKeys(keyList=['d', 'k', 'escape'])
+    resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
 
     x, y = mouse.getPos()
-    theta, r = coordinatetools.cart2pol(cursor_circle.pos[0],
-                                        cursor_circle.pos[1])
+    theta, r = coordinatetools.cart2pol(x, y)
 
     cursor_circle.pos = (x, y)
 
-    if state == 'search':
+    if state == 'search_ring':
+        text_state.text = 'Move your hand to make the diameter of the ring shrink'
+        text_state.draw()
         search_circle.radius = r
         search_circle.draw()
+        if mathtools.distance(start_circle.pos,
+                              cursor_circle.pos) < search_ring_thresh:
+            state = 'search_near'
+            state_clock.reset()
 
-        if mathtools.distance(start_circle.pos, cursor_circle.pos) < 0.2:
-            state = 'instruct'
+    if state == 'search_near':
+        text_state.text = 'Move the cursor all the way inside the start circle'
+        text_state.draw()
+        start_circle.draw()
+        cursor_circle.draw()
+
+        if mathtools.distance(start_circle.pos,
+                              cursor_circle.pos) >= search_ring_thresh:
+            state = 'search_ring'
+            state_clock.reset()
+        elif mathtools.distance(start_circle.pos,
+                                cursor_circle.pos) < search_near_thresh:
+            state = 'hold'
             state_clock.reset()
 
     if state == 'instruct':
-        print(instruct[current_trial])
         if instruct[current_trial] != 'NaN':
             text_instruct.text = instruct[current_trial]
             text_instruct.draw()
-            if state_clock.getTime() >= t_instruct:
+
+            if mathtools.distance(start_circle.pos,
+                                  cursor_circle.pos) >= search_near_thresh:
+                state = 'search_near'
+                state_clock.reset()
+            elif state_clock.getTime() >= t_instruct:
                 state = 'hold'
                 state_clock.reset()
         else:
             state = 'hold'
             state_clock.reset()
 
-    # TODO: This advances out of the hold state after t_hold seconds. We
-    # want the time constraint but we also only want to advance after a
-    # reach has been initiated.
     if state == 'hold':
+        text_state.text = 'Hold the cursor steady inside the start circle'
+        text_state.draw()
         start_circle.draw()
         cursor_circle.draw()
-        if state_clock.getTime() >= t_hold:
-            state = 'reach'
+        if mathtools.distance(start_circle.pos, cursor_circle.pos) >= 0.1:
+            state = 'search_near'
             state_clock.reset()
-            target_circle.pos = coordinatetools.pol2cart(
-                target_angle[current_trial], target_distance)
+        elif state_clock.getTime() >= t_hold:
+            state = 'move_prep'
+            state_clock.reset()
+
+    if state == 'move_prep':
+        text_state.text = 'Slice through the target as quickly and accurately as possible'
+        text_state.draw()
+
+        start_circle.draw()
+        cursor_circle.draw()
+        target_circle.pos = coordinatetools.pol2cart(
+            target_angle[current_trial], target_distance)
+        target_circle.draw()
+
+        if state_clock.getTime() >= t_move_prep:
+            if mathtools.distance(start_circle.pos,
+                                  cursor_circle.pos) >= search_near_thresh:
+                state = 'reach'
+                state_clock.reset()
+        else:
+            if mathtools.distance(start_circle.pos,
+                                  cursor_circle.pos) >= search_near_thresh:
+                state = 'search_near'
+                state_clock.reset()
 
     if state == 'reach':
+        text_state.text = 'Reaching...'
+        text_state.draw()
+
+        target_circle.draw()
+        start_circle.draw()
+
         if clamp[current_trial] == True:
             cursor_circle.pos = coordinatetools.pol2cart(
                 target_angle[current_trial] + rot[current_trial], r)
@@ -165,18 +235,24 @@ while current_trial < num_trials:
             cursor_circle.pos = coordinatetools.pol2cart(
                 theta + rot[current_trial], r)
 
-        start_circle.draw()
-        target_circle.draw()
-
         if cursor_vis[current_trial]:
             cursor_circle.draw()
 
         if midpoint_vis[current_trial]:
-            if r > target_distance * 0.9 / 2 and r < target_distance * 1.1 / 2:
-                cursor_circle.draw()
+            if r >= target_distance / 2:
+                if mp_clock.getTime() < t_mp:
+                    # curor_cloud.fieldSize = (cursor_mp_sig[current_trial],
+                    #                          cursor_mp_sig[current_trial])
+                    # curor_cloud.fieldPos = cursor_circle.pos
+                    # curor_cloud.draw()
+                    [x.pos = (0,0) for x in cursor_cloud]
 
-        if mathtools.distance(start_circle.pos,
-                              cursor_circle.pos) >= target_distance:
+            else:
+                # TODO scipy multivariate normal
+                # [x.pos = ]
+                mp_clock.reset()
+
+        if mathtools.distance(start_circle.pos, (x, y)) >= target_distance:
             if clamp[current_trial] == True:
                 feedback_circle.pos = coordinatetools.pol2cart(
                     target_angle[current_trial] + rot[current_trial],
@@ -184,6 +260,7 @@ while current_trial < num_trials:
             else:
                 feedback_circle.pos = coordinatetools.pol2cart(
                     theta + rot[current_trial], target_distance)
+
             endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],
                                                       mouse.getPos()[1])[0]
             state = 'feedback'
@@ -192,15 +269,26 @@ while current_trial < num_trials:
     if state == 'feedback':
         start_circle.draw()
         target_circle.draw()
+
         if endpoint_vis[current_trial]:
+            text_state.text = 'The on screen cursor shows you how accurate your reach was'
+            text_state.draw()
             feedback_circle.draw()
+        else:
+            text_state.text = 'This is a no-feedback trial '
+            text_state.text += 'so you do not get to see how accurate your reach was.'
+            text_state.draw()
+
         if state_clock.getTime() > t_feedback:
             state = 'iti'
             state_clock.reset()
 
     if state == 'iti':
+        text_state.text = 'Please remain still and wait for further instructions'
+        text_state.draw()
+
         if state_clock.getTime() > t_iti:
-            state = 'search'
+            state = 'search_ring'
 
             trial_data['cursor_vis'].append(cursor_vis[current_trial])
             trial_data['midpoint_vis'].append(midpoint_vis[current_trial])
