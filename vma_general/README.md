@@ -1,6 +1,6 @@
 # MQ Honours 2023
 
-## vma general
+## generic / all
 This project provides a fairly general framework that can be used as a
 foundation for visuomotor adaptation experiments. It is written in Python and it
 uses the Psychopy libraries.
@@ -33,10 +33,14 @@ the following experiment factors on a per trial basis:
 
 - `target_angle`: The angle of the target relative to the start position.
 
-- `instruct`: The instructions given on each trial.
+- `instruct_phase`: The instructions given during the `instructions` phase of
+  each trial.
+
+- `instruct_state`: Whether or not instructions are given in each state (which
+  themselves are defined in the experiment code, not the config file).
 
 ## Dhruva
-Dhruva is working on an experiment to followup Hewitson et al. (2023). There, we
+Dhruva is working on an experiment to follow Hewitson et al. (2023). There, we
 found that including midpoint feedback -- and thereby inducing feedback
 corrections to an ongoing movement -- lead to soem very bizarre behaviour. In
 particular, the effect of sensory uncertainty on adaptation appeared to be
@@ -51,10 +55,6 @@ cursor to land on-target."
 
 - Condition 1: replication of Hewitson et al. (2023)
 - COndition 2: addition of explicit aiming directions.
-
-TODO:
-- MP feedback -> fixed amount of time? Yes. For 100 ms
-- Is feedback tugged along? Yes it tracks.
 
 ## Liam
 Liam is working on a followup to Sandrine's project. Briefly, he is looking at
@@ -77,8 +77,6 @@ clamp (is what it is): as low as 50 or as high as 200 training trials?
 generalisation (no feedback except for top-ups to training targets): 20 per target X 12 targets -> 240 trials?
 washout (no feedback again): x per target?
 
-TODO: Waiting on word from Laura's notes for trial numbers
-
 ## Laura
 Laura is working on a project examining whether or not MIS training transfers to
 enhanced visuomotor adaptation abilities.
@@ -96,9 +94,8 @@ Each participant will undertake 4 training sessions with target direction in
 the reaching task counterbalanced between participants and changed each
 training session.
 
-4 trained directions - randomised the sequence such that each participant
-gets all 4 targets in random order - preventing explicit strategies and
-trandsference.
+4 trained directions - randomised the sequence such that each participant gets
+all 4 targets in random order - limiting explicit strategies.
 
 no fb baseline: 60 (5 trials for each of 12 targets)
 fb baseline: 60 (5 trials for each of 12 targets)
