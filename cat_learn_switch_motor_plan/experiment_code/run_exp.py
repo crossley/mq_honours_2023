@@ -12,6 +12,7 @@ import struct
 import numpy as np
 import pandas as pd
 from instructions import *
+from consent import *
 
 sub_num = 0
 
@@ -141,20 +142,20 @@ if condition[0] == '4F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.5))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.5))
 elif condition[0] == '2F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.5))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.5))
 
 trial_record = {
     'condition': [],
@@ -170,13 +171,13 @@ trial_record = {
 }
 
 # state durations
-t_iti = 1.0
+t_iti = 0.75
 t_fb_delay = 0.0
 t_fb_dur = 1.0
 t_too_slow = 5.0
 t_one_key_per_trial_msg = 1.5
 t_too_slow_msg = 1.5
-t_subtask_cue = 1.0
+t_subtask_cue = 0.75
 
 # initial state
 state = 'message'
@@ -210,7 +211,7 @@ while current_trial < num_trials:
         else:
             state = 'subtask_cue'
             state_clock.reset()
-    
+
     if state == 'subtask_cue':
         # sub_task_stim.draw()
         if sub_task[current_trial] == 1:
@@ -220,7 +221,7 @@ while current_trial < num_trials:
         if state_clock.getTime() > t_subtask_cue:
             state = 'stim'
             state_clock.reset()
-    
+
     if state == 'stim':
         sub_task_stim.draw()
         grating_stim.sf = xt[current_trial]
@@ -287,10 +288,10 @@ while current_trial < num_trials:
         sub_task_stim.draw()
         grating_stim.draw()
 
-#        if sub_task[current_trial] == 1:
-#            sub_task_1_img.draw()
-#        elif sub_task[current_trial] == 2:
-#            sub_task_2_img.draw()
+        #        if sub_task[current_trial] == 1:
+        #            sub_task_1_img.draw()
+        #        elif sub_task[current_trial] == 2:
+        #            sub_task_2_img.draw()
 
         if fb_acc == 'correct':
             fb_stim_correct.draw()

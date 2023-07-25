@@ -30,6 +30,3 @@ that unique motor effectors (e.g., fingers) be used, unique
 goal positions (e.g., response key), or both?
 
 This honours project seeks to shed light on this question.
-
-TODO:
-- want same number of each trial type

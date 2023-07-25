@@ -18,28 +18,29 @@ from util_funcs_config import *
 # cm = np.array([[varx, cov], [cov, vary]])
 
 # NOTE: II
-# meanA = [43, 57]
-# meanB = [57, 43]
-# varx = 100
-# vary = 100
-# cov = 90
-# cm = np.array([[varx, cov], [cov, vary]])
-
-# NOTE: RB 1D
-meanA = [25, 50]
-meanB = [75, 50]
-varx = 2
+meanA = [43, 57]
+meanB = [57, 43]
+varx = 100
 vary = 100
-cov = 0
+cov = 90
 cm = np.array([[varx, cov], [cov, vary]])
 
-n_subs_per_cnd = 1
+# NOTE: RB 1D
+# meanA = [25, 50]
+# meanB = [75, 50]
+# varx = 2
+# vary = 100
+# cov = 0
+# cm = np.array([[varx, cov], [cov, vary]])
+
+n_subs_per_cnd = 50
 # conditions = ['two_finger_four_key', 'four_finger_four_key'] * n_subs_per_cnd
 conditions = ['2F4K', '4F4K'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 
-n_trial_total = 560
+# n_trial_total = 560
 # n_trial_total = 6
+n_trial_total = 400
 n_trial_per_sub_task = n_trial_total // 2
 
 block_size = 40
@@ -95,36 +96,36 @@ for sub in range(len(conditions)):
     d.loc[(0 + block_size)::block_size,
           'message'] = 'Nice work! Press the space bar to continue.'
 
-    fig, ax = plt.subplots(2, 2, squeeze=False)
+    # fig, ax = plt.subplots(2, 2, squeeze=False)
 
-    xA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'x']
-    yA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'y']
-    xB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'x']
-    yB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'y']
-    ax[0, 0].scatter(xA, yA, marker='x', color='C0')
-    ax[0, 0].scatter(xB, yB, marker='o', color='C1')
+    # xA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'x']
+    # yA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'y']
+    # xB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'x']
+    # yB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'y']
+    # ax[0, 0].scatter(xA, yA, marker='x', color='C0')
+    # ax[0, 0].scatter(xB, yB, marker='o', color='C1')
 
-    xA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'xt']
-    yA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'yt']
-    xB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'xt']
-    yB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'yt']
-    ax[0, 1].scatter(xA, yA, marker='x', color='C0')
-    ax[0, 1].scatter(xB, yB, marker='o', color='C1')
+    # xA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'xt']
+    # yA = d.loc[(d['sub_task'] == 1) & (d['cat'] == 1), 'yt']
+    # xB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'xt']
+    # yB = d.loc[(d['sub_task'] == 1) & (d['cat'] == 2), 'yt']
+    # ax[0, 1].scatter(xA, yA, marker='x', color='C0')
+    # ax[0, 1].scatter(xB, yB, marker='o', color='C1')
 
-    xA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'x']
-    yA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'y']
-    xB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'x']
-    yB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'y']
-    ax[1, 0].scatter(xA, yA, marker='x', color='C0')
-    ax[1, 0].scatter(xB, yB, marker='o', color='C1')
+    # xA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'x']
+    # yA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'y']
+    # xB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'x']
+    # yB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'y']
+    # ax[1, 0].scatter(xA, yA, marker='x', color='C0')
+    # ax[1, 0].scatter(xB, yB, marker='o', color='C1')
 
-    xA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'xt']
-    yA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'yt']
-    xB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'xt']
-    yB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'yt']
-    ax[1, 1].scatter(xA, yA, marker='x', color='C0')
-    ax[1, 1].scatter(xB, yB, marker='o', color='C1')
+    # xA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'xt']
+    # yA = d.loc[(d['sub_task'] == 2) & (d['cat'] == 1), 'yt']
+    # xB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'xt']
+    # yB = d.loc[(d['sub_task'] == 2) & (d['cat'] == 2), 'yt']
+    # ax[1, 1].scatter(xA, yA, marker='x', color='C0')
+    # ax[1, 1].scatter(xB, yB, marker='o', color='C1')
 
-    plt.show()
+    # plt.show()
 
     d.to_csv('../config/config_cat_learn_' + str(sub) + '.csv', index=False)
