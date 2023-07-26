@@ -32,15 +32,15 @@ def give_instructions(win, cnd):
     im = [
         visual.ImageStim(win,
                          image=x,
-                         size=(22, 15),
+                         size=(33, 22),
                          units='cm',
                          pos=(0.0, 0.0)) for x in im_list
     ]
 
     # NOTE: Define the advance / regress key behaviour. `adk` and `rek` must
     # have exactly the same number of elements as `im`.
-    adk = [['right']] * 7
-    adk += [['v', 'b']] + [['right']] + [['v', 'b']]
+    adk = [['right']] * 8
+    adk += [['v', 'b']] + [['right']] + [['v', 'b']] + [['right']]
     adk += [['right']] * 5
     adk += [['c', 'n']] + [['right']] + [['c', 'n']]
     adk += [['right']] * 4
@@ -52,18 +52,12 @@ def give_instructions(win, cnd):
     adk += [['v', 'b']] + [['right']]
     adk += [['right']] * 2
 
-    rek = [[None]] * 7
-    rek += [[None]] + [['left']] + [[None]]
-    rek += [['left']] * 5
-    rek += [[None]] + [['left']] + [[None]]
+    rek = [['left']] * 8
+    rek += [[None]] * 5
     rek += [['left']] * 4
-    rek += [[None]] + [['left']]
-    rek += [[None]] + [['left']]
-    rek += [[None]] + [['left']]
-    rek += [[None]] + [['left']]
-    rek += [[None]] + [['left']]
-    rek += [[None]] + [['left']]
+    rek += [[None]] * 5
     rek += [['left']] * 2
+    rek += [[None]] * 14
 
     i = 0
     while i != len(im):
@@ -85,7 +79,7 @@ def give_debrief(win, cnd):
     im = [
         visual.ImageStim(win,
                          image=x,
-                         size=(22, 15),
+                         size=(33, 22),
                          units='cm',
                          pos=(0.0, 0.0)) for x in im_list
     ]
@@ -93,7 +87,10 @@ def give_debrief(win, cnd):
     # NOTE: Define the advance / regress key behaviour. `adk` and `rek` must
     # have exactly the same number of elements as `im`.
     adk = [['right']] * 4
-    rek = [[None]] * 4
+    
+    rek = [[None]]
+    rek = [['left']] * 2
+    rek += [[None]]
 
     i = 0
     while i != len(im):
