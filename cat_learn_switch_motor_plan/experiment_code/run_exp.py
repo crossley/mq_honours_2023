@@ -142,20 +142,20 @@ if condition[0] == '4F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(7, 4.5))
+                                      size=(5, 3))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(7, 4.5))
+                                      size=(5, 3))
 elif condition[0] == '2F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(7, 4.5))
+                                      size=(5, 3))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(7, 4.5))
+                                      size=(5, 3))
 
 trial_record = {
     'condition': [],

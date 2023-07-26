@@ -17,6 +17,7 @@ from util_funcs_config import *
 # cov = 0
 # cm = np.array([[varx, cov], [cov, vary]])
 
+
 # NOTE: II
 meanA = [43, 57]
 meanB = [57, 43]
@@ -36,7 +37,8 @@ cm = np.array([[varx, cov], [cov, vary]])
 n_subs_per_cnd = 50
 # conditions = ['two_finger_four_key', 'four_finger_four_key'] * n_subs_per_cnd
 conditions = ['2F4K', '4F4K'] * n_subs_per_cnd
-np.random.shuffle(conditions)
+# np.random.shuffle(conditions)
+conditions = np.sort(conditions)
 
 # n_trial_total = 560
 # n_trial_total = 6

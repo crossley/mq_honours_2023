@@ -2,18 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# TODO: tweak config code to match the following conditions
-
-# 4 trained directions - randomised the sequence such that each participant gets
-# all 4 targets in random order - limiting explicit strategies.
-
-# no fb baseline: 60 (5 trials for each of 12 targets)
-# fb baseline: 60 (5 trials for each of 12 targets)
-# adaptation: 120 trials (1 target direction)
-# generalisation: 240 trials (10 trials to each of the 12 targets - half of each kind)
-# no fb washout: 60 (5 trials for each of 12 targets)
-# fb washout: 60 (5 trials for each of 12 targets)
-
 target_angle = np.arange(0, 180, 60)
 n_targets = target_angle.shape[0]
 
@@ -25,27 +13,49 @@ n_wash = 20
 
 rot_amp = 30
 
+# TODO: tweak config code to match the following conditions
+
+# 4 trained directions - randomised the sequence such that each participant gets
+# all 4 targets in random order - limiting explicit strategies.
+
+# NOTE:
+# no_fb_baseline: 60 (5 trials for each of 12 targets)
+# fb_baseline: 60 (5 trials for each of 12 targets)
+# clamp: 120 trials (1 target direction)
+# generalisation: 240 trials (10 trials to each of the 12 targets - half of each kind)
+# no_fb_washout: 60 (5 trials for each of 12 targets)
+# fb_washout: 60 (5 trials for each of 12 targets)
+
 instruct_phase = {
-    'fam':
-    'Please slice through the target as quickly and accurately as possible.',
-    'base':
-    'You will now only see your cursor at reach midpoint.\n' +
+    'no_fb_baseline':
+    'Please slice through the target as quickly and accurately as possible.\n' +
+    'You will not see the cursor during this phase.',
+    'fb_baseline_continuous':
+    'You will now only see the cursor throughout your entire reach.\n' +
+    'Please continue to slice through the target as quickly and accurately as possible.',
+    'fb_baseline_endpoint':
+    'You will now only see the cursor only at the endpoint of your reach.\n' +
+    'Please continue to slice through the target as quickly and accurately as possible.',
+    'fb_baseline_mixed':
+    'You will now only see the cursor at the endpoint of your reach on some trials.\n' +
+    'On the other trials you will not recieve feedback at all.\n'
     'Please continue to slice through the target as quickly and accurately as possible.',
     'clamp':
-    'The cursor feedback is now clamped.\n' + 'It will always appear ' +
+    'The cursor feedback is now clamped.\n' +
+    'It will always appear ' +
     str(rot_amp) +
     ' degrees away from the target no matter how accurately you move.\n' +
-    'Please do your best to ignore the cursor feedback and continue slicing directly through the target.',
-    'rot':
-    'Please slice directly through the target.' +
-    'Do not aim off-target in order to get the cursor to land on the target.',
-    'general':
+    'Please do your best to ignore the cursor feedback and continue slicing directly through the target.'
+    'generalisation':
     'You will now be asked to reach to targets that you have not yet reached to.\n'
     + 'You will not receive feedback of any kind for these reaches.' +
     'Please continue to slice through the target as quickly and accurately as possible.',
-    'wash':
+    'wash_np_fb':
     'You will not receive feedback of any kind for the following reaches.' +
-    'Please continue to slice through the target as quickly and accurately as possible.'
+    'Please continue to slice through the target as quickly and accurately as possible.',
+    'wash_fb':
+    'You will now only see the cursor throughout your entire reach.\n' +
+    'Please continue to slice through the target as quickly and accurately as possible.',
 }
 
 # NOTE: The following places the instructions listed above only once at the
