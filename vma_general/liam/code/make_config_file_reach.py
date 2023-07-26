@@ -13,17 +13,17 @@ import matplotlib.pyplot as plt
 target_angle = np.arange(0, 180, 15)
 n_targets = target_angle.shape[0]
 
-n_baseline_no_fb = 3
-n_baseline_continuous_fb = 3
-n_baseline_endpoint_fb = 3
-n_baseline_mixed_fb = 3
-n_clamp = 20
-n_generalisation = 20
-n_washout_no_fb = 20
-n_washout_fb = 20
+n_baseline_no_fb = 2
+n_baseline_continuous_fb = 2
+n_baseline_endpoint_fb = 2
+n_baseline_mixed_fb = 2
+n_clamp = 10
+n_generalisation = 3
+n_washout_no_fb = 5
+n_washout_fb = 5
 
 rot_mean = 30
-rot_sig = 2
+rot_sig = 1
 
 instruct_phase = {
     'baseline_no_fb':
@@ -150,14 +150,16 @@ clamp = np.concatenate(
      0 * np.ones(n_washout_no_fb * n_targets),
      0 * np.ones(n_washout_fb * n_targets)))
 
-rot = np.concatenate((0 * np.ones(n_baseline_no_fb * n_targets),
-                      0 * np.ones(n_baseline_continuous_fb * n_targets),
-                      0 * np.ones(n_baseline_endpoint_fb * n_targets),
-                      0 * np.ones(n_baseline_mixed_fb * n_targets),
-                      np.random.normal(rot_mean, rot_sig, n_clamp * n_targets),
-                      rot_mean * np.ones(n_generalisation * n_targets),
-                      0 * np.ones(n_washout_no_fb * n_targets),
-                      0 * np.ones(n_washout_fb * n_targets)))
+rot = np.concatenate(
+    (0 * np.ones(n_baseline_no_fb * n_targets),
+     np.random.normal(0, rot_sig, n_baseline_continuous_fb * n_targets),
+     np.random.normal(0, rot_sig, n_baseline_endpoint_fb * n_targets),
+     np.random.normal(0, rot_sig, n_baseline_mixed_fb * n_targets),
+     np.random.normal(rot_mean, rot_sig, n_clamp * n_targets),
+     rot_mean * np.ones(n_generalisation * n_targets),
+     0 * np.ones(n_washout_no_fb * n_targets),
+     np.random.normal(0, rot_sig, n_washout_fb * n_targets),
+     ))
 
 d = pd.DataFrame({
     'cursor_vis': cursor_vis,
