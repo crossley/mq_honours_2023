@@ -255,7 +255,7 @@ for i in range(len(conditions)):
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
          0 * np.ones(n_trial_baseline_mixed_fb), 1 * np.ones(n_trial_clamp),
-         0 * np.ones(n_trial_generalisation),
+         1 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
     # cursor rotation
@@ -323,6 +323,13 @@ for i in range(len(conditions)):
     # ax[0, 0].set_ylabel('Rotation (degrees)')
     # ax[0, 0].set_xlabel('Trial')
     # ax[0, 0].set_xticks(np.arange(0, n_trial + 1, 20))
+    # plt.show()
+
+    # dd = d[['condition', 'subject', 'trial', 'phase', 'cycle_phase', 'target_angle',
+    #    'cursor_vis', 'midpoint_vis', 'endpoint_vis', 'cursor_sig',
+    #    'cursor_mp_sig', 'cursor_ep_sig', 'clamp', 'rot', 'instruct_phase',
+    #    'instruct_state']]
+    # dd.plot(subplots=True, layout=(4, 4))
     # plt.show()
 
     d.to_csv('../config/config_reach_' + str(i) + '.csv', index=False)
