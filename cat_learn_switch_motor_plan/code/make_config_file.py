@@ -17,7 +17,6 @@ from util_funcs_config import *
 # cov = 0
 # cm = np.array([[varx, cov], [cov, vary]])
 
-
 # NOTE: II
 meanA = [43, 57]
 meanB = [57, 43]
@@ -35,7 +34,6 @@ cm = np.array([[varx, cov], [cov, vary]])
 # cm = np.array([[varx, cov], [cov, vary]])
 
 n_subs_per_cnd = 50
-# conditions = ['two_finger_four_key', 'four_finger_four_key'] * n_subs_per_cnd
 conditions = ['2F4K', '4F4K'] * n_subs_per_cnd
 # np.random.shuffle(conditions)
 conditions = np.sort(conditions)
@@ -77,11 +75,10 @@ for sub in range(len(conditions)):
 
     d = pd.concat(d)
 
-    # TODO: how balanced did we get things?
-    # We balance switch and stay trial counts but the subtask 1 vs 2 counts are
-    # a bit out of balance. It's not obvious to me how to prevent this (or if
-    # it can be prevented). Since it seems like a very minor detail I'll leave
-    # it at this.
+    # TODO: We balance switch and stay trial counts but the subtask 1 vs 2
+    # counts are a bit out of balance. It's not obvious to me how to prevent
+    # this (or if it can be prevented). Since it seems like a very minor detail
+    # I'll leave it at this.
     print(d.groupby(['trial_type', 'sub_task']).count())
 
     d.loc[d['sub_task'] == 2,
