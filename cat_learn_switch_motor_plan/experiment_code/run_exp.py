@@ -184,7 +184,7 @@ state = 'message'
 current_trial = 0
 
 # display instructions
-# give_instructions(win, np.unique(condition)[0])
+give_instructions(win, np.unique(condition)[0])
 
 # create and start timers
 experiment_clock = core.Clock()
