@@ -32,8 +32,8 @@ def give_instructions(win, cnd):
     im = [
         visual.ImageStim(win,
                          image=x,
-                         size=(33, 22),
-                         units='cm',
+                         size=(2, 2),
+                         units='norm',
                          pos=(0.0, 0.0)) for x in im_list
     ]
 
@@ -79,8 +79,8 @@ def give_debrief(win, cnd):
     im = [
         visual.ImageStim(win,
                          image=x,
-                         size=(33, 22),
-                         units='cm',
+                         size=(2, 2),
+                         units='norm',
                          pos=(0.0, 0.0)) for x in im_list
     ]
 
