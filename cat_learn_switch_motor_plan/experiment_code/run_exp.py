@@ -14,13 +14,13 @@ import pandas as pd
 from instructions import *
 from consent import *
 
-sub_num = 0
+sub_num = 1
 
 # allocate window and graphics
 win = visual.Window(size=(1200, 800),
                     pos=(50, 50),
-                    fullscr=False,
-                    screen=0,
+                    fullscr=True,
+                    screen=1,
                     allowGUI=False,
                     allowStencil=False,
                     monitor='testMonitor',
@@ -142,20 +142,20 @@ if condition[0] == '4F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.25))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/4F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.25))
 elif condition[0] == '2F4K':
     sub_task_1_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_1.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.25))
     sub_task_2_img = visual.ImageStim(win,
                                       image='../img/2F4K/cue_2.png',
                                       pos=(0, 0),
-                                      size=(5, 3))
+                                      size=(7, 4.25))
 
 trial_record = {
     'condition': [],
@@ -167,7 +167,9 @@ trial_record = {
     'yt': [],
     'cat': [],
     'resp': [],
-    'rt': []
+    'rt': [],
+    'acc':[], # this is new
+    'correct_resp':[] # this is also new
 }
 
 # state durations
@@ -316,6 +318,13 @@ while current_trial < num_trials:
             trial_record['resp'].append(key_pressed)
             trial_record['rt'].append(rt)
 
+# this is new
+            trial_record['acc'].append(fb_acc)
+            if sub_task[current_trial] == 1:
+                            trial_record['correct_resp'].append(resp_keys[cat[current_trial] - 1])
+            elif sub_task[current_trial] == 2:
+                            trial_record['correct_resp'].append(resp_keys[cat[current_trial] - 1 + 2])
+
             state = 'message'
             current_trial += 1
             state_clock.reset()
@@ -333,7 +342,7 @@ print(trial_record)
 pd.DataFrame(trial_record).to_csv('../data/cat_results_' + str(sub_num) +
                                   '.csv')
 
-# give_debrief(win, np.unique(condition)[0])
+give_debrief(win, np.unique(condition)[0])
 
 win.close()
 core.quit()
