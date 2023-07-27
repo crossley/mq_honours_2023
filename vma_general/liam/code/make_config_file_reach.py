@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-n_subs_per_cnd = 1
+n_subs_per_cnd = 5
 conditions = ['low', 'high'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 
@@ -20,8 +20,8 @@ for i in range(len(conditions)):
     n_cycle_baseline_continuous_fb = 2
     n_cycle_baseline_endpoint_fb = 2
     n_cycle_baseline_mixed_fb = 2
-    n_cycle_clamp = 100
-    n_cycle_generalisation = 4
+    n_cycle_clamp = 1
+    n_cycle_generalisation = 15
     n_cycle_washout_no_fb = 2
     n_cycle_washout_fb = 5
 
@@ -121,8 +121,12 @@ for i in range(len(conditions)):
 
     # Specify the mean and standard deviation of the perturbation to be applied
     # during the clamp phase.
-    rot_mean = 30
-    rot_sig = 1
+    if conditions[i] == 'low':
+        rot_mean = 30
+        rot_sig = 1
+    elif conditions[i] == 'high':
+        rot_mean = 30
+        rot_sig = 3
 
     # Specify phase-specific instructions.
     instruct_phase = {
@@ -216,7 +220,7 @@ for i in range(len(conditions)):
          1 * np.ones(n_trial_baseline_endpoint_fb),
          np.random.permutation([0, 1] * (n_trial_baseline_mixed_fb // 2)),
          1 * np.ones(n_trial_clamp), 0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
+         0 * np.ones(n_trial_washout_no_fb), 1 * np.ones(n_trial_washout_fb)))
 
     # continuous cursor cloud standard deviation
     cursor_sig = np.concatenate(
@@ -262,7 +266,7 @@ for i in range(len(conditions)):
         np.random.normal(0, rot_sig, n_trial_baseline_mixed_fb),
         np.random.normal(rot_mean, rot_sig, n_trial_clamp),
         np.random.normal(rot_mean, rot_sig, n_trial_generalisation),
-        np.random.normal(rot_mean, rot_sig, n_trial_washout_no_fb),
+        np.random.normal(0, rot_sig, n_trial_washout_no_fb),
         np.random.normal(0, rot_sig, n_trial_washout_fb),
     ))
 
@@ -296,29 +300,29 @@ for i in range(len(conditions)):
     d.loc[(d['phase'] == 'generalisation') &
           (d['target_angle'] == target_train), 'endpoint_vis'] = 1
 
-    # NOTE: plot design
-    nn = [
-        n_trial_baseline_no_fb, n_trial_baseline_continuous_fb,
-        n_trial_baseline_endpoint_fb, n_trial_baseline_mixed_fb, n_trial_clamp,
-        n_trial_generalisation, n_trial_washout_no_fb, n_trial_washout_fb
-    ]
-    labels = [
-        'baseline_no_feedback', 'baseline_continuous_fb',
-        'baseline_endpoint_fb', 'baseline_mixed_fb', 'clamp', 'generalisation',
-        'washout_no_fb', 'washout_fb'
-    ]
-    labels_x = np.concatenate(([0], np.cumsum(nn)[:-1]))
-    fig, ax = plt.subplots(1, 1, squeeze=False)
-    ax[0, 0].scatter(trial,
-                     rot,
-                     c=d['target_angle'],
-                     alpha=d['endpoint_vis'] * 0.5 + 0.25)
-    ax[0, 0].vlines(labels_x, 0, rot_mean + 5, 'k', '--')
-    for i in range(len(labels)):
-        ax[0, 0].text(labels_x[i], np.max(rot) + 5, labels[i], rotation=30)
-    ax[0, 0].set_ylabel('Rotation (degrees)')
-    ax[0, 0].set_xlabel('Trial')
-    ax[0, 0].set_xticks(np.arange(0, n_trial + 1, 20))
-    plt.show()
+    # # NOTE: plot design
+    # nn = [
+    #     n_trial_baseline_no_fb, n_trial_baseline_continuous_fb,
+    #     n_trial_baseline_endpoint_fb, n_trial_baseline_mixed_fb, n_trial_clamp,
+    #     n_trial_generalisation, n_trial_washout_no_fb, n_trial_washout_fb
+    # ]
+    # labels = [
+    #     'baseline_no_feedback', 'baseline_continuous_fb',
+    #     'baseline_endpoint_fb', 'baseline_mixed_fb', 'clamp', 'generalisation',
+    #     'washout_no_fb', 'washout_fb'
+    # ]
+    # labels_x = np.concatenate(([0], np.cumsum(nn)[:-1]))
+    # fig, ax = plt.subplots(1, 1, squeeze=False)
+    # ax[0, 0].scatter(trial,
+    #                  rot,
+    #                  c=d['target_angle'],
+    #                  alpha=d['endpoint_vis'] * 0.5 + 0.25)
+    # ax[0, 0].vlines(labels_x, 0, rot_mean + 5, 'k', '--')
+    # for i in range(len(labels)):
+    #     ax[0, 0].text(labels_x[i], np.max(rot) + 5, labels[i], rotation=30)
+    # ax[0, 0].set_ylabel('Rotation (degrees)')
+    # ax[0, 0].set_xlabel('Trial')
+    # ax[0, 0].set_xticks(np.arange(0, n_trial + 1, 20))
+    # plt.show()
 
     d.to_csv('../config/config_reach_' + str(i) + '.csv', index=False)

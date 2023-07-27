@@ -257,7 +257,7 @@ while current_trial < num_trials:
             # be used as an appropriate index into resp_keys.
             if sub_task[current_trial] == 1:
                 if resp[0] == resp_keys[cat[current_trial] - 1]:
-                    fb_acc = 'correct'
+                    fb_ac c = 'correct'
                 else:
                     fb_acc = 'incorrect'
             elif sub_task[current_trial] == 2:
