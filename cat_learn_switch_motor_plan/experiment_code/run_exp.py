@@ -227,7 +227,7 @@ while current_trial < num_trials:
     if state == 'stim':
         sub_task_stim.draw()
         grating_stim.sf = xt[current_trial]
-        grating_stim.ori = yt[current_trial]
+        grating_stim.ori = 90 - yt[current_trial]
         grating_stim.draw()
         if sub_task[current_trial] == 1:
             resp_keys_sub_task = ['c', 'n']
@@ -259,7 +259,7 @@ while current_trial < num_trials:
             # be used as an appropriate index into resp_keys.
             if sub_task[current_trial] == 1:
                 if resp[0] == resp_keys[cat[current_trial] - 1]:
-                    fb_ac c = 'correct'
+                    fb_acc = 'correct'
                 else:
                     fb_acc = 'incorrect'
             elif sub_task[current_trial] == 2:
