@@ -17,7 +17,7 @@ sub_num = 0
 
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
-                    fullscr=False,
+                    fullscr=True,
                     screen=0,
                     allowGUI=False,
                     allowStencil=False,
@@ -58,7 +58,7 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 6
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
+config = pd.read_csv('/Users/liamturpin/exp_code/Changes/vma_general/liam/config/config_reach_' + str(6) + '.csv')
 
 cursor_vis = config['cursor_vis']
 midpoint_vis = config['midpoint_vis']
@@ -69,7 +69,7 @@ cursor_ep_sig = config['cursor_ep_sig']
 clamp = config['clamp']
 rot = config['rot']
 trial = config['trial']
-cycle = config['cycle']
+cycle = config['cycle_phase']
 target_angle = config['target_angle']
 instruct_phase = config['instruct_phase']
 instruct_state = config['instruct_state']
@@ -77,14 +77,14 @@ instruct_state = config['instruct_state']
 num_trials = config.shape[0]
 
 state = 'trial_init'
-
+#it is a bit hard to read the instructions in time, but the repeated trials somewhat solve this
 t_instruct = 1.0
 t_hold = 1.0
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
 t_iti = 1.0
 t_feedback = 1.0
 t_mp = 0.3
-t_too_fast = 0.1
+t_too_fast = 0.04
 t_too_slow = 0.8
 
 search_near_thresh = 0.1
@@ -152,7 +152,7 @@ while current_trial < num_trials:
         state = 'search_ring'
 
     if state == 'search_ring':
-        if instruct_state[current_trial]:
+        if instruct_state[current_trial]:#what does this mean?
             text_stim.text = 'Move your hand to make the diameter of the ring shrink'
             text_stim.draw()
         search_circle.radius = r
@@ -179,7 +179,7 @@ while current_trial < num_trials:
             state = 'hold'
             state_clock.reset()
 
-    if state == 'instruct':
+    if state == 'instruct':#is this chunk of code running?
         if instruct[current_trial] != 'NaN':
             text_stim.text = instruct[current_trial]
             text_stim.draw()
@@ -242,7 +242,7 @@ while current_trial < num_trials:
 
         if clamp[current_trial] == True:
             cursor_circle.pos = coordinatetools.pol2cart(
-                target_angle[current_trial] + rot[current_trial], r)
+                target_angle[current_trial] + rot[current_trial], r)#why is there a rotation on non-clamp trials?
         else:
             cursor_circle.pos = coordinatetools.pol2cart(
                 theta + rot[current_trial], r)
@@ -290,9 +290,16 @@ while current_trial < num_trials:
             start_circle.draw()
             target_circle.draw()
 
-            if endpoint_vis[current_trial]:
+            if clamp[current_trial] == True and endpoint_vis[current_trial]:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'The on screen cursor shows you how accurate your reach was'
+                    text_stim.text = 'The cursor was presented randomly in this trial.'
+                    text_stim.draw()
+
+                feedback_circle.draw()
+
+            elif endpoint_vis[current_trial]:
+                if instruct_state[current_trial]:
+                    text_stim.text = 'The cursor shows you how accurate your reach was'
                     text_stim.draw()
 
                 feedback_circle.draw()
@@ -304,8 +311,7 @@ while current_trial < num_trials:
 
             else:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'This is a no-feedback trial '
-                    text_stim.text += 'so you do not get to see how accurate your reach was.'
+                    text_stim.text = 'This is a no-feedback trial'
 
                 text_stim.draw()
 
