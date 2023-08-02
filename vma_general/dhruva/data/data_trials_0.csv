@@ -1,4 +1,7 @@
-,cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,trial,cycle,target_angle,instruct_phase,instruct_state,endpoint_theta,movement_time,movement_initiation_time
-0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0,120,Please slice through the target as quickly and accurately as possible.,1.0,118.19497906246218,0.1657667079998646,0.49797950001084246
-0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,0,60,,1.0,54.916526120907264,0.5509955839952454,0.5623337090073619
-0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,0,0,,1.0,-13.240519915187205,0.16232391700032167,0.40153412500512786
+,cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,trial,cycle_phase,target_angle,instruct_phase,instruct_state,endpoint_theta,movement_time,movement_initiation_time
+0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.557602738173203,1,1,0,"You will now only see the cursor throughout your entire reach.
+Please continue to slice through the target as quickly and accurately as possible.",0.0,-1.4943335912665374,0.08316591696348041,0.5184206248959526
+0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.9393032814146105,2,2,0,none,0.0,0.9710219310791666,0.09924358304124326,1.518869666964747
+0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.609366564710196,3,3,0,none,0.0,-2.626405638290746,0.14465408399701118,0.6367469159886241
+0,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.557602738173203,1,0,"You will now only see the cursor throughout your entire reach.
+Please continue to slice through the target as quickly and accurately as possible.",0.0,4.398705354995532,0.14493558299727738,0.5237833749270067
