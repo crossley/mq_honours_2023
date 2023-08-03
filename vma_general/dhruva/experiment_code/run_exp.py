@@ -399,15 +399,15 @@ while current_trial < num_trials:
 
             state_clock.reset()
 
-    # trajectories recorded every sample
-    trial_move["trial"].append(current_trial)
-    trial_move["state"].append(state)
-    trial_move["sample"].append(current_sample)
-    trial_move["time"].append(experiment_clock.getTime())
-    trial_move["x"].append(x)
-    trial_move["y"].append(y)
-    current_sample += 1
-    win.flip()
+# trajectories recorded every sample
+trial_move["trial"].append(current_trial)
+trial_move["state"].append(state)
+trial_move["sample"].append(current_sample)
+trial_move["time"].append(experiment_clock.getTime())
+trial_move["x"].append(x)
+trial_move["y"].append(y)
+current_sample += 1
+win.flip()
 
     if "escape" in resp:
         win.close()
