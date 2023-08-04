@@ -6,10 +6,10 @@ target_angle = 90
 n_targets = 1
 
 n_fam = 0
-n_base = 20
+n_base = 2
 n_clamp = 0
-n_adaptation = 180
-n_wash = 100
+n_adaptation = 4
+n_wash = 1
 
 rot_amp = -1
 
@@ -91,7 +91,7 @@ clamp = np.concatenate(
 rot = np.concatenate(
     (np.zeros(n_fam * n_targets), np.zeros(n_base * n_targets),
      rot_amp * np.zeros(n_clamp * n_targets),
-     rot_amp * (np.random.normal(12, 4, 180)), np.zeros(n_wash * n_targets)))
+     rot_amp * (np.random.normal(12, 4, 4)), np.zeros(n_wash * n_targets)))
 
 d = pd.DataFrame({
     'cursor_vis': cursor_vis,
@@ -134,9 +134,10 @@ ax[0, 0].set_xlabel('Trial')
 plt.show()
 '''
 '''
-n_subs_per_cnd = 20
+n_subs_per_cnd = 1
 conditions = ['explicit_instruct'] * n_subs_per_cnd
 np.random.shuffle(conditions)
+
+for sub in range(len(conditions)):
 '''
-for sub in range(40):
-    d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+d.to_csv('../config/config_reach_demo.csv', index=False)

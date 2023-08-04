@@ -13,7 +13,7 @@ import struct
 import numpy as np
 import pandas as pd
 
-sub_num = 0
+sub_num = 'demo'
 
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
@@ -37,7 +37,7 @@ go_circle = visual.Circle(win, radius=0.5, fillColor='green')
 target_circle = visual.Circle(win, radius=0.5, fillColor='green')
 feedback_circle = visual.Circle(win, radius=0.25, fillColor='white')
 cursor_circle = visual.Circle(win, radius=0.25, fillColor='white')
-cursor_cloud = [visual.Circle(win, radius=0.05, fillColor='white')] * 10
+cursor_cloud = [visual.Circle(win, radius=0.05, fillColor='white')] * 10 #need to make little translucent 
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -86,7 +86,7 @@ t_hold = 0.5
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
 t_iti = 1.0
 t_feedback = 1.0
-t_mp = 0.3
+t_mp = 0.1
 t_too_fast = 0.0
 t_too_slow = 1.0
 
