@@ -37,7 +37,7 @@ go_circle = visual.Circle(win, radius=0.5, fillColor='green')
 target_circle = visual.Circle(win, radius=0.5, fillColor='green')
 feedback_circle = visual.Circle(win, radius=0.25, fillColor='white')
 cursor_circle = visual.Circle(win, radius=0.25, fillColor='white')
-cursor_cloud = [visual.Circle(win, radius=0.05, fillColor='white')] * 10 #need to make little translucent 
+cursor_cloud = [visual.Circle(win, radius=0.05, fillColor='white', opacity = 0.5)] * 50 
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -145,11 +145,11 @@ while current_trial < num_trials:
         cursor_cloud_jitter_mp = np.random.multivariate_normal(
             [0, 0], [[cursor_mp_sig[current_trial], 0],
                      [0, cursor_mp_sig[current_trial]]], len(cursor_cloud))
-    
+    '''
         cursor_cloud_jitter_ep = np.random.multivariate_normal(
             [0, 0], [[cursor_ep_sig[current_trial], 0],
                      [0, cursor_ep_sig[current_trial]]], len(cursor_cloud))
-    
+    '''
         endpoint_theta = -1
         movement_time = -1
         movement_initiation_time = -1
@@ -264,8 +264,8 @@ while current_trial < num_trials:
             cursor_circle.draw()
 
         if midpoint_vis[current_trial]:
-            if r >= target_distance / 2:
-                if mp_clock.getTime() < t_mp:
+            if r >= target_distance * 0.25:
+                if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
                     for i in range(len(cursor_cloud)):
                         cx = x + cursor_cloud_jitter_mp[i][0]
                         cy = y + cursor_cloud_jitter_mp[i][1]
