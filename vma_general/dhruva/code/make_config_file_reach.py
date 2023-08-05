@@ -92,6 +92,14 @@ rot = np.concatenate(
     (np.zeros(n_fam * n_targets), np.zeros(n_base * n_targets),
      rot_amp * np.zeros(n_clamp * n_targets),
      rot_amp * (np.random.normal(12, 4, 180)), np.zeros(n_wash * n_targets)))
+     
+# Create psuedo-randomised 'on/off' for 4 uncertainty conditions
+adaptation_uncertainty = np.zeros((180, 4), dtype=int)
+for col in range(4):
+    row_indices = np.random.choice(180, size=45, replace=False)
+    adaptation_uncertainty[row_indices, col] = 1
+
+uncertainty_conditions = np.concatenate((np.zeros((20, 4), dtype=int), adaptation_uncertainty, np.zeros((100, 4), dtype=int)), axis=0)
 
 d = pd.DataFrame({
     'cursor_vis': cursor_vis,
@@ -103,6 +111,11 @@ d = pd.DataFrame({
     'clamp': clamp,
     'rot': rot
 })
+
+d['no_uncertainty'] = uncertainty_conditions[:, 0]
+d['low_uncertainty'] = uncertainty_conditions[:, 1]
+d['high_uncertainty'] = uncertainty_conditions[:, 2]
+d['unlimited_uncertainty'] = uncertainty_conditions[:, 3]
 
 n_trials = d.shape[0]
 n_cycles = n_trials // n_targets
