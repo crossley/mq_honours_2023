@@ -1,401 +1,301 @@
-condition,subject,trial,phase,cycle_phase,target_angle,cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,instruct_phase,instruct_state
-no_inst,1,1,baseline_continuous_fb,1,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.557602738173203,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,2,baseline_continuous_fb,2,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.9393032814146105,,0.0
-no_inst,1,3,baseline_continuous_fb,3,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.609366564710196,,0.0
-no_inst,1,4,baseline_continuous_fb,4,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.739240363761253,,0.0
-no_inst,1,5,baseline_continuous_fb,5,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.483188596727527,,0.0
-no_inst,1,6,baseline_continuous_fb,6,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.315398659057662,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,7,baseline_continuous_fb,7,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.2462101285094906,,0.0
-no_inst,1,8,baseline_continuous_fb,8,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.22466136891898175,,0.0
-no_inst,1,9,baseline_continuous_fb,9,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.660599363133426,,0.0
-no_inst,1,10,baseline_continuous_fb,10,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.6033059478167484,,0.0
-no_inst,1,11,baseline_continuous_fb,11,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.8626497589218394,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,12,baseline_continuous_fb,12,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.144974745108895,,0.0
-no_inst,1,13,baseline_continuous_fb,13,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,5.953008775182399,,0.0
-no_inst,1,14,baseline_continuous_fb,14,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.583556704122333,,0.0
-no_inst,1,15,baseline_continuous_fb,15,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.715118284638603,,0.0
-no_inst,1,16,baseline_continuous_fb,16,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.7196993432494037,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,17,baseline_continuous_fb,17,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.283010486042171,,0.0
-no_inst,1,18,baseline_continuous_fb,18,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.2178069077245475,,0.0
-no_inst,1,19,baseline_continuous_fb,19,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.6127077878927185,,0.0
-no_inst,1,20,baseline_continuous_fb,20,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.88978028152971,,0.0
-no_inst,1,21,baseline_continuous_fb,21,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.8330999123074414,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,22,baseline_continuous_fb,22,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.9065561459348523,,0.0
-no_inst,1,23,baseline_continuous_fb,23,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.4254655886976075,,0.0
-no_inst,1,24,baseline_continuous_fb,24,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.8262926727677926,,0.0
-no_inst,1,25,baseline_continuous_fb,25,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.042000082883281914,,0.0
-no_inst,1,26,baseline_continuous_fb,26,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.143481975623341,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,27,baseline_continuous_fb,27,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5076483708144797,,0.0
-no_inst,1,28,baseline_continuous_fb,28,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.6079574537788066,,0.0
-no_inst,1,29,baseline_continuous_fb,29,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.5326027882250175,,0.0
-no_inst,1,30,baseline_continuous_fb,30,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.3910362445697855,,0.0
-no_inst,1,31,baseline_continuous_fb,31,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.081939993942934,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,32,baseline_continuous_fb,32,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.8775868326320446,,0.0
-no_inst,1,33,baseline_continuous_fb,33,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.69249362045664,,0.0
-no_inst,1,34,baseline_continuous_fb,34,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.774484742597171,,0.0
-no_inst,1,35,baseline_continuous_fb,35,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.6544759230389894,,0.0
-no_inst,1,36,baseline_continuous_fb,36,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.989819245763031,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,37,baseline_continuous_fb,37,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.691768105921541,,0.0
-no_inst,1,38,baseline_continuous_fb,38,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,5.922059165737698,,0.0
-no_inst,1,39,baseline_continuous_fb,39,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.4702358417062795,,0.0
-no_inst,1,40,baseline_continuous_fb,40,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.624178633101541,,0.0
-no_inst,1,41,baseline_continuous_fb,41,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.44490274021881,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,42,baseline_continuous_fb,42,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.640259812396135,,0.0
-no_inst,1,43,baseline_continuous_fb,43,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.0720134838055213,,0.0
-no_inst,1,44,baseline_continuous_fb,44,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.2098255831855798,,0.0
-no_inst,1,45,baseline_continuous_fb,45,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.789007871094992,,0.0
-no_inst,1,46,baseline_continuous_fb,46,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.6200403723633368,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,47,baseline_continuous_fb,47,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.456317481384321,,0.0
-no_inst,1,48,baseline_continuous_fb,48,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.688826686266107,,0.0
-no_inst,1,49,baseline_continuous_fb,49,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.5057021246225182,,0.0
-no_inst,1,50,baseline_continuous_fb,50,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.397603162336779,,0.0
-no_inst,1,51,baseline_continuous_fb,51,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.192952696824224,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,52,baseline_continuous_fb,52,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,5.305543586748121,,0.0
-no_inst,1,53,baseline_continuous_fb,53,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.778271438925462,,0.0
-no_inst,1,54,baseline_continuous_fb,54,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.598538161310683,,0.0
-no_inst,1,55,baseline_continuous_fb,55,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.7406142068865498,,0.0
-no_inst,1,56,baseline_continuous_fb,56,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.397054913917367,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,57,baseline_continuous_fb,57,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.689179028049742,,0.0
-no_inst,1,58,baseline_continuous_fb,58,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.6298473449644417,,0.0
-no_inst,1,59,baseline_continuous_fb,59,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.0796642977812656,,0.0
-no_inst,1,60,baseline_continuous_fb,60,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.156996765167269,,0.0
-no_inst,1,61,baseline_continuous_fb,61,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.6973306426295043,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,62,baseline_continuous_fb,62,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12732223309740473,,0.0
-no_inst,1,63,baseline_continuous_fb,63,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.543384313515524,,0.0
-no_inst,1,64,baseline_continuous_fb,64,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.705733179785999,,0.0
-no_inst,1,65,baseline_continuous_fb,65,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.3063632664597638,,0.0
-no_inst,1,66,baseline_continuous_fb,66,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.8331950223119795,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,67,baseline_continuous_fb,67,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.584026850646581,,0.0
-no_inst,1,68,baseline_continuous_fb,68,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.372246034922023,,0.0
-no_inst,1,69,baseline_continuous_fb,69,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.965030370822422,,0.0
-no_inst,1,70,baseline_continuous_fb,70,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.7575668050581477,,0.0
-no_inst,1,71,baseline_continuous_fb,71,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6666939814901162,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,72,baseline_continuous_fb,72,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.5401257475684256,,0.0
-no_inst,1,73,baseline_continuous_fb,73,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,9.532579099455768,,0.0
-no_inst,1,74,baseline_continuous_fb,74,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7779179479616554,,0.0
-no_inst,1,75,baseline_continuous_fb,75,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.6512889017766343,,0.0
-no_inst,1,76,baseline_continuous_fb,76,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.468065152383412,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,77,baseline_continuous_fb,77,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.263629642046084,,0.0
-no_inst,1,78,baseline_continuous_fb,78,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.8463384192588357,,0.0
-no_inst,1,79,baseline_continuous_fb,79,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.2729664212985249,,0.0
-no_inst,1,80,baseline_continuous_fb,80,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,6.853370886597466,,0.0
-no_inst,1,81,baseline_continuous_fb,81,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.9790192881937596,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,82,baseline_continuous_fb,82,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.3057541546360576,,0.0
-no_inst,1,83,baseline_continuous_fb,83,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.3938100977017292,,0.0
-no_inst,1,84,baseline_continuous_fb,84,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.6539131454484295,,0.0
-no_inst,1,85,baseline_continuous_fb,85,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.506543688426028,,0.0
-no_inst,1,86,baseline_continuous_fb,86,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.319726033453693,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,87,baseline_continuous_fb,87,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.58987460964441,,0.0
-no_inst,1,88,baseline_continuous_fb,88,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.7512801789777361,,0.0
-no_inst,1,89,baseline_continuous_fb,89,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.9921298027692196,,0.0
-no_inst,1,90,baseline_continuous_fb,90,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,7.718128215267943,,0.0
-no_inst,1,91,baseline_continuous_fb,91,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7976832277030432,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,92,baseline_continuous_fb,92,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.3502049655407636,,0.0
-no_inst,1,93,baseline_continuous_fb,93,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.901742075320672,,0.0
-no_inst,1,94,baseline_continuous_fb,94,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.3774519056061885,,0.0
-no_inst,1,95,baseline_continuous_fb,95,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.000861389558259,,0.0
-no_inst,1,96,baseline_continuous_fb,96,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.179084387110446,"You will now only see the cursor throughout your entire reach.
-Please continue to slice through the target as quickly and accurately as possible.",0.0
-no_inst,1,97,baseline_continuous_fb,97,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,4.752119169409207,,0.0
-no_inst,1,98,baseline_continuous_fb,98,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2677704476993985,,0.0
-no_inst,1,99,baseline_continuous_fb,99,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,3.683435295123276,,0.0
-no_inst,1,100,baseline_continuous_fb,100,0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2749106117720848,,0.0
-no_inst,1,101,adapt,1,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,15.427322447610765,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,102,adapt,2,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.395897626799412,,0.0
-no_inst,1,103,adapt,3,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,7.863028632862141,,0.0
-no_inst,1,104,adapt,4,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.726378073126508,,0.0
-no_inst,1,105,adapt,5,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,8.786361343304636,,0.0
-no_inst,1,106,adapt,6,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.241800888999197,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,107,adapt,7,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.177869985930627,,0.0
-no_inst,1,108,adapt,8,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,12.069916636100228,,0.0
-no_inst,1,109,adapt,9,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.584024354986065,,0.0
-no_inst,1,110,adapt,10,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,6.500194826327925,,0.0
-no_inst,1,111,adapt,11,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,9.425526388668438,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,112,adapt,12,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,3.1063873911022917,,0.0
-no_inst,1,113,adapt,13,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.50092580410875,,0.0
-no_inst,1,114,adapt,14,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,5.5917693775730095,,0.0
-no_inst,1,115,adapt,15,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,7.582466642286198,,0.0
-no_inst,1,116,adapt,16,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,12.208660317043897,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,117,adapt,17,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,9.041748014434747,,0.0
-no_inst,1,118,adapt,18,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,18.172058381626943,,0.0
-no_inst,1,119,adapt,19,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,6.828572361106207,,0.0
-no_inst,1,120,adapt,20,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,13.068203477396732,,0.0
-no_inst,1,121,adapt,21,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.842868727090018,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,122,adapt,22,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,7.32762600903521,,0.0
-no_inst,1,123,adapt,23,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,14.093106642127015,,0.0
-no_inst,1,124,adapt,24,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.313814675111008,,0.0
-no_inst,1,125,adapt,25,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,15.08716220485467,,0.0
-no_inst,1,126,adapt,26,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,15.294016615854925,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,127,adapt,27,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,20.65294379712276,,0.0
-no_inst,1,128,adapt,28,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,17.346111797745568,,0.0
-no_inst,1,129,adapt,29,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.523272648230225,,0.0
-no_inst,1,130,adapt,30,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,11.042483289696294,,0.0
-no_inst,1,131,adapt,31,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,16.39863838354845,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,132,adapt,32,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.62105492289039,,0.0
-no_inst,1,133,adapt,33,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,14.560526104390368,,0.0
-no_inst,1,134,adapt,34,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,5.532175822756662,,0.0
-no_inst,1,135,adapt,35,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.902695502404258,,0.0
-no_inst,1,136,adapt,36,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,9.047876363177245,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,137,adapt,37,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,13.119698396172954,,0.0
-no_inst,1,138,adapt,38,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.607398441428169,,0.0
-no_inst,1,139,adapt,39,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,15.640715632370368,,0.0
-no_inst,1,140,adapt,40,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,13.268872860765208,,0.0
-no_inst,1,141,adapt,41,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,15.145311848435904,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,142,adapt,42,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.134323613056228,,0.0
-no_inst,1,143,adapt,43,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,8.222214976326999,,0.0
-no_inst,1,144,adapt,44,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.359801227189806,,0.0
-no_inst,1,145,adapt,45,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.931918344554237,,0.0
-no_inst,1,146,adapt,46,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,13.516606942220328,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,147,adapt,47,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,21.03723580276341,,0.0
-no_inst,1,148,adapt,48,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.83097139335743,,0.0
-no_inst,1,149,adapt,49,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,8.176219998028891,,0.0
-no_inst,1,150,adapt,50,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.616072897202454,,0.0
-no_inst,1,151,adapt,51,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,10.145616101415623,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,152,adapt,52,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,13.92592589509385,,0.0
-no_inst,1,153,adapt,53,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,5.836811942221501,,0.0
-no_inst,1,154,adapt,54,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,12.253047976801327,,0.0
-no_inst,1,155,adapt,55,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,12.626026151861502,,0.0
-no_inst,1,156,adapt,56,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,12.928724144801103,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,157,adapt,57,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.61073572413855,,0.0
-no_inst,1,158,adapt,58,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.048313081055973,,0.0
-no_inst,1,159,adapt,59,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,6.303756364069874,,0.0
-no_inst,1,160,adapt,60,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.026720466551224,,0.0
-no_inst,1,161,adapt,61,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.828554095933129,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,162,adapt,62,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,13.664200185045702,,0.0
-no_inst,1,163,adapt,63,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,7.375270272712349,,0.0
-no_inst,1,164,adapt,64,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,15.124792406839973,,0.0
-no_inst,1,165,adapt,65,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,17.977938177965477,,0.0
-no_inst,1,166,adapt,66,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,3.72005989994587,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,167,adapt,67,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,13.705034923112404,,0.0
-no_inst,1,168,adapt,68,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.707632140120982,,0.0
-no_inst,1,169,adapt,69,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,9.450251897791084,,0.0
-no_inst,1,170,adapt,70,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,10.41091274268481,,0.0
-no_inst,1,171,adapt,71,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,11.468477689652177,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,172,adapt,72,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.808836482393087,,0.0
-no_inst,1,173,adapt,73,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.763948123811511,,0.0
-no_inst,1,174,adapt,74,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,5.295984774680093,,0.0
-no_inst,1,175,adapt,75,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,16.60932625913248,,0.0
-no_inst,1,176,adapt,76,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,16.318474368147285,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,177,adapt,77,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,8.746542963183188,,0.0
-no_inst,1,178,adapt,78,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,6.134302688789944,,0.0
-no_inst,1,179,adapt,79,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,14.084259505811033,,0.0
-no_inst,1,180,adapt,80,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,9.696848120747735,,0.0
-no_inst,1,181,adapt,81,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,12.567812653283118,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,182,adapt,82,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.72268633141962,,0.0
-no_inst,1,183,adapt,83,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.766155004280744,,0.0
-no_inst,1,184,adapt,84,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,14.778996574624022,,0.0
-no_inst,1,185,adapt,85,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,9.097610486145662,,0.0
-no_inst,1,186,adapt,86,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,6.466544178419778,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,187,adapt,87,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,5.668246410659673,,0.0
-no_inst,1,188,adapt,88,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,14.44151751642882,,0.0
-no_inst,1,189,adapt,89,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,7.244562968863884,,0.0
-no_inst,1,190,adapt,90,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,9.97273458280525,,0.0
-no_inst,1,191,adapt,91,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.614743846197968,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,192,adapt,92,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.789730814921814,,0.0
-no_inst,1,193,adapt,93,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,4.254880776613972,,0.0
-no_inst,1,194,adapt,94,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,12.755114387175315,,0.0
-no_inst,1,195,adapt,95,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,14.095564095336822,,0.0
-no_inst,1,196,adapt,96,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,12.353688348178645,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,197,adapt,97,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.756455313206112,,0.0
-no_inst,1,198,adapt,98,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,12.389600665075134,,0.0
-no_inst,1,199,adapt,99,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,13.59618538256052,,0.0
-no_inst,1,200,adapt,100,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.9096289742933994,,0.0
-no_inst,1,201,adapt,101,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,19.823649233002776,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,202,adapt,102,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,13.560373290751706,,0.0
-no_inst,1,203,adapt,103,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,9.39036567045192,,0.0
-no_inst,1,204,adapt,104,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.436186499249596,,0.0
-no_inst,1,205,adapt,105,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,13.974967109396754,,0.0
-no_inst,1,206,adapt,106,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.535584243862534,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,207,adapt,107,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,3.8772621288740226,,0.0
-no_inst,1,208,adapt,108,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,20.257971445437278,,0.0
-no_inst,1,209,adapt,109,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.557837371070109,,0.0
-no_inst,1,210,adapt,110,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,16.0806908468632,,0.0
-no_inst,1,211,adapt,111,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.231800608862436,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,212,adapt,112,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,18.145508216983192,,0.0
-no_inst,1,213,adapt,113,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,13.145374755569119,,0.0
-no_inst,1,214,adapt,114,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.435375337901803,,0.0
-no_inst,1,215,adapt,115,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,7.818986535412181,,0.0
-no_inst,1,216,adapt,116,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,16.844581158730804,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,217,adapt,117,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,14.759272658139153,,0.0
-no_inst,1,218,adapt,118,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,17.207384918259994,,0.0
-no_inst,1,219,adapt,119,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.487649761433683,,0.0
-no_inst,1,220,adapt,120,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.075891526156848,,0.0
-no_inst,1,221,adapt,121,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,21.215666790735767,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,222,adapt,122,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,7.759936709113811,,0.0
-no_inst,1,223,adapt,123,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,11.456201197286717,,0.0
-no_inst,1,224,adapt,124,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,16.547565450410783,,0.0
-no_inst,1,225,adapt,125,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,12.390899870859423,,0.0
-no_inst,1,226,adapt,126,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,14.331814719013174,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,227,adapt,127,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.402203882948498,,0.0
-no_inst,1,228,adapt,128,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,13.480223551390075,,0.0
-no_inst,1,229,adapt,129,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,6.773892593058734,,0.0
-no_inst,1,230,adapt,130,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,18.632522718472753,,0.0
-no_inst,1,231,adapt,131,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,11.52734381948572,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,232,adapt,132,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.279287184012599,,0.0
-no_inst,1,233,adapt,133,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,14.665532328127657,,0.0
-no_inst,1,234,adapt,134,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.157120850445786,,0.0
-no_inst,1,235,adapt,135,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,6.662966114388986,,0.0
-no_inst,1,236,adapt,136,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,6.613129976809779,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,237,adapt,137,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,14.775092610760531,,0.0
-no_inst,1,238,adapt,138,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,11.361706247414933,,0.0
-no_inst,1,239,adapt,139,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.465193761326244,,0.0
-no_inst,1,240,adapt,140,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,16.31097522390505,,0.0
-no_inst,1,241,adapt,141,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,7.492696764973026,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,242,adapt,142,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.077288988540701,,0.0
-no_inst,1,243,adapt,143,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.460480763274898,,0.0
-no_inst,1,244,adapt,144,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,12.377406357268296,,0.0
-no_inst,1,245,adapt,145,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,11.831314194837685,,0.0
-no_inst,1,246,adapt,146,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,10.852451230440371,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,247,adapt,147,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,11.75349439161741,,0.0
-no_inst,1,248,adapt,148,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,11.570778894835302,,0.0
-no_inst,1,249,adapt,149,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,9.121582445792829,,0.0
-no_inst,1,250,adapt,150,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,8.748028045783691,,0.0
-no_inst,1,251,adapt,151,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,13.098065430895758,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,252,adapt,152,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,8.436339668017887,,0.0
-no_inst,1,253,adapt,153,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,7.370578963236586,,0.0
-no_inst,1,254,adapt,154,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.750830995497227,,0.0
-no_inst,1,255,adapt,155,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,11.369331935344736,,0.0
-no_inst,1,256,adapt,156,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,21.026893989192835,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,257,adapt,157,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,9.181198896575065,,0.0
-no_inst,1,258,adapt,158,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,15.773042899877979,,0.0
-no_inst,1,259,adapt,159,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,14.988753336818528,,0.0
-no_inst,1,260,adapt,160,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,7.244220179185056,,0.0
-no_inst,1,261,adapt,161,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,15.093011909610398,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,262,adapt,162,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,7.264477439226729,,0.0
-no_inst,1,263,adapt,163,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,1.3633110480130366,,0.0
-no_inst,1,264,adapt,164,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,14.425278097437523,,0.0
-no_inst,1,265,adapt,165,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,4.976437666249122,,0.0
-no_inst,1,266,adapt,166,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,13.80373784722366,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,267,adapt,167,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,9.263956409051133,,0.0
-no_inst,1,268,adapt,168,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,18.63820318475949,,0.0
-no_inst,1,269,adapt,169,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,16.274037597264037,,0.0
-no_inst,1,270,adapt,170,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,10.18645678459445,,0.0
-no_inst,1,271,adapt,171,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,9.24864955588527,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,272,adapt,172,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,7.143690387623518,,0.0
-no_inst,1,273,adapt,173,0,0.0,1.0,0.0,0.0,-1.0,0.0,0.0,10.236309470829635,,0.0
-no_inst,1,274,adapt,174,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,10.878578019261964,,0.0
-no_inst,1,275,adapt,175,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,10.541225822433258,,0.0
-no_inst,1,276,adapt,176,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,12.626815421089455,Use the cursor to guide your reaches whenever it is available.,0.0
-no_inst,1,277,adapt,177,0,0.0,1.0,0.0,0.0,0.5,0.0,0.0,14.314085990915514,,0.0
-no_inst,1,278,adapt,178,0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,13.398617827972696,,0.0
-no_inst,1,279,adapt,179,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,8.943424304374227,,0.0
-no_inst,1,280,adapt,180,0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,6.248834104793686,,0.0
-no_inst,1,281,washout_no_fb,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.458127392409885,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,282,washout_no_fb,2,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.7577967381997506,,0.0
-no_inst,1,283,washout_no_fb,3,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.6091743997400765,,0.0
-no_inst,1,284,washout_no_fb,4,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.0847572492044435,,0.0
-no_inst,1,285,washout_no_fb,5,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-7.372278200626594,,0.0
-no_inst,1,286,washout_no_fb,6,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.9118960161619467,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,287,washout_no_fb,7,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.9186232560317915,,0.0
-no_inst,1,288,washout_no_fb,8,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.481433193374051,,0.0
-no_inst,1,289,washout_no_fb,9,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.793828596429344,,0.0
-no_inst,1,290,washout_no_fb,10,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01508355634507736,,0.0
-no_inst,1,291,washout_no_fb,11,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7273934964572146,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,292,washout_no_fb,12,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.359859935205048,,0.0
-no_inst,1,293,washout_no_fb,13,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.06272844641021907,,0.0
-no_inst,1,294,washout_no_fb,14,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6437126731928919,,0.0
-no_inst,1,295,washout_no_fb,15,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.7626139743255974,,0.0
-no_inst,1,296,washout_no_fb,16,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.5793980561338012,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,297,washout_no_fb,17,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.0709341475758658,,0.0
-no_inst,1,298,washout_no_fb,18,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.5120453258800275,,0.0
-no_inst,1,299,washout_no_fb,19,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.121766821265184,,0.0
-no_inst,1,300,washout_no_fb,20,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.9724944437183227,,0.0
-no_inst,1,301,washout_no_fb,21,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.3665250562945457,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,302,washout_no_fb,22,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.9978343206437954,,0.0
-no_inst,1,303,washout_no_fb,23,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.19797992660036295,,0.0
-no_inst,1,304,washout_no_fb,24,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.9753471051238254,,0.0
-no_inst,1,305,washout_no_fb,25,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.5732578602517115,,0.0
-no_inst,1,306,washout_no_fb,26,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.28249363453381,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,307,washout_no_fb,27,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.8276147046558869,,0.0
-no_inst,1,308,washout_no_fb,28,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.520715648323129,,0.0
-no_inst,1,309,washout_no_fb,29,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.792423277729018,,0.0
-no_inst,1,310,washout_no_fb,30,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.5491219015802535,,0.0
-no_inst,1,311,washout_no_fb,31,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-9.022256917608757,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,312,washout_no_fb,32,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.090027374542414,,0.0
-no_inst,1,313,washout_no_fb,33,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1545222073607524,,0.0
-no_inst,1,314,washout_no_fb,34,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.626860409287815,,0.0
-no_inst,1,315,washout_no_fb,35,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.9420429507366026,,0.0
-no_inst,1,316,washout_no_fb,36,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.8873400298543475,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,317,washout_no_fb,37,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.592539728830238,,0.0
-no_inst,1,318,washout_no_fb,38,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6569110219493358,,0.0
-no_inst,1,319,washout_no_fb,39,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.2691611114106776,,0.0
-no_inst,1,320,washout_no_fb,40,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.890700402060618,,0.0
-no_inst,1,321,washout_no_fb,41,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.4137269950287963,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,322,washout_no_fb,42,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-6.46589675460413,,0.0
-no_inst,1,323,washout_no_fb,43,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.167349450991451,,0.0
-no_inst,1,324,washout_no_fb,44,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.0459688472464923,,0.0
-no_inst,1,325,washout_no_fb,45,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.431695697169345,,0.0
-no_inst,1,326,washout_no_fb,46,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.564407466630293,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,327,washout_no_fb,47,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.8663148622967105,,0.0
-no_inst,1,328,washout_no_fb,48,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.410207757844928,,0.0
-no_inst,1,329,washout_no_fb,49,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.3946157476919443,,0.0
-no_inst,1,330,washout_no_fb,50,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.463587943841578,,0.0
-no_inst,1,331,washout_no_fb,51,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0666527265803443,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,332,washout_no_fb,52,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.4251712698891557,,0.0
-no_inst,1,333,washout_no_fb,53,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-7.074153802708123,,0.0
-no_inst,1,334,washout_no_fb,54,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.4219271709750763,,0.0
-no_inst,1,335,washout_no_fb,55,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.258079289951465,,0.0
-no_inst,1,336,washout_no_fb,56,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.23570235672651982,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,337,washout_no_fb,57,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.7402146840373661,,0.0
-no_inst,1,338,washout_no_fb,58,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.2305939504654226,,0.0
-no_inst,1,339,washout_no_fb,59,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.7861387982535515,,0.0
-no_inst,1,340,washout_no_fb,60,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.20119179736011,,0.0
-no_inst,1,341,washout_no_fb,61,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.2364577790868352,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,342,washout_no_fb,62,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.9338666461747709,,0.0
-no_inst,1,343,washout_no_fb,63,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.930884747676533,,0.0
-no_inst,1,344,washout_no_fb,64,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.7380044274367616,,0.0
-no_inst,1,345,washout_no_fb,65,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.4833000051244083,,0.0
-no_inst,1,346,washout_no_fb,66,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5682472207489426,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,347,washout_no_fb,67,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.079979443063091,,0.0
-no_inst,1,348,washout_no_fb,68,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.878357229664778,,0.0
-no_inst,1,349,washout_no_fb,69,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7180204459181123,,0.0
-no_inst,1,350,washout_no_fb,70,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.328898365591697,,0.0
-no_inst,1,351,washout_no_fb,71,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-8.378412284824579,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,352,washout_no_fb,72,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.4948876569340263,,0.0
-no_inst,1,353,washout_no_fb,73,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.520427816774816,,0.0
-no_inst,1,354,washout_no_fb,74,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.37581291754227486,,0.0
-no_inst,1,355,washout_no_fb,75,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7721843492900717,,0.0
-no_inst,1,356,washout_no_fb,76,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-10.958708668758227,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,357,washout_no_fb,77,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-2.2772482138807404,,0.0
-no_inst,1,358,washout_no_fb,78,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0796174197630455,,0.0
-no_inst,1,359,washout_no_fb,79,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.86738218421105,,0.0
-no_inst,1,360,washout_no_fb,80,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-5.667624452505038,,0.0
-no_inst,1,361,washout_no_fb,81,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.4758539475871815,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,362,washout_no_fb,82,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.1074876233845121,,0.0
-no_inst,1,363,washout_no_fb,83,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.8844182817779385,,0.0
-no_inst,1,364,washout_no_fb,84,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2592688180632952,,0.0
-no_inst,1,365,washout_no_fb,85,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.286342848199183,,0.0
-no_inst,1,366,washout_no_fb,86,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.021170585197443414,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,367,washout_no_fb,87,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.202259213723987,,0.0
-no_inst,1,368,washout_no_fb,88,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.3130407006466454,,0.0
-no_inst,1,369,washout_no_fb,89,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.5809159306174176,,0.0
-no_inst,1,370,washout_no_fb,90,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.637682065599653,,0.0
-no_inst,1,371,washout_no_fb,91,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.3437230678864509,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,372,washout_no_fb,92,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.7771717521830867,,0.0
-no_inst,1,373,washout_no_fb,93,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.5033310463493237,,0.0
-no_inst,1,374,washout_no_fb,94,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.4604298739489069,,0.0
-no_inst,1,375,washout_no_fb,95,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.8296624248839632,,0.0
-no_inst,1,376,washout_no_fb,96,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.8584480549349136,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,0.0
-no_inst,1,377,washout_no_fb,97,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-3.1305166233101005,,0.0
-no_inst,1,378,washout_no_fb,98,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.441557196107551,,0.0
-no_inst,1,379,washout_no_fb,99,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-4.2185138559400555,,0.0
-no_inst,1,380,washout_no_fb,100,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.280991349298725,,0.0
+cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,no_uncertainty,low_uncertainty,high_uncertainty,unlimited_uncertainty,trial,cycle,target_angle
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,1,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,2,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,3,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,4,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6,5,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7,6,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,8,7,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,9,8,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,9,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,10,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,12,11,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,13,12,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,14,13,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,15,14,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,16,15,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,17,16,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18,17,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,19,18,90
+1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,20,19,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.647167809932071,0.0,0.0,1.0,0.0,21,20,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.437513967273292,0.0,0.0,1.0,0.0,22,21,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.170838439561338,0.0,0.0,1.0,0.0,23,22,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.155707733439684,0.0,0.0,0.0,1.0,24,23,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.828362313095393,1.0,0.0,0.0,0.0,25,24,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.358246334333987,0.0,1.0,0.0,0.0,26,25,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.09172629043396,0.0,1.0,0.0,0.0,27,26,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.139671442326183,1.0,0.0,0.0,0.0,28,27,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.838574370201696,0.0,0.0,1.0,0.0,29,28,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.604420256757947,0.0,0.0,1.0,0.0,30,29,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-19.385170328349346,0.0,0.0,1.0,0.0,31,30,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.202477225279061,0.0,0.0,1.0,0.0,32,31,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.445362113199717,1.0,0.0,0.0,0.0,33,32,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.880847324910086,0.0,0.0,1.0,0.0,34,33,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.70285022381506,1.0,0.0,0.0,0.0,35,34,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.679093646686624,0.0,0.0,1.0,0.0,36,35,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.825797161651245,1.0,0.0,0.0,0.0,37,36,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.374694504819203,0.0,0.0,1.0,0.0,38,37,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.19022169442992,1.0,0.0,0.0,0.0,39,38,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.208622119867607,0.0,0.0,1.0,0.0,40,39,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.939094320299377,0.0,0.0,0.0,1.0,41,40,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.215946515049051,1.0,0.0,0.0,0.0,42,41,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.042590023661122,0.0,1.0,0.0,0.0,43,42,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.393087981554464,0.0,0.0,0.0,1.0,44,43,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.59696636945306,0.0,1.0,0.0,0.0,45,44,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-24.81273720729554,1.0,0.0,0.0,0.0,46,45,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.194959981913016,0.0,1.0,0.0,0.0,47,46,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.681118288584244,0.0,1.0,0.0,0.0,48,47,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-20.708689643046117,0.0,0.0,0.0,1.0,49,48,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.345281566590934,1.0,0.0,0.0,0.0,50,49,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.841890465738005,1.0,0.0,0.0,0.0,51,50,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-18.719496276392167,0.0,0.0,1.0,0.0,52,51,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.60086039779348,0.0,1.0,0.0,0.0,53,52,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.54814954125571,0.0,0.0,1.0,0.0,54,53,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.49250986973226,1.0,0.0,0.0,0.0,55,54,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-3.010096942706289,0.0,0.0,0.0,1.0,56,55,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.146945840758693,0.0,0.0,0.0,1.0,57,56,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.362663712658458,0.0,1.0,0.0,0.0,58,57,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.220493060845234,0.0,1.0,0.0,0.0,59,58,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.958643776674139,0.0,0.0,1.0,0.0,60,59,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.735263821567951,0.0,0.0,0.0,1.0,61,60,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.70151678735688,0.0,0.0,1.0,0.0,62,61,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-18.99792901517321,0.0,1.0,0.0,0.0,63,62,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.164600575840097,0.0,0.0,1.0,0.0,64,63,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.481538323787998,1.0,0.0,0.0,0.0,65,64,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.112759512723901,0.0,0.0,0.0,1.0,66,65,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.69130142199601,1.0,0.0,0.0,0.0,67,66,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.696264644539618,0.0,1.0,0.0,0.0,68,67,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.881205699795187,1.0,0.0,0.0,0.0,69,68,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.189294169316273,1.0,0.0,0.0,0.0,70,69,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.540607244358391,0.0,1.0,0.0,0.0,71,70,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.151897908856574,0.0,0.0,0.0,1.0,72,71,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.880150532099595,0.0,0.0,1.0,0.0,73,72,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.981882812509923,0.0,0.0,0.0,1.0,74,73,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-2.9767852598867552,1.0,0.0,0.0,0.0,75,74,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.534889207148915,0.0,0.0,1.0,0.0,76,75,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-4.5477748916453935,0.0,1.0,0.0,0.0,77,76,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.179383872709286,1.0,0.0,0.0,0.0,78,77,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.898833747768986,0.0,1.0,0.0,0.0,79,78,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.92009044644915,0.0,0.0,0.0,1.0,80,79,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-5.645858947709427,0.0,0.0,1.0,0.0,81,80,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.787805758359944,0.0,1.0,0.0,0.0,82,81,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.717416243604992,1.0,0.0,0.0,0.0,83,82,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.039948363082736,0.0,0.0,0.0,1.0,84,83,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.392116506588344,0.0,0.0,1.0,0.0,85,84,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.376325404198145,0.0,0.0,1.0,0.0,86,85,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.325207355834841,1.0,0.0,0.0,0.0,87,86,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.864503411531224,0.0,0.0,0.0,1.0,88,87,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.426119787923104,0.0,0.0,1.0,0.0,89,88,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.48200168487114,0.0,1.0,0.0,0.0,90,89,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.963089592972622,0.0,1.0,0.0,0.0,91,90,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.386522921089004,1.0,0.0,0.0,0.0,92,91,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.405265307902006,0.0,0.0,0.0,1.0,93,92,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.812685172225875,0.0,0.0,0.0,1.0,94,93,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-18.675260373158935,0.0,0.0,0.0,1.0,95,94,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.803694280362837,0.0,1.0,0.0,0.0,96,95,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.945948955926671,0.0,0.0,0.0,1.0,97,96,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.294435973440862,0.0,0.0,0.0,1.0,98,97,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.010844264937344,0.0,1.0,0.0,0.0,99,98,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.476092625044965,1.0,0.0,0.0,0.0,100,99,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.587454657655801,0.0,0.0,0.0,1.0,101,100,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.746279889554208,1.0,0.0,0.0,0.0,102,101,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.960149851324676,0.0,1.0,0.0,0.0,103,102,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.28845921771499,0.0,0.0,0.0,1.0,104,103,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.578522572289362,1.0,0.0,0.0,0.0,105,104,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.189308548820108,0.0,0.0,1.0,0.0,106,105,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.300624006576967,1.0,0.0,0.0,0.0,107,106,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.331325179245749,0.0,0.0,0.0,1.0,108,107,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-20.31423615168351,0.0,1.0,0.0,0.0,109,108,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.970958425460838,0.0,1.0,0.0,0.0,110,109,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.460905547735369,0.0,1.0,0.0,0.0,111,110,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-19.295969131744084,0.0,0.0,1.0,0.0,112,111,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.310587745379554,0.0,1.0,0.0,0.0,113,112,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.707107529497351,0.0,0.0,1.0,0.0,114,113,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.69220806329816,0.0,1.0,0.0,0.0,115,114,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-4.596596706265559,0.0,1.0,0.0,0.0,116,115,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.878634484230622,0.0,1.0,0.0,0.0,117,116,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.636668937262996,0.0,0.0,1.0,0.0,118,117,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.292578654656579,0.0,0.0,0.0,1.0,119,118,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.40874303382892,0.0,0.0,1.0,0.0,120,119,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.84892431241897,0.0,0.0,1.0,0.0,121,120,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.459879063662603,0.0,0.0,0.0,1.0,122,121,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.756802436542266,0.0,0.0,1.0,0.0,123,122,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.399923231426152,1.0,0.0,0.0,0.0,124,123,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.5682863602413315,1.0,0.0,0.0,0.0,125,124,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.093617350287982,1.0,0.0,0.0,0.0,126,125,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.097414261945941,0.0,0.0,0.0,1.0,127,126,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.964912229038788,1.0,0.0,0.0,0.0,128,127,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.7142077875636925,0.0,1.0,0.0,0.0,129,128,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.707517685339482,0.0,0.0,0.0,1.0,130,129,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.87801883637107,0.0,0.0,0.0,1.0,131,130,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.845080786762786,1.0,0.0,0.0,0.0,132,131,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.516918488369432,0.0,0.0,1.0,0.0,133,132,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.859885027053232,1.0,0.0,0.0,0.0,134,133,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.199754058555769,0.0,0.0,1.0,0.0,135,134,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-18.637451451324623,0.0,1.0,0.0,0.0,136,135,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-18.56684315267502,1.0,0.0,0.0,0.0,137,136,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-20.725141841425398,0.0,0.0,0.0,1.0,138,137,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.172300935299015,0.0,0.0,1.0,0.0,139,138,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-21.501010649057243,0.0,0.0,1.0,0.0,140,139,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.569448388811212,0.0,0.0,0.0,1.0,141,140,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.402544328604956,0.0,0.0,0.0,1.0,142,141,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.515428238149978,0.0,1.0,0.0,0.0,143,142,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.384281869793489,0.0,0.0,1.0,0.0,144,143,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.241111672302953,0.0,0.0,1.0,0.0,145,144,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.695458393564259,0.0,0.0,0.0,1.0,146,145,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.30727225850459,0.0,0.0,0.0,1.0,147,146,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.41670440511009,0.0,1.0,0.0,0.0,148,147,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.17215079088033,1.0,0.0,0.0,0.0,149,148,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.357490633309563,1.0,0.0,0.0,0.0,150,149,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-19.724586947166507,0.0,0.0,0.0,1.0,151,150,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.808978458170383,0.0,0.0,1.0,0.0,152,151,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.732605378768163,0.0,1.0,0.0,0.0,153,152,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.976373341454188,0.0,1.0,0.0,0.0,154,153,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.86015649794367,1.0,0.0,0.0,0.0,155,154,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.11468965145906,0.0,1.0,0.0,0.0,156,155,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.551678296988095,1.0,0.0,0.0,0.0,157,156,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.683658366341135,1.0,0.0,0.0,0.0,158,157,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.933794748157396,1.0,0.0,0.0,0.0,159,158,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.0024245810848,0.0,0.0,0.0,1.0,160,159,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-19.65567315068251,0.0,1.0,0.0,0.0,161,160,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.185366298050226,0.0,0.0,1.0,0.0,162,161,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-5.662621968326832,0.0,0.0,0.0,1.0,163,162,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.729130688237225,1.0,0.0,0.0,0.0,164,163,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.031014872750887,0.0,0.0,1.0,0.0,165,164,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.846404828565813,0.0,0.0,1.0,0.0,166,165,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.83464782101069,0.0,0.0,0.0,1.0,167,166,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-12.76739455990851,1.0,0.0,0.0,0.0,168,167,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-15.740230879656224,0.0,1.0,0.0,0.0,169,168,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.328009451449017,0.0,0.0,1.0,0.0,170,169,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.549313260740872,1.0,0.0,0.0,0.0,171,170,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.790240677436426,0.0,1.0,0.0,0.0,172,171,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.217178332449787,1.0,0.0,0.0,0.0,173,172,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.352680944063241,0.0,1.0,0.0,0.0,174,173,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.0733836112142,0.0,1.0,0.0,0.0,175,174,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-10.157962418018405,1.0,0.0,0.0,0.0,176,175,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.20146377251174,0.0,0.0,0.0,1.0,177,176,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.097035060875939,0.0,0.0,0.0,1.0,178,177,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.720977623241716,0.0,1.0,0.0,0.0,179,178,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.041593792048143,0.0,0.0,1.0,0.0,180,179,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.277065096333406,0.0,1.0,0.0,0.0,181,180,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-0.7921512984386219,0.0,1.0,0.0,0.0,182,181,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-13.053153662847638,0.0,0.0,0.0,1.0,183,182,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.910646356528572,0.0,0.0,0.0,1.0,184,183,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.030165214471037,0.0,0.0,0.0,1.0,185,184,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.974899183650663,0.0,0.0,0.0,1.0,186,185,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-8.291188452464821,0.0,0.0,0.0,1.0,187,186,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.511818251880673,0.0,0.0,1.0,0.0,188,187,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.440958400670365,1.0,0.0,0.0,0.0,189,188,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-11.813995644770193,1.0,0.0,0.0,0.0,190,189,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.181757221033639,0.0,0.0,1.0,0.0,191,190,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-20.554399880198353,0.0,1.0,0.0,0.0,192,191,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-16.872448067711026,0.0,0.0,1.0,0.0,193,192,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-17.783329230545565,0.0,0.0,0.0,1.0,194,193,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-5.6512207751375,0.0,1.0,0.0,0.0,195,194,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-9.637442803225927,0.0,0.0,1.0,0.0,196,195,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-14.061726046875902,0.0,0.0,0.0,1.0,197,196,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-6.418381121668407,0.0,1.0,0.0,0.0,198,197,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-7.838454297747627,0.0,0.0,0.0,1.0,199,198,90
+0.0,1.0,0.0,0.0,1.0,0.0,0.0,-4.570024579876012,1.0,0.0,0.0,0.0,200,199,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,201,200,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,202,201,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,203,202,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,204,203,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,205,204,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,206,205,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,207,206,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,208,207,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,209,208,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,210,209,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,211,210,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,212,211,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,213,212,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,214,213,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,215,214,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,216,215,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,217,216,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,218,217,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,219,218,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,220,219,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,221,220,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,222,221,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,223,222,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,224,223,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,225,224,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,226,225,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,227,226,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,228,227,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,229,228,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,230,229,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,231,230,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,232,231,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,233,232,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,234,233,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,235,234,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,236,235,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,237,236,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,238,237,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,239,238,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,240,239,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,241,240,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,242,241,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,243,242,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,244,243,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,245,244,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,246,245,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,247,246,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,248,247,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,249,248,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,250,249,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,251,250,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,252,251,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,253,252,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,254,253,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,255,254,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,256,255,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,257,256,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,258,257,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,259,258,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,260,259,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,261,260,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,262,261,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,263,262,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,264,263,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,265,264,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,266,265,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,267,266,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,268,267,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,269,268,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,270,269,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,271,270,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,272,271,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,273,272,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,274,273,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,275,274,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,276,275,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,277,276,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,278,277,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,279,278,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,280,279,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,281,280,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,282,281,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,283,282,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,284,283,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,285,284,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,286,285,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,287,286,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,288,287,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,289,288,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,290,289,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,291,290,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,292,291,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,293,292,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,294,293,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,295,294,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,296,295,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,297,296,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,298,297,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,299,298,90
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,300,299,90
