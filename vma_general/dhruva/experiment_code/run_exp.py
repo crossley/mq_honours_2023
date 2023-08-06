@@ -59,9 +59,6 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 10
 target_circle.pos = (0, target_distance)
 
-low_jitter_sd = [[0.5, 0], [0, 0.5]]
-high_jitter_sd = [[1, 0], [0, 1]]
-
 config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
 
 cursor_vis = config['cursor_vis']
@@ -79,6 +76,9 @@ no_uncertainty = config['no_uncertainty']
 low_uncertainty = config['low_uncertainty']
 high_uncertainty = config['high_uncertainty']
 unlimited_uncertainty = config['unlimited_uncertainty']
+
+low_jitter_sd = [[0.5, 0], [0, 0.5]]
+high_jitter_sd = [[1, 0], [0, 1]]
 
 num_trials = config.shape[0]
 
@@ -102,6 +102,7 @@ current_sample = 0
 experiment_clock = core.Clock()
 state_clock = core.Clock()
 mp_clock = core.Clock()
+
 
 while current_trial < num_trials:
     
@@ -226,25 +227,28 @@ while current_trial < num_trials:
         if midpoint_vis[current_trial]:
             if r >= target_distance * 0.25:
                 if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
+                
                     if low_uncertainty[current_trial] == True: 
                         for i in range(len(cursor_cloud)):
-                            cx = x + cursor_cloud_jitter_low[i][0]
                             cy = y + cursor_cloud_jitter_low[i][1]
-                            cursor_cloud[i].pos = (cx, cy)
+                            cx = x + cursor_cloud_jitter_low[i][0]
+                            c_theta, c_r =  coordinatetools.cart2pol(cx, cy)
+                            c_rotated_theta = c_theta + rot[current_trial] 
+                            cursor_cloud[i].pos = coordinatetools.pol2cart(c_rotated_theta, c_r)
                             cursor_cloud[i].draw()
-                            
+                        
                     if high_uncertainty[current_trial] == True: 
                         for i in range(len(cursor_cloud)):
-                            cx = x + cursor_cloud_jitter_high[i][0]
                             cy = y + cursor_cloud_jitter_high[i][1]
-                            cursor_cloud[i].pos = (cx, cy)
+                            cx = x + cursor_cloud_jitter_high[i][0]
+                            c_theta, c_r =  coordinatetools.cart2pol(cx, cy)
+                            c_rotated_theta = c_theta + rot[current_trial] 
+                            cursor_cloud[i].pos = coordinatetools.pol2cart(c_rotated_theta, c_r)
                             cursor_cloud[i].draw()
-                            
+                        
                     if no_uncertainty[current_trial] == True: 
-                        cursor_circle.pos = coordinatetools.pol2cart(rot[current_trial], r)
+                        cursor_circle.pos = coordinatetools.pol2cart((theta + rot[current_trial]), r)
                         cursor_circle.draw()
-                        
-                        
             else:
                 mp_clock.reset()
 

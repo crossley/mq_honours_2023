@@ -11,7 +11,7 @@ n_clamp = 0
 n_adaptation = 180
 n_wash = 100
 
-rot_amp = -90
+rot_amp = -1
 
 n_uncertainty_condition = 45
 
@@ -145,5 +145,5 @@ n_subs_per_cnd = 20
 conditions = ['explicit_instruct'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 '''
-for sub in range(40):
+for sub in range(41):
     d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
