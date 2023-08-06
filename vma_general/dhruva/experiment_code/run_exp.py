@@ -59,6 +59,9 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 10
 target_circle.pos = (0, target_distance)
 
+low_jitter_sd = [[0.5, 0], [0, 0.5]]
+high_jitter_sd = [[1, 0], [0, 1]]
+
 config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
 
 cursor_vis = config['cursor_vis']
@@ -72,10 +75,10 @@ rot = config['rot']
 trial = config['trial']
 cycle = config['cycle']
 target_angle = config['target_angle']
-'''
-instruct_phase = config['instruct_phase']
-instruct_state = config['instruct_state']
-'''
+no_uncertainty = config['no_uncertainty']
+low_uncertainty = config['low_uncertainty']
+high_uncertainty = config['high_uncertainty']
+unlimited_uncertainty = config['unlimited_uncertainty']
 
 num_trials = config.shape[0]
 
@@ -142,26 +145,20 @@ while current_trial < num_trials:
             'y': []
         }
     
-        cursor_cloud_jitter_mp = np.random.multivariate_normal(
-            [0, 0], [[cursor_mp_sig[current_trial], 0],
-                     [0, cursor_mp_sig[current_trial]]], len(cursor_cloud))
-    '''
-        cursor_cloud_jitter_ep = np.random.multivariate_normal(
-            [0, 0], [[cursor_ep_sig[current_trial], 0],
-                     [0, cursor_ep_sig[current_trial]]], len(cursor_cloud))
-    '''
+        cursor_cloud_jitter_low = np.random.multivariate_normal(
+            [0, 0], low_jitter_sd, len(cursor_cloud))
+            
+        cursor_cloud_jitter_high = np.random.multivariate_normal(
+            [0, 0], high_jitter_sd, len(cursor_cloud))
+
+        
         endpoint_theta = -1
         movement_time = -1
         movement_initiation_time = -1
-    
+        
         state = 'search_ring'
-    
+        
     if state == 'search_ring':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Move your hand to make the diameter of the ring shrink'
-            text_stim.draw()
-        '''
         search_circle.radius = r
         search_circle.draw()
         if mathtools.distance(start_circle.pos,
@@ -170,11 +167,6 @@ while current_trial < num_trials:
             state_clock.reset()
     
     if state == 'search_near':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Move the cursor all the way inside the start circle'
-            text_stim.draw()
-    '''
         start_circle.draw()
         cursor_circle.draw()
     
@@ -186,30 +178,8 @@ while current_trial < num_trials:
                                 cursor_circle.pos) < search_near_thresh:
             state = 'hold'
             state_clock.reset()
-    '''
-    if state == 'instruct':
-        
-        if instruct[current_trial] != 'NaN':
-            text_stim.text = instruct[current_trial]
-            text_stim.draw()
-            
-            if mathtools.distance(start_circle.pos,
-                                  cursor_circle.pos) >= search_near_thresh:
-                state = 'search_near'
-                state_clock.reset()
-            elif state_clock.getTime() >= t_instruct:
-                state = 'hold'
-                state_clock.reset()
-        else:
-            state = 'hold'
-            state_clock.reset()
-            '''
+    
     if state == 'hold':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Hold the cursor steady inside the start circle'
-            text_stim.draw()
-        '''
         start_circle.draw()
         cursor_circle.draw()
         if mathtools.distance(start_circle.pos, cursor_circle.pos) >= 0.25:
@@ -220,11 +190,6 @@ while current_trial < num_trials:
             state_clock.reset()
     
     if state == 'move_prep':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Slice through the target as quickly and accurately as possible'
-            text_stim.draw()
-    '''
         start_circle.draw()
         go_circle.draw()
         cursor_circle.draw()
@@ -245,11 +210,6 @@ while current_trial < num_trials:
                 state_clock.reset()
 
     if state == 'reach':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Reaching...'
-            text_stim.draw()
-'''
         target_circle.draw()
         go_circle.draw()
 
@@ -266,11 +226,25 @@ while current_trial < num_trials:
         if midpoint_vis[current_trial]:
             if r >= target_distance * 0.25:
                 if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
-                    for i in range(len(cursor_cloud)):
-                        cx = x + cursor_cloud_jitter_mp[i][0]
-                        cy = y + cursor_cloud_jitter_mp[i][1]
-                        cursor_cloud[i].pos = (cx, cy)
-                        cursor_cloud[i].draw()
+                    if low_uncertainty[current_trial] == True: 
+                        for i in range(len(cursor_cloud)):
+                            cx = x + cursor_cloud_jitter_low[i][0]
+                            cy = y + cursor_cloud_jitter_low[i][1]
+                            cursor_cloud[i].pos = (cx, cy)
+                            cursor_cloud[i].draw()
+                            
+                    if high_uncertainty[current_trial] == True: 
+                        for i in range(len(cursor_cloud)):
+                            cx = x + cursor_cloud_jitter_high[i][0]
+                            cy = y + cursor_cloud_jitter_high[i][1]
+                            cursor_cloud[i].pos = (cx, cy)
+                            cursor_cloud[i].draw()
+                            
+                    if no_uncertainty[current_trial] == True: 
+                        cursor_circle.pos = coordinatetools.pol2cart(rot[current_trial], r)
+                        cursor_circle.draw()
+                        
+                        
             else:
                 mp_clock.reset()
 
@@ -314,24 +288,12 @@ while current_trial < num_trials:
                     cy = feedback_circle.pos[1] + cursor_cloud_jitter_ep[i][1]
                     cursor_cloud[i].pos = (cx, cy)
                     cursor_cloud[i].draw()
-
-            else:
-                '''
-                if instruct_state[current_trial]:
-                    text_stim.text = 'This is a no-feedback trial '
-                    text_stim.text += 'so you do not get to see how accurate your reach was.'
-                text_stim.draw()
-        '''
+                    
         if state_clock.getTime() > t_feedback:
             state = 'iti'
             state_clock.reset()
 
     if state == 'iti':
-        '''
-        if instruct_state[current_trial]:
-            text_stim.text = 'Please remain still and wait for further instructions'
-            text_stim.draw()
-'''
         if state_clock.getTime() > t_iti:
             state = 'trial_init'
 
