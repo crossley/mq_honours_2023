@@ -13,46 +13,9 @@ n_wash = 100
 
 rot_amp = -1
 
-instruct_phase = {
-    'fam':
-    'Please slice through the target as quickly and accurately as possible.',
-    'base':
-    'You will now only see your cursor at reach midpoint.\n' +
-    'Please continue to slice through the target as quickly and accurately as possible.',
-    'clamp':
-    'The cursor feedback is now clamped.\n' + 'It will always appear ' +
-    str(rot_amp) +
-    ' degrees away from the target no matter how accurately you move.\n' +
-    'Please do your best to ignore the cursor feedback and continue slicing directly through the target.',
-    'rot':
-    'Please slice directly through the target.' +
-    'Do not aim off-target in order to get the cursor to land on the target.',
-    'general':
-    'You will now be asked to reach to targets that you have not yet reached to.\n'
-    + 'You will not receive feedback of any kind for these reaches.' +
-    'Please continue to slice through the target as quickly and accurately as possible.',
-    'wash':
-    'You will not receive feedback of any kind for the following reaches.' +
-    'Please continue to slice through the target as quickly and accurately as possible.'
-}
+n_uncertainty_condition = 45
 
-# NOTE: The following places the instructions listed above only once at the
-# beginning of each phase.
-'''
-instruct_fam = [instruct_phase['fam']] + [''] * (n_fam * n_targets - 1)
-instruct_base = [instruct_phase['base']] + [''] * (n_base * n_targets - 1)
-instruct_clamp = [instruct_phase['clamp']] + [''] * (n_clamp * n_targets - 1)
-instruct_general = [instruct_phase['general']] + [''] * (n_adaptation * n_targets - 1)
-instruct_wash = [instruct_phase['wash']] + [''] * (n_wash * n_targets - 1)
-
-instruct_phase = np.concatenate((instruct_fam, instruct_base, instruct_clamp,
-                           instruct_general, instruct_wash))
-'''
-# NOTE: The experiment code also defines instructions that are displayed for
-# every state. The following is an indicator column that should be used to
-# switch them on or off.
-'''instruct_state = np.zeros(instruct_phase.shape)'''
-
+# create necessary arrays  
 cursor_vis = np.concatenate(
     (np.zeros(n_fam * n_targets), np.ones(n_base * n_targets),
      np.zeros(n_clamp * n_targets), np.zeros(n_adaptation * n_targets),
@@ -93,13 +56,44 @@ rot = np.concatenate(
      rot_amp * np.zeros(n_clamp * n_targets),
      rot_amp * (np.random.normal(12, 4, 180)), np.zeros(n_wash * n_targets)))
      
-# Create psuedo-randomised 'on/off' for 4 uncertainty conditions
-adaptation_uncertainty = np.zeros((180, 4), dtype=int)
-for col in range(4):
-    row_indices = np.random.choice(180, size=45, replace=False)
-    adaptation_uncertainty[row_indices, col] = 1
+# Create adaptation phase uncertainty condition arrays and randomise 
+no_uncertainty = np.concatenate(
+(np.ones(n_uncertainty_condition), np.zeros(n_adaptation - n_uncertainty_condition)))
 
-uncertainty_conditions = np.concatenate((np.zeros((20, 4), dtype=int), adaptation_uncertainty, np.zeros((100, 4), dtype=int)), axis=0)
+low_uncertainty = np.concatenate(
+    (np.zeros(n_uncertainty_condition),
+    np.ones(n_uncertainty_condition), 
+    np.zeros(n_adaptation - (n_uncertainty_condition * 2))))
+
+high_uncertainty = np.concatenate(
+    (np.zeros(n_uncertainty_condition * 2),
+    np.ones(n_uncertainty_condition), 
+    np.zeros(n_adaptation - (n_uncertainty_condition * 3))))
+
+unlimited_uncertainty = np.concatenate(
+    (np.zeros(n_uncertainty_condition * 3),
+    np.ones(n_uncertainty_condition), 
+    np.zeros(0))) # added to have the ensure same shape 
+
+# create 2D array
+uncertainty_conditions = np.vstack((no_uncertainty, low_uncertainty, high_uncertainty, unlimited_uncertainty))
+
+#group and shuffle rows
+num_groups = uncertainty_conditions.shape[1]
+group_indices = np.arange(num_groups)
+np.random.seed(1)  # For reproducibility
+np.random.shuffle(group_indices)
+
+shuffled_combined_array = uncertainty_conditions[:, group_indices]
+
+# seperate into seperate arrays again
+no_uncert, low_uncert,  high_uncert, unlimited_uncert = np.split(shuffled_combined_array.flatten(), 4)
+
+# add baseline and washout zeros 
+no_uncertainty = np.concatenate((np.zeros(n_base), no_uncert, np.zeros(n_wash)))
+low_uncertainty = np.concatenate((np.zeros(n_base), low_uncert, np.zeros(n_wash)))
+high_uncertainty = np.concatenate((np.zeros(n_base), high_uncert, np.zeros(n_wash)))
+unlimited_uncertainty = np.concatenate((np.zeros(n_base), unlimited_uncert, np.zeros(n_wash)))
 
 d = pd.DataFrame({
     'cursor_vis': cursor_vis,
@@ -109,13 +103,13 @@ d = pd.DataFrame({
     'cursor_mp_sig': cursor_mp_sig,
     'cursor_ep_sig': cursor_ep_sig,
     'clamp': clamp,
-    'rot': rot
+    'rot': rot, 
+    'no_uncertainty': no_uncertainty,
+    'low_uncertainty': low_uncertainty,
+    'high_uncertainty': high_uncertainty, 
+    'unlimited_uncertainty': unlimited_uncertainty
 })
 
-d['no_uncertainty'] = uncertainty_conditions[:, 0]
-d['low_uncertainty'] = uncertainty_conditions[:, 1]
-d['high_uncertainty'] = uncertainty_conditions[:, 2]
-d['unlimited_uncertainty'] = uncertainty_conditions[:, 3]
 
 n_trials = d.shape[0]
 n_cycles = n_trials // n_targets
