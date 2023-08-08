@@ -13,7 +13,7 @@ import struct
 import numpy as np
 import pandas as pd
 
-sub_num = 0
+sub_num = 'demo'
 
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
