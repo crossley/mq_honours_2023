@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-target_angle = np.arange(0, 180, 60)
+target_angle = np.concatenate((np.arange(0, 225, 45), np.arange(225, 330, 15)))
 n_targets = target_angle.shape[0]
 
 n_fam = 4
