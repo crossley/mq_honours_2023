@@ -12,3 +12,4 @@ d_trial = pd.read_csv('../data/data_trials_0.csv')
 fig, ax = plt.subplots(1, 1, squeeze=False)
 sns.scatterplot(data=d, x='x', y='y')
 plt.show()
+

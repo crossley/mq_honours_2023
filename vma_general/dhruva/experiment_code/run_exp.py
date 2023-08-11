@@ -14,8 +14,6 @@ import numpy as np
 import pandas as pd
 
 sub_num = 'demo'
-use_liberty = True
-
 use_liberty = False
 
 
@@ -113,7 +111,7 @@ if use_liberty:
 
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
-                    fullscr=True,
+                    fullscr=False,
                     screen=0,
                     allowGUI=False,
                     allowStencil=False,
@@ -211,7 +209,7 @@ while current_trial < num_trials:
         y = c_position[1]
     else:
         x, y = mouse.getPos()
-    x, y = mouse.getPos()
+    
     theta, r = coordinatetools.cart2pol(x, y)
     
     cursor_circle.pos = (x, y)
@@ -230,10 +228,10 @@ while current_trial < num_trials:
             'trial': [],
             'cycle': [],
             'target_angle': [],
-            '''
-            'instruct_phase': [],
-            'instruct_state': [],
-            '''
+            'no_uncertainty': [],
+            'low_uncertainty': [], 
+            'high_uncertainty': [], 
+            'unlimited_uncertainty': [],
             'endpoint_theta': [],
             'movement_time': [],
             'movement_initiation_time': []
@@ -331,6 +329,7 @@ while current_trial < num_trials:
                 if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
                 
                     if low_uncertainty[current_trial] == True: 
+#                        trial_data['uncertainty_condition'].append('low')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_low[i][1]
                             cx = x + cursor_cloud_jitter_low[i][0]
@@ -340,6 +339,7 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if high_uncertainty[current_trial] == True: 
+#                        trial_data['uncertainty_condition'].append('high')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_high[i][1]
                             cx = x + cursor_cloud_jitter_high[i][0]
@@ -349,9 +349,11 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if no_uncertainty[current_trial] == True: 
+#                        trial_data['uncertainty_condition'].append('no')
                         cursor_circle.pos = coordinatetools.pol2cart((theta + rot[current_trial]), r)
                         cursor_circle.draw()
             else:
+#                trial_data['uncertainty_condition'].append('unlimited')
                 mp_clock.reset()
 
         if mathtools.distance(start_circle.pos, (x, y)) >= target_distance:
@@ -415,10 +417,10 @@ while current_trial < num_trials:
                 'trial': [trial[current_trial]],
                 'cycle': [cycle[current_trial]],
                 'target_angle': [target_angle[current_trial]],
-                '''
-                'instruct_phase': [instruct_phase[current_trial]],
-                'instruct_state': [instruct_state[current_trial]],
-                '''
+                'no_uncertainty': [no_uncertainty[current_trial]],
+                'low_uncertainty': [low_uncertainty[current_trial]],
+                'high_uncertainty': [high_uncertainty[current_trial]],
+                'unlimited_uncertainty': [unlimited_uncertainty[current_trial]],
                 'endpoint_theta': [endpoint_theta],
                 'movement_time': [movement_time],
                 'movement_initiation_time': [movement_initiation_time]
