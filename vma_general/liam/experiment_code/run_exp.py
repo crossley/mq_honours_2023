@@ -32,11 +32,11 @@ search_circle = visual.Circle(win,
                               radius=0.5,
                               lineColor='white',
                               fillColor=None)
-start_circle = visual.Circle(win, radius=0.5, fillColor='blue')
-target_circle = visual.Circle(win, radius=0.5, fillColor='blue')
-feedback_circle = visual.Circle(win, radius=0.35, fillColor='white')
-cursor_circle = visual.Circle(win, radius=0.35, fillColor='white')
-cursor_cloud = [visual.Circle(win, radius=0.35, fillColor='white')] * 10
+start_circle = visual.Circle(win, radius=0.25, fillColor='blue')
+target_circle = visual.Circle(win, radius=0.25, fillColor='blue')
+feedback_circle = visual.Circle(win, radius=0.125, fillColor='white')
+cursor_circle = visual.Circle(win, radius=0.125, fillColor='white')
+cursor_cloud = [visual.Circle(win, radius=0.125, fillColor='white')] * 10
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -55,10 +55,10 @@ text_stim = visual.TextStim(win=win,
 
 mouse = event.Mouse(visible=False, win=win)
 
-target_distance = 6
+target_distance = 10
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv('/Users/liamturpin/exp_code/Changes/vma_general/liam/config/config_reach_' + str(6) + '.csv')
+config = pd.read_csv('/Users/liamturpin/mq_honours_2023/vma_general/liam/config/config_reach_' + str(1) + '.csv')
 
 cursor_vis = config['cursor_vis']
 midpoint_vis = config['midpoint_vis']
@@ -77,15 +77,15 @@ instruct_state = config['instruct_state']
 num_trials = config.shape[0]
 
 state = 'trial_init'
-#it is a bit hard to read the instructions in time, but the repeated trials somewhat solve this
+
 t_instruct = 1.0
-t_hold = 1.0
+t_hold = 0.3
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
-t_iti = 1.0
-t_feedback = 1.0
+t_iti = 0.3
+t_feedback = 0.5
 t_mp = 0.3
 t_too_fast = 0.04
-t_too_slow = 0.8
+t_too_slow = 0.6
 
 search_near_thresh = 0.1
 search_ring_thresh = 1.0
@@ -152,11 +152,9 @@ while current_trial < num_trials:
         state = 'search_ring'
 
     if state == 'search_ring':
-        if instruct_state[current_trial]:#what does this mean?
-            text_stim.text = 'Move your hand to make the diameter of the ring shrink'
-            text_stim.draw()
-        search_circle.radius = r
-        search_circle.draw()
+        if instruct_state[current_trial]:
+            search_circle.radius = r
+            search_circle.draw()
         if mathtools.distance(start_circle.pos,
                               cursor_circle.pos) < search_ring_thresh:
             state = 'search_near'
@@ -164,7 +162,7 @@ while current_trial < num_trials:
 
     if state == 'search_near':
         if instruct_state[current_trial]:
-            text_stim.text = 'Move the cursor all the way inside the start circle'
+            text_stim.text = 'Place cursor in target centre'
             text_stim.draw()
 
         start_circle.draw()
@@ -197,7 +195,7 @@ while current_trial < num_trials:
 
     if state == 'hold':
         if instruct_state[current_trial]:
-            text_stim.text = 'Hold the cursor steady inside the start circle'
+            text_stim.text = 'Remain still'
             text_stim.draw()
 
         start_circle.draw()
@@ -211,14 +209,11 @@ while current_trial < num_trials:
 
     if state == 'move_prep':
         if instruct_state[current_trial]:
-            text_stim.text = 'Slice through the target as quickly and accurately as possible'
-            text_stim.draw()
-
-        start_circle.draw()
-        cursor_circle.draw()
-        target_circle.pos = coordinatetools.pol2cart(
-            target_angle[current_trial], target_distance)
-        target_circle.draw()
+            start_circle.draw()
+            cursor_circle.draw()
+            target_circle.pos = coordinatetools.pol2cart(
+                target_angle[current_trial], target_distance)
+            target_circle.draw()
 
         if state_clock.getTime() >= t_move_prep:
             if mathtools.distance(start_circle.pos,
@@ -242,7 +237,7 @@ while current_trial < num_trials:
 
         if clamp[current_trial] == True:
             cursor_circle.pos = coordinatetools.pol2cart(
-                target_angle[current_trial] + rot[current_trial], r)#why is there a rotation on non-clamp trials?
+                target_angle[current_trial] + rot[current_trial], r)
         else:
             cursor_circle.pos = coordinatetools.pol2cart(
                 theta + rot[current_trial], r)
@@ -278,11 +273,11 @@ while current_trial < num_trials:
 
     if state == 'feedback':
         if movement_time > t_too_slow:
-            text_stim.text = 'Please execute your movement more quickly'
+            text_stim.text = 'Too slow'
             text_stim.draw()
 
         elif movement_time < t_too_fast:
-            text_stim.text = 'Please execute your movement more slowly'
+            text_stim.text = 'Too fast'
             text_stim.draw()
 
         else:
@@ -292,14 +287,14 @@ while current_trial < num_trials:
 
             if clamp[current_trial] == True and endpoint_vis[current_trial]:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'The cursor was presented randomly in this trial.'
+                    text_stim.text = 'Clamp trial'
                     text_stim.draw()
 
                 feedback_circle.draw()
 
             elif endpoint_vis[current_trial]:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'The cursor shows you how accurate your reach was'
+                    text_stim.text = 'True cursor position'
                     text_stim.draw()
 
                 feedback_circle.draw()
@@ -311,7 +306,7 @@ while current_trial < num_trials:
 
             else:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'This is a no-feedback trial'
+                    text_stim.text = 'No-feedback trial'
 
                 text_stim.draw()
 
@@ -320,10 +315,6 @@ while current_trial < num_trials:
             state_clock.reset()
 
     if state == 'iti':
-        if instruct_state[current_trial]:
-            text_stim.text = 'Please remain still and wait for further instructions'
-            text_stim.draw()
-
         if state_clock.getTime() > t_iti:
             state = 'trial_init'
 
