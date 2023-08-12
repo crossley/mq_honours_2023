@@ -9,21 +9,21 @@ np.random.shuffle(conditions)
 for i in range(len(conditions)):
 
     # Specify possible target angles
-    target_angle = np.array([0, 45, 60, 75, 90, 105, 120, 135, 180, 225, 270, 315])# Fix this
-    target_train = target_angle[90]
+    target_angle = np.array([0, 45, 60, 75, 90, 105, 120, 135, 180, 225, 270, 315])
+    target_train = target_angle[4]
     n_targets = target_angle.shape[0]
 
     # Specify the number of times you want to cycle through the targets. Note
     # that each phase can have a different set of targets to cycle between (see
     # below).
     n_cycle_baseline_no_fb = 2
-    n_cycle_baseline_continuous_fb = 2# Exclude?
+    n_cycle_baseline_continuous_fb = 2
     n_cycle_baseline_endpoint_fb = 2
     n_cycle_baseline_mixed_fb = 2
-    n_cycle_clamp = 1#?
+    n_cycle_clamp = 1
     n_cycle_generalisation = 15
     n_cycle_washout_no_fb = 2
-    n_cycle_washout_fb = 5
+    n_cycle_washout_fb = 2
 
     n_gen_tops = n_targets - 1
 
@@ -34,7 +34,7 @@ for i in range(len(conditions)):
     targets_baseline_mixed_fb = target_angle
     targets_clamp = np.array([target_train])
     targets_generalisation = np.concatenate(
-        (np.tile(target_angle[0], n_gen_tops), target_angle[1:]))
+        (np.tile(target_angle[4], n_gen_tops), target_angle[0:]))
     targets_washout_no_fb = target_angle
     targets_washout_fb = target_angle
 
@@ -332,5 +332,4 @@ for i in range(len(conditions)):
     # dd.plot(subplots=True, layout=(4, 4))
     # plt.show()
 
-for i in range(32):
     d.to_csv('../config/config_reach_' + str(i) + '.csv', index=False)
