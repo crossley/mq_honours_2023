@@ -58,7 +58,7 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 10
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv('/Users/liamturpin/mq_honours_2023/vma_general/liam/config/config_reach_' + str(1) + '.csv')
+config = pd.read_csv('/Users/liamturpin/mq_honours_2023/vma_general/liam/config/config_reach_demo.csv')
 
 cursor_vis = config['cursor_vis']
 midpoint_vis = config['midpoint_vis']
@@ -195,11 +195,9 @@ while current_trial < num_trials:
 
     if state == 'hold':
         if instruct_state[current_trial]:
-            text_stim.text = 'Remain still'
-            text_stim.draw()
+            start_circle.draw()
+            cursor_circle.draw()
 
-        start_circle.draw()
-        cursor_circle.draw()
         if mathtools.distance(start_circle.pos, cursor_circle.pos) >= 0.1:
             state = 'search_near'
             state_clock.reset()
@@ -287,7 +285,7 @@ while current_trial < num_trials:
 
             if clamp[current_trial] == True and endpoint_vis[current_trial]:
                 if instruct_state[current_trial]:
-                    text_stim.text = 'Clamp trial'
+                    text_stim.text = 'Random trial'
                     text_stim.draw()
 
                 feedback_circle.draw()
