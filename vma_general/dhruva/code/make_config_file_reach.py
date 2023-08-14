@@ -11,7 +11,7 @@ n_clamp = 0
 n_adaptation = 180
 n_wash = 100
 
-rot_amp = -1
+rot_amp = 1
 
 n_uncertainty_condition = 45
 
