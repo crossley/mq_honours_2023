@@ -10,7 +10,6 @@ fig, ax = plt.subplots(1, 1, squeeze=False)
 sns.scatterplot(data=d, x="x", y="y", hue="trial", ax=ax[0, 0])
 plt.show()
 
-
 # d_config = pd.read_csv("../config/config_reach_0.csv")
 # d_config = d_config[
 #     [
