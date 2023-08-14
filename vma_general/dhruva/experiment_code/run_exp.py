@@ -329,7 +329,6 @@ while current_trial < num_trials:
                 if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
                 
                     if low_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('low')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_low[i][1]
                             cx = x + cursor_cloud_jitter_low[i][0]
@@ -339,7 +338,6 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if high_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('high')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_high[i][1]
                             cx = x + cursor_cloud_jitter_high[i][0]
@@ -349,11 +347,9 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if no_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('no')
                         cursor_circle.pos = coordinatetools.pol2cart((theta + rot[current_trial]), r)
                         cursor_circle.draw()
             else:
-#                trial_data['uncertainty_condition'].append('unlimited')
                 mp_clock.reset()
 
         if mathtools.distance(start_circle.pos, (x, y)) >= target_distance:
