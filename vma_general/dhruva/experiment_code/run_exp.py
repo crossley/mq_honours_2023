@@ -200,6 +200,11 @@ mp_clock = core.Clock()
 
 while current_trial < num_trials:
     
+    projMatrix = win.projectionMatrix
+    projMatrix[1, 1] = -1
+    win.projectionMatrix = projMatrix
+    win.applyEyeTransform()
+    
     resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
     
