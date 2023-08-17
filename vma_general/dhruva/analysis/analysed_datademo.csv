@@ -1,0 +1,7 @@
+Unnamed: 0,cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,trial,cycle,target_angle,no_uncertainty,low_uncertainty,high_uncertainty,unlimited_uncertainty,endpoint_theta,movement_time,movement_initiation_time,previous_uncertainty
+0,1,1,0,0,0,0,0,0.0,2,1,90,0,0,0,0,87.13288663,0.1840657,0.4821662,no_uncertainty
+0,0,1,0,0,1,0,0,9.910643907,3,2,90,0,0,0,1,89.72540688,0.2328027,0.367218,no_uncertainty
+0,0,1,0,0,1,0,0,4.593702963,4,3,90,0,0,1,0,89.41781489,0.1997754,0.4672421,no_uncertainty
+0,0,1,0,0,1,0,0,8.977656478,5,4,90,1,0,0,0,94.00526677,0.2347986,0.4662439,high_uncertainty
+0,0,1,0,0,1,0,0,19.94296355,6,5,90,0,1,0,0,82.9411572,0.165777,0.5012094,no_uncertainty
+0,0,0,0,0,0,0,0,0.0,7,6,90,0,0,0,0,92.84790162,0.2144551,0.4184859,low_uncertainty

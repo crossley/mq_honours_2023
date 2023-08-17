@@ -117,7 +117,7 @@ win = visual.Window(size=(700, 700),
                     allowGUI=False,
                     allowStencil=False,
                     monitor='testMonitor',
-                    color='gray',
+                    color='black',
                     colorSpace='rgb',
                     blendMode='avg',
                     useFBO=False,
@@ -367,8 +367,7 @@ while current_trial < num_trials:
                 feedback_circle.pos = coordinatetools.pol2cart(
                     theta + rot[current_trial], target_distance)
 
-            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],
-                                                      mouse.getPos()[1])[0]
+            endpoint_theta = coordinatetools.cart2pol(x, y)[0]
             movement_time = state_clock.getTime()
             state = 'feedback'
             state_clock.reset()
