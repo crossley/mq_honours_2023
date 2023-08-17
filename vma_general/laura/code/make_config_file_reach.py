@@ -2,22 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-'''
-TODO:
-This is currentlly just copied over from recent work on Liam's code, but I
-think we will need to modify some things to make it suitable for Laura.
-
-4 trained directions - randomised the sequence such that each participant gets
-all 4 targets in random order - limiting explicit strategies.
-
-no_fb_baseline: 60 (5 trials for each of 12 targets)
-fb_baseline: 60 (5 trials for each of 12 targets)
-clamp: 120 trials (1 target direction)
-generalisation: 240 trials (10 trials to each of the 12 targets - half of each kind)
-no_fb_washout: 60 (5 trials for each of 12 targets)
-fb_washout: 60 (5 trials for each of 12 targets)
-'''
-
 n_subs_per_cnd = 1
 conditions = ['condition_1'] * n_subs_per_cnd
 np.random.shuffle(conditions)
@@ -25,32 +9,29 @@ np.random.shuffle(conditions)
 for i in range(len(conditions)):
 
     # Specify possible target angles
-    target_angle = np.arange(0, 180, 15)
-    target_train = target_angle[0]
+    target_angle = np.array([0, 15, 30, 45, 60, 75, 90, 135, 180, 225, 270, 315])
+    target_train = target_angle[3]
     n_targets = target_angle.shape[0]
+    clamp_n_targets = 1
 
     # Specify the number of times you want to cycle through the targets. Note
     # that each phase can have a different set of targets to cycle between (see
     # below).
-    n_cycle_baseline_no_fb = 2
-    n_cycle_baseline_continuous_fb = 2
-    n_cycle_baseline_endpoint_fb = 2
-    n_cycle_baseline_mixed_fb = 2
-    n_cycle_clamp = 1
-    n_cycle_generalisation = 15
-    n_cycle_washout_no_fb = 2
+    n_cycle_baseline_no_fb = 5
+    n_cycle_baseline_continuous_fb = 5
+    n_cycle_clamp = 120
+    n_cycle_generalisation = 10
+    n_cycle_washout_no_fb = 5
     n_cycle_washout_fb = 5
-
+    
     n_gen_tops = n_targets - 1
 
     # Specify a single cycle's worth of targets for each phase
     targets_baseline_no_fb = target_angle
     targets_baseline_continuous_fb = target_angle
-    targets_baseline_endpoint_fb = target_angle
-    targets_baseline_mixed_fb = target_angle
-    targets_clamp = np.array([target_train])
+    targets_clamp = target_train
     targets_generalisation = np.concatenate(
-        (np.tile(target_angle[0], n_gen_tops), target_angle[1:]))
+        (np.tile(target_angle[3], n_gen_tops), target_angle[0:]))
     targets_washout_no_fb = target_angle
     targets_washout_fb = target_angle
 
@@ -59,8 +40,6 @@ for i in range(len(conditions)):
         (np.tile(targets_baseline_no_fb, n_cycle_baseline_no_fb),
          np.tile(targets_baseline_continuous_fb,
                  n_cycle_baseline_continuous_fb),
-         np.tile(targets_baseline_endpoint_fb, n_cycle_baseline_endpoint_fb),
-         np.tile(targets_baseline_mixed_fb, n_cycle_baseline_mixed_fb),
          np.tile(targets_clamp, n_cycle_clamp),
          np.tile(targets_generalisation, n_cycle_generalisation),
          np.tile(targets_washout_no_fb, n_cycle_washout_no_fb),
@@ -73,12 +52,6 @@ for i in range(len(conditions)):
     cycle_baseline_continuous_fb = np.repeat(
         np.arange(1, n_cycle_baseline_continuous_fb + 1, 1),
         targets_baseline_continuous_fb.shape[0])
-    cycle_baseline_endpoint_fb = np.repeat(
-        np.arange(1, n_cycle_baseline_endpoint_fb + 1, 1),
-        targets_baseline_endpoint_fb.shape[0])
-    cycle_baseline_mixed_fb = np.repeat(
-        np.arange(1, n_cycle_baseline_mixed_fb + 1, 1),
-        targets_baseline_mixed_fb.shape[0])
     cycle_clamp = np.repeat(np.arange(1, n_cycle_clamp + 1, 1),
                             targets_clamp.shape[0])
     cycle_generalisation = np.repeat(
@@ -91,18 +64,13 @@ for i in range(len(conditions)):
 
     # Combine the above into an array that can later be added to the config data frame
     cycle_phase = np.concatenate(
-        (cycle_baseline_no_fb, cycle_baseline_continuous_fb,
-         cycle_baseline_endpoint_fb, cycle_baseline_mixed_fb, cycle_clamp,
+        (cycle_baseline_no_fb, cycle_baseline_continuous_fb, cycle_clamp,
          cycle_generalisation, cycle_washout_no_fb, cycle_washout_fb))
 
     # Get the number of trials the previous two chunks yield for each phase
     n_trial_baseline_no_fb = n_cycle_baseline_no_fb * targets_baseline_no_fb.shape[
         0]
     n_trial_baseline_continuous_fb = n_cycle_baseline_continuous_fb * targets_baseline_continuous_fb.shape[
-        0]
-    n_trial_baseline_endpoint_fb = n_cycle_baseline_endpoint_fb * targets_baseline_endpoint_fb.shape[
-        0]
-    n_trial_baseline_mixed_fb = n_cycle_baseline_mixed_fb * targets_baseline_mixed_fb.shape[
         0]
     n_trial_clamp = n_cycle_clamp * targets_clamp.shape[0]
     n_trial_generalisation = n_cycle_generalisation * targets_generalisation.shape[
@@ -115,8 +83,6 @@ for i in range(len(conditions)):
     n_trial = 0
     n_trial += n_trial_baseline_no_fb
     n_trial += n_trial_baseline_continuous_fb
-    n_trial += n_trial_baseline_endpoint_fb
-    n_trial += n_trial_baseline_mixed_fb
     n_trial += n_trial_clamp
     n_trial += n_trial_generalisation
     n_trial += n_trial_washout_no_fb
@@ -129,20 +95,14 @@ for i in range(len(conditions)):
     phase = np.concatenate(
         (['baseline_no_fb'] * n_trial_baseline_no_fb,
          ['baseline_continuous_fb'] * n_trial_baseline_continuous_fb,
-         ['baseline_endpoint_fb'] * n_trial_baseline_endpoint_fb,
-         ['baseline_mixed_fb'] * n_trial_baseline_mixed_fb, ['clamp'] *
-         n_trial_clamp, ['generalisation'] * n_trial_generalisation,
+         ['clamp'] * n_trial_clamp, ['generalisation'] * n_trial_generalisation,
          ['washout_no_fb'] * n_trial_washout_no_fb,
          ['washout_fb'] * n_trial_washout_fb))
 
     # Specify the mean and standard deviation of the perturbation to be applied
     # during the clamp phase.
-    if conditions[i] == 'low':
         rot_mean = 30
         rot_sig = 1
-    elif conditions[i] == 'high':
-        rot_mean = 30
-        rot_sig = 3
 
     # Specify phase-specific instructions.
     instruct_phase = {
@@ -151,14 +111,6 @@ for i in range(len(conditions)):
         + 'You will not see the cursor during this phase.',
         'baseline_continuous_fb':
         'You will now only see the cursor throughout your entire reach.\n' +
-        'Please continue to slice through the target as quickly and accurately as possible.',
-        'baseline_endpoint_fb':
-        'You will now only see the cursor only at the endpoint of your reach.\n'
-        +
-        'Please continue to slice through the target as quickly and accurately as possible.',
-        'baseline_mixed_fb':
-        'You will now only see the cursor at the endpoint of your reach on some trials.\n'
-        + 'On the other trials you will not recieve feedback at all.\n'
         'Please continue to slice through the target as quickly and accurately as possible.',
         'clamp':
         'The cursor feedback is now clamped.\n' +
@@ -185,11 +137,6 @@ for i in range(len(conditions)):
     instruct_baseline_continuous_fb = [
         instruct_phase['baseline_continuous_fb']
     ] + [''] * (n_trial_baseline_continuous_fb - 1)
-    instruct_baseline_endpoint_fb = [
-        instruct_phase['baseline_endpoint_fb']
-    ] + [''] * (n_trial_baseline_endpoint_fb - 1)
-    instruct_baseline_mixed_fb = [instruct_phase['baseline_mixed_fb']
-                                  ] + [''] * (n_trial_baseline_mixed_fb - 1)
     instruct_clamp = [instruct_phase['clamp']] + [''] * (n_trial_clamp - 1)
     instruct_generalisation = [instruct_phase['generalisation']
                                ] + [''] * (n_trial_generalisation - 1)
@@ -202,7 +149,6 @@ for i in range(len(conditions)):
     # can later be added to the config dataframe.
     instruct_phase = np.concatenate(
         (instruct_baseline_no_fb, instruct_baseline_continuous_fb,
-         instruct_baseline_endpoint_fb, instruct_baseline_mixed_fb,
          instruct_clamp, instruct_generalisation, instruct_washout_no_fb,
          instruct_washout_fb))
 
@@ -214,63 +160,21 @@ for i in range(len(conditions)):
     # Continuous cursor feedback
     cursor_vis = np.concatenate(
         (0 * np.ones(n_trial_baseline_no_fb),
-         1 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         1 * np.ones(n_trial_baseline_continuous_fb), 1 * np.ones(n_trial_clamp),
          0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
-
-    # midpoint feedback
-    midpoint_vis = np.concatenate(
-        (0 * np.ones(n_trial_baseline_no_fb),
-         0 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
-         0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
+         0 * np.ones(n_trial_washout_no_fb), 1 * np.ones(n_trial_washout_fb)))
 
     # endpoint feedback
     endpoint_vis = np.concatenate(
         (0 * np.ones(n_trial_baseline_no_fb),
          1 * np.ones(n_trial_baseline_continuous_fb),
-         1 * np.ones(n_trial_baseline_endpoint_fb),
-         np.random.permutation([0, 1] * (n_trial_baseline_mixed_fb // 2)),
          1 * np.ones(n_trial_clamp), 0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 1 * np.ones(n_trial_washout_fb)))
-
-    # continuous cursor cloud standard deviation
-    cursor_sig = np.concatenate(
-        (0 * np.ones(n_trial_baseline_no_fb),
-         0 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
-         0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
-
-    # midpoint cursor cloud standard deviation
-    cursor_mp_sig = np.concatenate(
-        (0 * np.ones(n_trial_baseline_no_fb),
-         0 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
-         0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
-
-    # endpoint cursor cloud standard deviation
-    cursor_ep_sig = np.concatenate(
-        (0 * np.ones(n_trial_baseline_no_fb),
-         0 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
-         0 * np.ones(n_trial_generalisation),
-         0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
     # whether or not cursor feedback of any kind is clamped
     clamp = np.concatenate(
         (0 * np.ones(n_trial_baseline_no_fb),
-         0 * np.ones(n_trial_baseline_continuous_fb),
-         0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 1 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_continuous_fb), 1 * np.ones(n_trial_clamp),
          1 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -278,8 +182,6 @@ for i in range(len(conditions)):
     rot = np.concatenate((
         np.random.normal(0, rot_sig, n_trial_baseline_no_fb),
         np.random.normal(0, rot_sig, n_trial_baseline_continuous_fb),
-        np.random.normal(0, rot_sig, n_trial_baseline_endpoint_fb),
-        np.random.normal(0, rot_sig, n_trial_baseline_mixed_fb),
         np.random.normal(rot_mean, rot_sig, n_trial_clamp),
         np.random.normal(rot_mean, rot_sig, n_trial_generalisation),
         np.random.normal(0, rot_sig, n_trial_washout_no_fb),
@@ -295,11 +197,7 @@ for i in range(len(conditions)):
         'cycle_phase': cycle_phase,
         'target_angle': target_angle,
         'cursor_vis': cursor_vis,
-        'midpoint_vis': midpoint_vis,
         'endpoint_vis': endpoint_vis,
-        'cursor_sig': cursor_sig,
-        'cursor_mp_sig': cursor_mp_sig,
-        'cursor_ep_sig': cursor_ep_sig,
         'clamp': clamp,
         'rot': rot,
         'instruct_phase': instruct_phase,
@@ -314,7 +212,7 @@ for i in range(len(conditions)):
     # Turn on endpoint feedback for training target during the generalisation
     # phase
     d.loc[(d['phase'] == 'generalisation') &
-          (d['target_angle'] == target_train), 'endpoint_vis'] = 1
+              (d['target_angle'] == target_train), ['cursor_vis', 'endpoint_vis'] = 1
 
     # # NOTE: plot design
     # nn = [
