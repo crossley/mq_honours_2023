@@ -4,6 +4,7 @@ from psychopy.constants import *
 from psychopy import parallel
 from psychopy.tools import coordinatetools
 from psychopy.tools import mathtools
+from psychopy import tools
 import datetime
 import os
 import sys
@@ -126,8 +127,8 @@ search_circle = visual.Circle(win,
                               fillColor=None)
 start_circle = visual.Circle(win, radius=0.25, fillColor='blue')
 target_circle = visual.Circle(win, radius=0.25, fillColor='blue')
-feedback_circle = visual.Circle(win, radius=0.125, fillColor='white')
-cursor_circle = visual.Circle(win, radius=0.125, fillColor='white')
+feedback_circle = visual.Circle(win, radius=0.125, fillColor='red')
+cursor_circle = visual.Circle(win, radius=0.125, fillColor='red')
 cursor_cloud = [visual.Circle(win, radius=0.125, fillColor='white')] * 10
 
 text_stim = visual.TextStim(win=win,
@@ -190,11 +191,24 @@ state_clock = core.Clock()
 mp_clock = core.Clock()
 
 while current_trial < num_trials:
-
+    
+    projMatrix = win.projectionMatrix
+    viewMatrix = win.viewMatrix
+    projMatrix[1, 1] = -1
+    win.projectionMatrix = projMatrix
+    win.viewMatrix = viewMatrix
+    win.applyEyeTransform()
+    
     resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
+    
+    if use_liberty:
+        c_position = getPosition(ser, recordsize, averager)
+        x = c_position[0]
+        y = c_position[1]
+    else:
+        x, y = mouse.getPos()
 
-    x, y = mouse.getPos()
     theta, r = coordinatetools.cart2pol(x, y)
 
     cursor_circle.pos = (x, y)
@@ -355,8 +369,7 @@ while current_trial < num_trials:
                 feedback_circle.pos = coordinatetools.pol2cart(
                     theta + rot[current_trial], target_distance)
 
-            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],
-                                                      mouse.getPos()[1])[0]
+            endpoint_theta = coordinatetools.cart2pol(x, y)[0]
             movement_time = state_clock.getTime()
             state = 'feedback'
             state_clock.reset()
