@@ -3,12 +3,27 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-d_move = pd.read_csv("../data/data_movements_0.csv")
+d_move = pd.read_csv("../data/data_movements_demo.csv")
 d_move = d_move[d_move["state"] == "reach"]
 
-fig, ax = plt.subplots(1, 1, squeeze=False)
-sns.scatterplot(data=d, x="x", y="y", hue="trial", ax=ax[0, 0])
+fig, ax = plt.subplots(2, 4, squeeze=False)
+ax = ax.flatten()
+for i in d.trial.unique():
+    print(d[d["trial"] == i].shape)
+    sns.scatterplot(
+        data=d[d["trial"] == i], x="x", y="y", hue="time", ax=ax[i], legend=False
+    )
 plt.show()
+
+d_move = pd.read_csv("../data/data_movements_demo.csv")
+d = d_move
+
+d = d_move
+d["trial"] = d["trial"].astype("category")
+fig, ax = plt.subplots(1, 1, squeeze=False)
+sns.scatterplot(data=d, x="time", y="state", hue="trial")
+plt.show()
+
 
 # d_config = pd.read_csv("../config/config_reach_0.csv")
 # d_config = d_config[
