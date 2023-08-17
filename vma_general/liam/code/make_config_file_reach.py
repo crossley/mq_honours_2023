@@ -260,14 +260,14 @@ for i in range(len(conditions)):
 
     # cursor rotation
     rot = np.concatenate((
-        np.random.normal(0, 0, n_trial_baseline_no_fb),
-        np.random.normal(0, 0, n_trial_baseline_continuous_fb),
-        np.random.normal(0, 0, n_trial_baseline_endpoint_fb),
-        np.random.normal(0, 0, n_trial_baseline_mixed_fb),
+        np.random.normal(0, rot_sig, n_trial_baseline_no_fb),
+        np.random.normal(0, rot_sig, n_trial_baseline_continuous_fb),
+        np.random.normal(0, rot_sig, n_trial_baseline_endpoint_fb),
+        np.random.normal(0, rot_sig, n_trial_baseline_mixed_fb),
         np.random.normal(rot_mean, rot_sig, n_trial_clamp),
         np.random.normal(rot_mean, rot_sig, n_trial_generalisation),
-        np.random.normal(0, 0, n_trial_washout_no_fb),
-        np.random.normal(0, 0, n_trial_washout_fb),
+        np.random.normal(0, rot_sig, n_trial_washout_no_fb),
+        np.random.normal(0, rot_sig, n_trial_washout_fb),
     ))
 
     # Construct the config dataframe
