@@ -4,6 +4,7 @@ from psychopy.constants import *
 from psychopy import parallel
 from psychopy.tools import coordinatetools
 from psychopy.tools import mathtools
+from psychopy import tools
 import datetime
 import os
 import sys
@@ -121,7 +122,7 @@ win = visual.Window(size=(700, 700),
                     blendMode='avg',
                     useFBO=False,
                     units='cm')
-
+                    
 search_circle = visual.Circle(win,
                               radius=0.5,
                               lineColor='white',
@@ -199,6 +200,11 @@ mp_clock = core.Clock()
 
 
 while current_trial < num_trials:
+    
+    projMatrix = win.projectionMatrix
+    projMatrix[1, 1] = -1
+    win.projectionMatrix = projMatrix
+    win.applyEyeTransform()
     
     resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
