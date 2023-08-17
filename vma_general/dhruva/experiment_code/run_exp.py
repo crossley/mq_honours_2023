@@ -116,7 +116,7 @@ win = visual.Window(size=(700, 700),
                     allowGUI=False,
                     allowStencil=False,
                     monitor='testMonitor',
-                    color='gray',
+                    color='black',
                     colorSpace='rgb',
                     blendMode='avg',
                     useFBO=False,
@@ -199,6 +199,11 @@ mp_clock = core.Clock()
 
 
 while current_trial < num_trials:
+    
+    projMatrix = win.projectionMatrix
+    projMatrix[1, 1] = -1
+    win.projectionMatrix = projMatrix
+    win.applyEyeTransform()
     
     resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
@@ -329,7 +334,6 @@ while current_trial < num_trials:
                 if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
                 
                     if low_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('low')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_low[i][1]
                             cx = x + cursor_cloud_jitter_low[i][0]
@@ -339,7 +343,6 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if high_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('high')
                         for i in range(len(cursor_cloud)):
                             cy = y + cursor_cloud_jitter_high[i][1]
                             cx = x + cursor_cloud_jitter_high[i][0]
@@ -349,11 +352,9 @@ while current_trial < num_trials:
                             cursor_cloud[i].draw()
                         
                     if no_uncertainty[current_trial] == True: 
-#                        trial_data['uncertainty_condition'].append('no')
                         cursor_circle.pos = coordinatetools.pol2cart((theta + rot[current_trial]), r)
                         cursor_circle.draw()
             else:
-#                trial_data['uncertainty_condition'].append('unlimited')
                 mp_clock.reset()
 
         if mathtools.distance(start_circle.pos, (x, y)) >= target_distance:
@@ -365,8 +366,7 @@ while current_trial < num_trials:
                 feedback_circle.pos = coordinatetools.pol2cart(
                     theta + rot[current_trial], target_distance)
 
-            endpoint_theta = coordinatetools.cart2pol(mouse.getPos()[0],
-                                                      mouse.getPos()[1])[0]
+            endpoint_theta = coordinatetools.cart2pol(x, y)[0]
             movement_time = state_clock.getTime()
             state = 'feedback'
             state_clock.reset()
