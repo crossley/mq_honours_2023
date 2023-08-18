@@ -185,7 +185,7 @@ t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
 t_iti = 1.0
 t_feedback = 1.0
 t_mp = 0.1
-t_too_fast = 0.0
+t_too_fast = 0.1
 t_too_slow = 1.0
 
 search_near_thresh = 0.25
@@ -201,10 +201,13 @@ mp_clock = core.Clock()
 
 while current_trial < num_trials:
     
-    projMatrix = win.projectionMatrix
-    projMatrix[1, 1] = -1
-    win.projectionMatrix = projMatrix
-    win.applyEyeTransform()
+    # retrial flag
+    retrial = False
+    
+#    projMatrix = win.projectionMatrix
+#    projMatrix[1, 1] = -1
+#    win.projectionMatrix = projMatrix
+#    win.applyEyeTransform()
     
     resp = event.getKeys(keyList=['escape'])
     rt = state_clock.getTime()
@@ -376,10 +379,15 @@ while current_trial < num_trials:
         if movement_time > t_too_slow:
             text_stim.text = 'Please execute your movement more quickly'
             text_stim.draw()
+            
+            # code for ensuring retrial
+            retrial = True
 
         elif movement_time < t_too_fast:
             text_stim.text = 'Please execute your movement more slowly'
             text_stim.draw()
+            
+            retrial = True
 
         else:
 
@@ -399,7 +407,10 @@ while current_trial < num_trials:
                     cursor_cloud[i].draw()
                     
         if state_clock.getTime() > t_feedback:
-            state = 'iti'
+            if retrial:
+                state = 'trial_init'
+            else:
+                state = 'iti'
             state_clock.reset()
 
     if state == 'iti':
