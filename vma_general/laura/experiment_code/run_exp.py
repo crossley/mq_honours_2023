@@ -28,15 +28,11 @@ win = visual.Window(size=(700, 700),
                     useFBO=False,
                     units='cm')
 
-search_circle = visual.Circle(win,
-                              radius=0.5,
-                              lineColor='white',
-                              fillColor=None)
-start_circle = visual.Circle(win, radius=0.5, fillColor='blue')
-target_circle = visual.Circle(win, radius=0.5, fillColor='blue')
-feedback_circle = visual.Circle(win, radius=0.35, fillColor='white')
-cursor_circle = visual.Circle(win, radius=0.35, fillColor='white')
-cursor_cloud = [visual.Circle(win, radius=0.35, fillColor='white')] * 10
+search_circle = visual.Circle(win, radius=0.5,lineColor='white', fillColor=None, edges = 200)
+start_circle = visual.Circle(win, radius=0.5, fillColor='blue', edges = 100)
+target_circle = visual.Circle(win, radius=0.5, fillColor='blue', edges = 100)
+feedback_circle = visual.Circle(win, radius=0.35, fillColor='white', edges = 100)
+cursor_circle = visual.Circle(win, radius=0.35, fillColor='white', edges = 100)
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -58,18 +54,14 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 6
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
+config = pd.read_csv(r"C:\Users\laura\OneDrive\Desktop\mq_honours_2023-main\vma_general\laura\config\config_test_" + str(sub_num) + '.csv')
 
 cursor_vis = config['cursor_vis']
-midpoint_vis = config['midpoint_vis']
 endpoint_vis = config['endpoint_vis']
-cursor_sig = config['cursor_sig']
-cursor_mp_sig = config['cursor_mp_sig']
-cursor_ep_sig = config['cursor_ep_sig']
+cycle = config['cycle_phase']
 clamp = config['clamp']
 rot = config['rot']
 trial = config['trial']
-cycle = config['cycle']
 target_angle = config['target_angle']
 instruct_phase = config['instruct_phase']
 instruct_state = config['instruct_state']
@@ -82,8 +74,7 @@ t_instruct = 1.0
 t_hold = 1.0
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
 t_iti = 1.0
-t_feedback = 1.0
-t_mp = 0.3
+t_feedback = 1.5
 t_too_fast = 0.1
 t_too_slow = 0.8
 
@@ -95,7 +86,6 @@ current_sample = 0
 
 experiment_clock = core.Clock()
 state_clock = core.Clock()
-mp_clock = core.Clock()
 
 while current_trial < num_trials:
 
@@ -111,15 +101,11 @@ while current_trial < num_trials:
 
         trial_data = {
             'cursor_vis': [],
-            'midpoint_vis': [],
             'endpoint_vis': [],
-            'cursor_sig': [],
-            'cursor_mp_sig': [],
-            'cursor_ep_sig': [],
             'clamp': [],
             'rot': [],
             'trial': [],
-            'cycle': [],
+            'cycle_phase': [],
             'target_angle': [],
             'instruct_phase': [],
             'instruct_state': [],
@@ -127,7 +113,7 @@ while current_trial < num_trials:
             'movement_time': [],
             'movement_initiation_time': []
         }
-
+      
         trial_move = {
             'trial': [],
             'state': [],
@@ -136,14 +122,6 @@ while current_trial < num_trials:
             'x': [],
             'y': []
         }
-
-        cursor_cloud_jitter_mp = np.random.multivariate_normal(
-            [0, 0], [[cursor_mp_sig[current_trial], 0],
-                     [0, cursor_mp_sig[current_trial]]], len(cursor_cloud))
-
-        cursor_cloud_jitter_ep = np.random.multivariate_normal(
-            [0, 0], [[cursor_ep_sig[current_trial], 0],
-                     [0, cursor_ep_sig[current_trial]]], len(cursor_cloud))
 
         endpoint_theta = -1
         movement_time = -1
@@ -209,8 +187,12 @@ while current_trial < num_trials:
             state = 'move_prep'
             state_clock.reset()
 
-    if state == 'move_prep':
-        if instruct_state[current_trial]:
+        if state == 'move_prep':
+        if instruct_state[current_trial] == True and clamp[current_trial]:
+            text_stim.text = 'The cursor is now clamped. Ignore the cursor feedback and and continue slicing directly through the target.'
+            text_stim.draw()
+
+        elif instruct_state[current_trial]:
             text_stim.text = 'Slice through the target as quickly and accurately as possible'
             text_stim.draw()
 
@@ -234,12 +216,11 @@ while current_trial < num_trials:
 
     if state == 'reach':
         if instruct_state[current_trial]:
-            text_stim.text = 'Reaching...'
             text_stim.draw()
 
         target_circle.draw()
         start_circle.draw()
-
+      
         if clamp[current_trial] == True:
             cursor_circle.pos = coordinatetools.pol2cart(
                 target_angle[current_trial] + rot[current_trial], r)
@@ -249,17 +230,6 @@ while current_trial < num_trials:
 
         if cursor_vis[current_trial]:
             cursor_circle.draw()
-
-        if midpoint_vis[current_trial]:
-            if r >= target_distance / 2:
-                if mp_clock.getTime() < t_mp:
-                    for i in range(len(cursor_cloud)):
-                        cx = x + cursor_cloud_jitter_mp[i][0]
-                        cy = y + cursor_cloud_jitter_mp[i][1]
-                        cursor_cloud[i].pos = (cx, cy)
-                        cursor_cloud[i].draw()
-            else:
-                mp_clock.reset()
 
         if mathtools.distance(start_circle.pos, (x, y)) >= target_distance:
             if clamp[current_trial] == True:
@@ -286,21 +256,20 @@ while current_trial < num_trials:
             text_stim.draw()
 
         else:
-
             start_circle.draw()
             target_circle.draw()
 
-            if endpoint_vis[current_trial]:
+            if clamp[current_trial] == True and endpoint_vis[current_trial]:
+                if instruct_state[current_trial]:
+                    text_stim.text = 'The cursor feedback is does not show how accurate your reach was for this trial.'
+                    text_stim.draw()
+                feedback_circle.draw()
+  
+            elif endpoint_vis[current_trial]:
                 if instruct_state[current_trial]:
                     text_stim.text = 'The on screen cursor shows you how accurate your reach was'
                     text_stim.draw()
-
                 feedback_circle.draw()
-                for i in range(len(cursor_cloud)):
-                    cx = feedback_circle.pos[0] + cursor_cloud_jitter_ep[i][0]
-                    cy = feedback_circle.pos[1] + cursor_cloud_jitter_ep[i][1]
-                    cursor_cloud[i].pos = (cx, cy)
-                    cursor_cloud[i].draw()
 
             else:
                 if instruct_state[current_trial]:
@@ -313,25 +282,16 @@ while current_trial < num_trials:
             state = 'iti'
             state_clock.reset()
 
-    if state == 'iti':
-        if instruct_state[current_trial]:
-            text_stim.text = 'Please remain still and wait for further instructions'
-            text_stim.draw()
-
         if state_clock.getTime() > t_iti:
             state = 'trial_init'
 
             trial_data = {
                 'cursor_vis': [cursor_vis[current_trial]],
-                'midpoint_vis': [midpoint_vis[current_trial]],
                 'endpoint_vis': [endpoint_vis[current_trial]],
-                'cursor_sig': [cursor_sig[current_trial]],
-                'cursor_mp_sig': [cursor_mp_sig[current_trial]],
-                'cursor_ep_sig': [cursor_ep_sig[current_trial]],
                 'clamp': [clamp[current_trial]],
                 'rot': [rot[current_trial]],
                 'trial': [trial[current_trial]],
-                'cycle': [cycle[current_trial]],
+                'cycle_phase': [cycle[current_trial]],
                 'target_angle': [target_angle[current_trial]],
                 'instruct_phase': [instruct_phase[current_trial]],
                 'instruct_state': [instruct_state[current_trial]],

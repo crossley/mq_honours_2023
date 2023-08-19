@@ -4,6 +4,7 @@ from psychopy.constants import *
 from psychopy import parallel
 from psychopy.tools import coordinatetools
 from psychopy.tools import mathtools
+from psychopy import tools
 import datetime
 import os
 import sys
@@ -121,7 +122,7 @@ win = visual.Window(size=(700, 700),
                     blendMode='avg',
                     useFBO=False,
                     units='cm')
-
+                    
 search_circle = visual.Circle(win,
                               radius=0.5,
                               lineColor='white',

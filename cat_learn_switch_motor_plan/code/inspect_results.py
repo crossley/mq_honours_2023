@@ -14,7 +14,7 @@ d = pd.concat(d)
 d = d.loc[d["resp"] != "many"]
 
 n_trials = d["trial"].max()
-block_size = 50
+block_size = 25
 n_blocks = n_trials // block_size
 n_subs = d["subject"].unique().shape[0]
 

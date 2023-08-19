@@ -2,15 +2,15 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-n_subs_per_cnd = 5
+n_subs_per_cnd = 16
 conditions = ['low', 'high'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 
 for i in range(len(conditions)):
 
     # Specify possible target angles
-    target_angle = np.arange(0, 180, 15)
-    target_train = target_angle[0]
+    target_angle = np.array([0, 45, 60, 75, 90, 105, 120, 135, 180, 225, 270, 315])
+    target_train = target_angle[4]
     n_targets = target_angle.shape[0]
 
     # Specify the number of times you want to cycle through the targets. Note
@@ -23,7 +23,7 @@ for i in range(len(conditions)):
     n_cycle_clamp = 1
     n_cycle_generalisation = 15
     n_cycle_washout_no_fb = 2
-    n_cycle_washout_fb = 5
+    n_cycle_washout_fb = 2
 
     n_gen_tops = n_targets - 1
 
@@ -34,7 +34,7 @@ for i in range(len(conditions)):
     targets_baseline_mixed_fb = target_angle
     targets_clamp = np.array([target_train])
     targets_generalisation = np.concatenate(
-        (np.tile(target_angle[0], n_gen_tops), target_angle[1:]))
+        (np.tile(target_angle[4], n_gen_tops), target_angle[0:]))
     targets_washout_no_fb = target_angle
     targets_washout_fb = target_angle
 
@@ -123,10 +123,10 @@ for i in range(len(conditions)):
     # during the clamp phase.
     if conditions[i] == 'low':
         rot_mean = 30
-        rot_sig = 1
+        rot_sig = 4
     elif conditions[i] == 'high':
         rot_mean = 30
-        rot_sig = 3
+        rot_sig = 12
 
     # Specify phase-specific instructions.
     instruct_phase = {
