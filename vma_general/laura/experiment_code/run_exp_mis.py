@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 
 sub_num = 0
-num_trials = 10
+num_trials = 36
 use_liberty = False
 
 
@@ -163,7 +163,7 @@ while current_trial < num_trials:
     x = c_position[0]
     y = c_position[1]
 
-    text_stim.text = 'current tiral: ' + str(
+    text_stim.text = 'current trial: ' + str(
         current_trial) + '\ncurrent state: ' + str(state)
     text_stim.draw()
 
