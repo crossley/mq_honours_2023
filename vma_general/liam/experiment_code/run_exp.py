@@ -14,7 +14,7 @@ import struct
 import numpy as np
 import pandas as pd
 
-sub_num = 0
+sub_num = 'demo'
 use_liberty = False
 
 # This method grabs the position of the sensor
@@ -151,7 +151,7 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 10
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv('../config/config_reach_demo.csv')
+config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
 
 cursor_vis = config['cursor_vis']
 midpoint_vis = config['midpoint_vis']
