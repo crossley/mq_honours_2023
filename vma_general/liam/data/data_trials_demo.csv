@@ -1,0 +1,4 @@
+,cursor_vis,midpoint_vis,endpoint_vis,cursor_sig,cursor_mp_sig,cursor_ep_sig,clamp,rot,trial,cycle,target_angle,instruct_phase,instruct_state,endpoint_theta,movement_time,movement_initiation_time
+0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1,1,180,"You will now only see the cursor throughout your entire reach.
+Please continue to slice through the target as quickly and accurately as possible.",1.0,3.0832100099120407,0.11762451997492462,1.205792789987754
+0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,2,1,270,,1.0,-99.32603374120661,0.23338836198672652,0.771266755007673
