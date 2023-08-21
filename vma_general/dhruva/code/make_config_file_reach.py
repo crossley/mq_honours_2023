@@ -145,5 +145,33 @@ n_subs_per_cnd = 20
 conditions = ['explicit_instruct'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 '''
+
+lookup_df = pd.read_excel('../condition_assignment.xls')
+
 for sub in range(41):
-    d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+    if sub == 0:
+        d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+    else:
+        condition = lookup_df.iloc[sub - 1].experimentalCondition
+        d['experimental_condition'] = condition
+        d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+
+
+
+'''
+
+df
+
+a b
+1 2
+3 4
+5 6
+
+df['c'] = 'hello'
+
+a b c
+1 2 'hello'
+3 4 'hello'
+5 6 'hello'
+
+'''

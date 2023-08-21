@@ -148,4 +148,5 @@ np.random.shuffle(conditions)
 
 for sub in range(len(conditions)):
 '''
+d['experimentalCondition'] = 'aiming_instructions'
 d.to_csv('../config/config_reach_demo.csv', index=False)

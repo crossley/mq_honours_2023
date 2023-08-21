@@ -1,5 +1,5 @@
-participant_id,experimentalCondition,,Date  ,Time
-1,replication_instructions,,16/8/2023,14:00 - 15:00
+participant_id,experimentalCondition,Date,Time
+1,replication_instructions,16/8/2023,14:00 - 15:00
 2,aiming_instructions,,,
 3,replication_instructions,,,
 4,replication_instructions,,,
