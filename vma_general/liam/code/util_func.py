@@ -3,7 +3,7 @@ from imports import *
 
 def load_all_data():
     d_list = []
-    for sub_num in np.arange(1, 8, 1):
+    for sub_num in np.arange(1, 4, 1):
         if sub_num % 2 == 0:
             condition = 1
         else:
@@ -11,33 +11,26 @@ def load_all_data():
 
         d_move = pd.read_csv("../data/data_movements_" + str(sub_num) + ".csv")
         d_config = pd.read_csv("../config/config_reach_" + str(sub_num) + ".csv")
+        d_trial = pd.read_csv("../data/data_trials_" + str(sub_num) + ".csv")
 
         d_config = d_config[
             [
+                "condition",
+                "subject",
+                "phase",
                 "trial",
-                "no_uncertainty",
-                "low_uncertainty",
-                "high_uncertainty",
-                "unlimited_uncertainty",
                 "rot",
                 "target_angle",
             ]
         ]
 
-        d_config["phase"] = (
-            ["base"] * 20
-            + ["adapt_1"] * 45
-            + ["adapt_2"] * 45
-            + ["adapt_3"] * 45
-            + ["adapt_4"] * 45
-            + ["wash"] * 100
-        )
+        d_trial = d_trial[["trial", "endpoint_theta"]]
 
         d = pd.merge(d_move, d_config, on="trial")
+        d = pd.merge(d, d_trial, on="trial")
+
         d = d.sort_values(["sample", "time", "trial"])
         d = d[d["state"] == "reach"]
-        d["subject"] = sub_num
-        d["condition"] = condition
 
         d = d[
             [
@@ -49,27 +42,11 @@ def load_all_data():
                 "phase",
                 "subject",
                 "condition",
-                "no_uncertainty",
-                "low_uncertainty",
-                "high_uncertainty",
-                "unlimited_uncertainty",
                 "rot",
                 "target_angle",
+                "endpoint_theta",
             ]
         ]
-
-        # d = d[np.isin(d["phase"], ["adapt_1", "adapt_2", "adapt_3", "adapt_4"])]
-
-        d["sig_mp"] = (
-            1 * d["no_uncertainty"]
-            + 2 * d["low_uncertainty"]
-            + 3 * d["high_uncertainty"]
-            + 4 * d["unlimited_uncertainty"]
-        ).astype("category")
-
-        d["sig_mp"] = d["sig_mp"].cat.rename_categories(
-            ["basewash", "low", "med", "high", "Inf"]
-        )
 
         d_list.append(d)
 
@@ -96,10 +73,10 @@ def compute_mv(d):
     target_angle = d["target_angle"]
     t = t - t.min()
     theta, radius = cart2pol(x, y, units="deg")
-    imv = theta[radius < 5].mean() - target_angle
-    emv = theta[-1] - target_angle
-    d["imv"] = -imv
-    d["emv"] = -emv
+    imv = theta[radius < 5].mean()
+    emv = theta[-1]
+    d["imv"] = imv - target_angle
+    d["emv"] = emv - target_angle
     return d
 
 
