@@ -14,7 +14,7 @@ import struct
 import numpy as np
 import pandas as pd
 
-sub_num = 0
+sub_num = 'demo'
 use_liberty = False
 
 
@@ -123,12 +123,24 @@ win = visual.Window(
     units="cm",
 )
 
+<<<<<<< HEAD
 search_circle = visual.Circle(win, radius=0.5, lineColor="white", fillColor=None)
 start_circle = visual.Circle(win, radius=0.25, fillColor="blue")
 target_circle = visual.Circle(win, radius=0.25, fillColor="blue")
 feedback_circle = visual.Circle(win, radius=0.125, fillColor="red")
 cursor_circle = visual.Circle(win, radius=0.125, fillColor="red")
 cursor_cloud = [visual.Circle(win, radius=0.125, fillColor="white")] * 10
+=======
+search_circle = visual.Circle(win,
+                              radius=0.5,
+                              lineColor='white',
+                              fillColor=None)
+start_circle = visual.Circle(win, radius=0.25, fillColor='blue')
+target_circle = visual.Circle(win, radius=0.25, fillColor='blue')
+feedback_circle = visual.Circle(win, radius=0.125, fillColor='red')
+cursor_circle = visual.Circle(win, radius=0.125, fillColor='red')
+cursor_cloud = [visual.Circle(win, radius=0.125, fillColor='red')] * 10
+>>>>>>> LiamTurpin-Code_Changes
 
 text_stim = visual.TextStim(
     win=win,
@@ -152,9 +164,10 @@ mouse = event.Mouse(visible=False, win=win)
 target_distance = 10
 target_circle.pos = (0, target_distance)
 
-config = pd.read_csv(
-    "/Users/liamturpin/mq_honours_2023/vma_general/liam/config/config_reach_demo.csv"
-)
+# config = pd.read_csv(
+#     "/Users/liamturpin/mq_honours_2023/vma_general/liam/config/config_reach_demo.csv"
+# )
+config = pd.read_csv('../config/config_reach_' + str(sub_num) + '.csv')
 
 cursor_vis = config["cursor_vis"]
 midpoint_vis = config["midpoint_vis"]
