@@ -1,0 +1,48 @@
+condition,subject,trial,phase,cycle_phase,target_angle,cursor_vis,endpoint_vis,clamp,rot,instruct_phase,instruct_state
+condition_1,0,1,baseline_no_fb,1,270,0.0,0.0,0.0,-0.18808239232004137,"Please slice through the target as quickly and accurately as possible.
+You will not see the cursor during this phase.",1.0
+condition_1,0,2,baseline_no_fb,1,90,0.0,0.0,0.0,-0.3951230689071082,,1.0
+condition_1,0,3,baseline_no_fb,1,0,0.0,0.0,0.0,-0.23339685700685256,,1.0
+condition_1,0,4,baseline_no_fb,1,315,0.0,0.0,0.0,-1.0196082873764591,,1.0
+condition_1,0,5,baseline_no_fb,1,225,0.0,0.0,0.0,-0.0200515241114342,,1.0
+condition_1,0,6,baseline_no_fb,1,180,0.0,0.0,0.0,-0.010032996170454491,,1.0
+condition_1,0,7,baseline_continuous_fb,1,90,1.0,1.0,0.0,0.30763507149275665,"You will now only see the cursor throughout your entire reach.
+Please continue to slice through the target as quickly and accurately as possible.",1.0
+condition_1,0,8,baseline_continuous_fb,1,315,1.0,1.0,0.0,0.2868998559446283,,1.0
+condition_1,0,9,baseline_continuous_fb,1,225,1.0,1.0,0.0,1.2110710943252028,,1.0
+condition_1,0,10,baseline_continuous_fb,1,0,1.0,1.0,0.0,0.8793389725502749,,1.0
+condition_1,0,11,baseline_continuous_fb,1,270,1.0,1.0,0.0,-0.3331241916153855,,1.0
+condition_1,0,12,baseline_continuous_fb,1,180,1.0,1.0,0.0,-0.2371796481330118,,1.0
+condition_1,0,13,clamp,1,225,1.0,1.0,1.0,29.992545079478603,"The cursor feedback is now clamped.
+The location of the endpoint feedback is random.
+It  has nothing to do with how accurately you reach.
+Please do your best to ignore the cursor feedback and continue slicing directly through the target.",1.0
+condition_1,0,14,clamp,2,225,1.0,1.0,1.0,32.16308075629224,,1.0
+condition_1,0,15,clamp,3,225,1.0,1.0,1.0,30.82638616000296,,1.0
+condition_1,0,16,clamp,4,225,1.0,1.0,1.0,30.007105709226824,,1.0
+condition_1,0,17,clamp,5,225,1.0,1.0,1.0,30.578237641559358,,1.0
+condition_1,0,18,generalisation,1,225,1.0,1.0,1.0,29.871456100526498,"You will now be asked to reach to targets that you have not yet reached to.
+You will not receive feedback of any kind for these reaches.Please continue to slice through the target as quickly and accurately as possible.",1.0
+condition_1,0,19,generalisation,1,225,1.0,1.0,1.0,30.33629890896032,,1.0
+condition_1,0,20,generalisation,1,225,1.0,1.0,1.0,30.00163418348498,,1.0
+condition_1,0,21,generalisation,1,315,0.0,0.0,1.0,30.93815913447895,,1.0
+condition_1,0,22,generalisation,1,270,0.0,0.0,1.0,30.03792348341155,,1.0
+condition_1,0,23,generalisation,1,225,1.0,1.0,1.0,29.582087881415315,,1.0
+condition_1,0,24,generalisation,1,225,1.0,1.0,1.0,31.37898045861796,,1.0
+condition_1,0,25,generalisation,1,90,0.0,0.0,1.0,31.732617321731063,,1.0
+condition_1,0,26,generalisation,1,225,1.0,1.0,1.0,31.67903396989814,,1.0
+condition_1,0,27,generalisation,1,180,0.0,0.0,1.0,29.619080442923078,,1.0
+condition_1,0,28,generalisation,1,0,0.0,0.0,1.0,30.86432144702405,,1.0
+condition_1,0,29,washout_no_fb,1,0,0.0,0.0,0.0,0.4890804642472424,You will not receive feedback of any kind for the following reaches.Please continue to slice through the target as quickly and accurately as possible.,1.0
+condition_1,0,30,washout_no_fb,1,90,0.0,0.0,0.0,-0.11069822588488962,,1.0
+condition_1,0,31,washout_no_fb,1,225,0.0,0.0,0.0,0.7368115201688779,,1.0
+condition_1,0,32,washout_no_fb,1,180,0.0,0.0,0.0,-2.1737620825937953,,1.0
+condition_1,0,33,washout_no_fb,1,270,0.0,0.0,0.0,-0.18396658341293234,,1.0
+condition_1,0,34,washout_no_fb,1,315,0.0,0.0,0.0,-0.4588749871092172,,1.0
+condition_1,0,35,washout_fb,1,180,1.0,1.0,0.0,0.969626059677858,"You will now only see the cursor throughout your entire reach.
+Please continue to slice through the target as quickly and accurately as possible.",1.0
+condition_1,0,36,washout_fb,1,0,1.0,1.0,0.0,1.6874038032683722,,1.0
+condition_1,0,37,washout_fb,1,90,1.0,1.0,0.0,0.5071498983719557,,1.0
+condition_1,0,38,washout_fb,1,225,1.0,1.0,0.0,-0.23852858739627877,,1.0
+condition_1,0,39,washout_fb,1,270,1.0,1.0,0.0,-0.3317341805748623,,1.0
+condition_1,0,40,washout_fb,1,315,1.0,1.0,0.0,-1.956827769671564,,1.0
