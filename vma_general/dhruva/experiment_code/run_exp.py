@@ -201,7 +201,7 @@ experiment_clock = core.Clock()
 state_clock = core.Clock()
 mp_clock = core.Clock()
 
-instruction_screen = "Please wait for experimenter instructions."
+instruction_screen = "Please wait for instructions."
 
 while current_trial < num_trials:
     
