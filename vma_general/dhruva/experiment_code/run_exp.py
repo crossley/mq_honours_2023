@@ -173,7 +173,7 @@ low_uncertainty = config['low_uncertainty']
 high_uncertainty = config['high_uncertainty']
 unlimited_uncertainty = config['unlimited_uncertainty']
 
-condition = config['experimentalCondition']
+condition = config['experimental_condition']
 
 low_jitter_sd = [[0.5, 0], [0, 0.5]]
 high_jitter_sd = [[1, 0], [0, 1]]
@@ -201,7 +201,7 @@ experiment_clock = core.Clock()
 state_clock = core.Clock()
 mp_clock = core.Clock()
 
-washout_instructions = "Please wait for experimenter instructions."
+instruction_screen = "Please wait for experimenter instructions."
 
 while current_trial < num_trials:
     
@@ -456,12 +456,12 @@ while current_trial < num_trials:
             current_trial += 1
             state_clock.reset()
             # code to get washout instructions screen/pause for aiming condition. 
-            if condition.values[current_trial] == 'aiming_instructions' and trial.values[current_trial] == 201: 
-                state = 'washout_instructions'
+            if condition.values[current_trial] == 'aiming_instructions' and ((trial.values[current_trial] == 21) or (trial.values[current_trial] == 201)): 
+                state = 'instruction_screen'
                 
     #aiming condition instruction prompt
-    if state == 'washout_instructions':
-        instruction_window.setText(washout_instructions)
+    if state == 'instruction_screen':
+        instruction_window.setText(instruction_screen)
         instruction_window.draw()
         
         if 'space' in resp: 
