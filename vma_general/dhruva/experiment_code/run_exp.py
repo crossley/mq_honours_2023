@@ -173,7 +173,6 @@ low_uncertainty = config['low_uncertainty']
 high_uncertainty = config['high_uncertainty']
 unlimited_uncertainty = config['unlimited_uncertainty']
 
-condition = config.experimental_condition.values[0]
 
 low_jitter_sd = [[0.5, 0], [0, 0.5]]
 high_jitter_sd = [[1, 0], [0, 1]]
@@ -338,8 +337,7 @@ while current_trial < num_trials:
             cursor_circle.draw()
 
         if midpoint_vis[current_trial]:
-            if r >= target_distance * 0.25:
-                if mp_clock.getTime() < t_mp and r < target_distance * 0.75:
+            if r >= target_distance * 0.5 and mp_clock.getTime() < t_mp:
                 
                     if low_uncertainty[current_trial] == True: 
                         for i in range(len(cursor_cloud)):
@@ -456,7 +454,7 @@ while current_trial < num_trials:
             current_trial += 1
             state_clock.reset()
             # code to get washout instructions screen/pause for aiming condition. 
-            if condition == 'aiming_instructions' and ((current_trial == 20) or (current_trial == 200)): 
+            if current_trial == 20 or current_trial == 200: 
                 state = 'instruction_screen'
                 
     #aiming condition instruction prompt
