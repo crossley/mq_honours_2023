@@ -149,6 +149,7 @@ text_stim = visual.TextStim(win=win,
                             anchorHoriz='center',
                             anchorVert='center')
 
+instruction_window = visual.TextStim(win)
 mouse = event.Mouse(visible=False, win=win)
 
 target_distance = 10
@@ -171,6 +172,8 @@ no_uncertainty = config['no_uncertainty']
 low_uncertainty = config['low_uncertainty']
 high_uncertainty = config['high_uncertainty']
 unlimited_uncertainty = config['unlimited_uncertainty']
+
+condition = config.experimental_condition.values[0]
 
 low_jitter_sd = [[0.5, 0], [0, 0.5]]
 high_jitter_sd = [[1, 0], [0, 1]]
@@ -198,6 +201,7 @@ experiment_clock = core.Clock()
 state_clock = core.Clock()
 mp_clock = core.Clock()
 
+instruction_screen = "Please wait for instructions."
 
 while current_trial < num_trials:
     
@@ -209,7 +213,7 @@ while current_trial < num_trials:
 #    win.projectionMatrix = projMatrix
 #    win.applyEyeTransform()
     
-    resp = event.getKeys(keyList=['escape'])
+    resp = event.getKeys(keyList=['escape', 'space'])
     rt = state_clock.getTime()
     
     if use_liberty:
@@ -299,7 +303,7 @@ while current_trial < num_trials:
             state = 'move_prep'
             state_clock.reset()
     
-    if state == 'move_prep':
+    if state == 'move_prep' and state_clock.getTime() >= 0.2:
         start_circle.draw()
         go_circle.draw()
         cursor_circle.draw()
@@ -412,11 +416,12 @@ while current_trial < num_trials:
             else:
                 state = 'iti'
             state_clock.reset()
-
+            
+    
     if state == 'iti':
         if state_clock.getTime() > t_iti:
             state = 'trial_init'
-
+            
             trial_data = {
                 'cursor_vis': [cursor_vis[current_trial]],
                 'midpoint_vis': [midpoint_vis[current_trial]],
@@ -447,10 +452,22 @@ while current_trial < num_trials:
             pd.DataFrame(trial_move).to_csv(f_move,
                                             header=not os.path.isfile(f_move),
                                             mode='a')
-
+                                            
             current_trial += 1
             state_clock.reset()
-
+            # code to get washout instructions screen/pause for aiming condition. 
+            if condition == 'aiming_instructions' and ((current_trial == 20) or (current_trial == 200)): 
+                state = 'instruction_screen'
+                
+    #aiming condition instruction prompt
+    if state == 'instruction_screen':
+        instruction_window.setText(instruction_screen)
+        instruction_window.draw()
+        
+        if 'space' in resp: 
+            state = 'trial_init'
+            state_clock.reset()
+            
     # trajectories recorded every sample
     trial_move['trial'].append(current_trial)
     trial_move['state'].append(state)
@@ -459,6 +476,7 @@ while current_trial < num_trials:
     trial_move['x'].append(x)
     trial_move['y'].append(y)
     current_sample += 1
+    
     win.flip()
 
     if 'escape' in resp:
