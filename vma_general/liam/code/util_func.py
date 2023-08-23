@@ -3,7 +3,7 @@ from imports import *
 
 def load_all_data():
     d_list = []
-    for sub_num in np.arange(1, 4, 1):
+    for sub_num in np.arange(1, 8, 1):
         if sub_num % 2 == 0:
             condition = 1
         else:

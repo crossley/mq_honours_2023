@@ -3,39 +3,23 @@ from util_funcs_analysis import *
 
 # dir_data = '../data/pilot_data/'
 dir_data = "../data/data/"
-d = []
-for i, f in enumerate(os.listdir(dir_data)):
-    if f.endswith("csv"):
-        dd = pd.read_csv(dir_data + f)
-        dd["subject"] = i
-        d.append(dd)
+d = load_data(dir_data)
 
-d = pd.concat(d)
-d = d.loc[d["resp"] != "many"]
+# fig, ax = plt.subplots(1, 1, squeeze=False)
+# sns.scatterplot(data=d, x="x", y="y", hue="cat")
+# plt.show()
 
-n_trials = d["trial"].max()
-block_size = 25
-n_blocks = n_trials // block_size
-n_subs = d["subject"].unique().shape[0]
+# dd = (
+    # d.groupby(["condition", "subject", "sub_task", "block"], group_keys=False)
+    # .mean()
+    # .reset_index()
+# )
+# print(dd)
 
-block = np.arange(0, n_blocks, 1)
-block = np.repeat(block, block_size)
-block = np.tile(block, n_subs)
-d["block"] = block
-
-d["acc"] = d["acc"] == "correct"
-d["sub_task"] = d["sub_task"].astype("category")
-d["subject"] = d["subject"].astype("category")
-
-fig, ax = plt.subplots(1, 2, squeeze=False)
-sns.lineplot(
-    data=d[d["condition"] == "2F4K"], x="block", y="acc", hue="sub_task", ax=ax[0, 0]
+d = d.groupby(["condition", "subject", "sub_task"], group_keys=False).apply(
+    fit_func, "acc", tanh_func
 )
-sns.lineplot(
-    data=d[d["condition"] == "4F4K"], x="block", y="acc", hue="sub_task", ax=ax[0, 1]
-)
-ax[0, 0].set_title("2F4K")
-ax[0, 1].set_title("4F4K")
-ax[0, 0].set_ylim((None, 1))
-ax[0, 1].set_ylim((None, 1))
-plt.show()
+d.to_csv("../data_summary/data_summary.csv")
+
+inspect_interaction_threeway(d)
+inspect_learning_curves(d)
