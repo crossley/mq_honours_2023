@@ -15,6 +15,98 @@ import pandas as pd
 
 sub_num = 0
 
+use_liberty = True
+
+# This method grabs the position of the sensor
+def getPosition(ser, recordsize, averager):
+    ser.reset_input_buffer()
+
+    # Set variables
+    # This defines the length of the binary header (bytes 0-7)
+    header = 8
+    # This defines the bytesize of IEEE floating point
+    byte_size = 4
+
+    # Obtain data
+    ser.write(b"P")
+    # time.sleep(0.1)
+    # print("inWaiting " + str(ser.inWaiting()))
+    # print("recorded size " + str(recordsize))
+
+    # Read header to remove it from the input buffer
+    ser.read(header)
+
+    positions = []
+
+    # Read the three coordinates
+    for x in range(3):
+        # Read the coordinate
+        coord = ser.read(byte_size)
+
+        # Convert hex to floating point (little endian order)
+        coord = struct.unpack("<f", coord)[0]
+
+        positions.append(coord)
+
+    return positions
+
+
+if use_liberty:
+    ser = serial.Serial()
+    ser.baudrate = 115200
+    ser.port = "COM1"
+
+    print(ser)
+    ser.open()
+
+    # Checks serial port if open
+    if ser.is_open == False:
+        print("Error! Serial port is not open")
+        exit()
+
+    # Send command to receive data through port
+    ser.write(b"P")
+    time.sleep(1)
+
+    # Checks if Liberty is responding(e.g on)
+    if ser.inWaiting() < 1:
+        print("Error! Check if liberty is on!")
+        exit()
+
+    # Set liberty output mode to binary
+    ser.write(b"F1\r")
+    time.sleep(1)
+
+    # Set distance unit to centimeters
+    ser.write(b"U1\r")
+    time.sleep(0.1)
+
+    # Set hemisphere to +Z
+    ser.write(b"H1,0,0,1\r")
+    time.sleep(0.1)
+
+    # Set sample rate to 240hz
+    ser.write(b"R4\r")
+    time.sleep(0.1)
+
+    # Reset frame count
+    ser.write(b"Q1\r")
+    time.sleep(0.1)
+
+    # Set output to only include position (no orientation)
+    ser.write(b"O1,3,9\r")
+    time.sleep(0.1)
+    ser.reset_input_buffer()
+
+    # Obtain data
+    ser.write(b"P")
+    time.sleep(0.1)
+
+    # Size of response
+    recordsize = ser.inWaiting()
+    ser.reset_input_buffer()
+    averager = 4
+
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
                     fullscr=False,
@@ -39,10 +131,10 @@ text_stim = visual.TextStim(win=win,
                             name='text',
                             text='',
                             font='Arial',
-                            pos=(0, 8),
+                            pos=(0, 12),
                             height=1,
                             wrapWidth=None,
-                            color='white',
+                            color='black',
                             colorSpace='rgb',
                             opacity=1,
                             bold=False,
@@ -51,7 +143,7 @@ text_stim = visual.TextStim(win=win,
 
 mouse = event.Mouse(visible=False, win=win)
 
-target_distance = 6
+target_distance = 10
 target_circle.pos = (0, target_distance)
 
 config = pd.read_csv(r"C:\Users\laura\OneDrive\Desktop\mq_honours_2023-main\vma_general\laura\config\config_test_" + str(sub_num) + '.csv')
