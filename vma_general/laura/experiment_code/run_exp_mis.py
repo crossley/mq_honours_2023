@@ -109,9 +109,6 @@ def getPosition(ser, recordsize, averager):
 
     return positions
 
-
-set_up(use_liberty)
-
 win = visual.Window(size=(700, 700),
                     pos=(100, 100),
                     fullscr=False,
@@ -162,10 +159,16 @@ while current_trial < num_trials:
 
     x = c_position[0]
     y = c_position[1]
+    z = c_position[2]
 
     text_stim.text = 'current trial: ' + str(
         current_trial) + '\ncurrent state: ' + str(state)
     text_stim.draw()
+
+    #visually represent the x, y and z coordinates of the tool
+    cursor_circle.pos = (x, y)
+    cursor_circle.radius = (abs(z) - 10)
+    cursor_circle.draw()
 
     if state == 'init':
 
@@ -175,7 +178,8 @@ while current_trial < num_trials:
             'sample': [],
             'time': [],
             'x': [],
-            'y': []
+            'y': [],
+            'z': []
         }
 
         if len(resp) > 0:
@@ -208,6 +212,7 @@ while current_trial < num_trials:
     trial_move['time'].append(experiment_clock.getTime())
     trial_move['x'].append(x)
     trial_move['y'].append(y)
+    trial_move['z'].append(z)
 
     current_sample += 1
     win.flip()
