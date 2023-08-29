@@ -170,7 +170,8 @@ t_feedback = 1.5
 t_too_fast = 0.1
 t_too_slow = 0.8
 
-search_near_thresh = 0.1
+# search_near_thresh = 0.1
+search_near_thresh = 0.25
 search_ring_thresh = 1.0
 
 current_trial = 0
