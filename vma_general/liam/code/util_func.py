@@ -3,7 +3,7 @@ from imports import *
 
 def load_all_data():
     d_list = []
-    for sub_num in np.arange(1, 12, 1):
+    for sub_num in np.arange(1, 19, 1):
         if sub_num % 2 == 0:
             condition = 1
         else:
@@ -63,20 +63,18 @@ def compute_vel(d):
     vy = np.gradient(y, t)
     v = np.sqrt(vx**2 + vy**2)
     d["v"] = v
+    d["time"] = d["time"] - d["time"].to_numpy()[0]
     return d
 
 
 def compute_mv(d):
-    t = d["time"].to_numpy()
     x = d["x"].to_numpy()
     y = d["y"].to_numpy()
-    target_angle = d["target_angle"]
-    t = t - t.min()
     theta, radius = cart2pol(x, y, units="deg")
     imv = theta[radius < 5].mean()
     emv = theta[-1]
-    d["imv"] = imv - target_angle
-    d["emv"] = emv - target_angle
+    d["imv"] = imv
+    d["emv"] = emv
     return d
 
 
@@ -85,6 +83,11 @@ def interpolate_movements(d):
     x = d["x"]
     y = d["y"]
     v = d["v"]
+
+    # TODO: figure out how to interpolate with
+    # non-strictly increasing or throw those trials away
+    # plt.plot(x, y)
+    # plt.show()
 
     xs = CubicSpline(t, x)
     ys = CubicSpline(t, y)
@@ -98,5 +101,8 @@ def interpolate_movements(d):
     relsamp = np.arange(0, tt.shape[0], 1)
 
     dd = pd.DataFrame({"relsamp": relsamp, "time": tt, "x": xx, "y": yy, "v": vv})
+    dd["condition"] = d["condition"].unique()[0]
+    dd["subject"] = d["subject"].unique()[0]
+    dd["trial"] = d["trial"].unique()[0]
 
     return dd

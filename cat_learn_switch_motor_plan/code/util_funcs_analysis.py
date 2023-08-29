@@ -25,7 +25,142 @@ def load_data(dir_data):
     d["acc"] = d["acc"] == "correct"
     d["sub_task"] = d["sub_task"].astype("category")
 
+    d["switch"] = d.groupby(["condition", "subject"])["sub_task"].transform(
+        lambda x: np.concatenate(([0], np.diff(x)))
+    )
+    d["stay"] = d["switch"] == 0
+
     return d
+
+
+def compute_switch_cost_following_correct(d):
+    # accuracy switch cost following correct feedback
+    ind_acc = d.loc[d["acc"] == 1].index
+    ind_acc = ind_acc if ind_acc[-1] < d.shape[0] - 1 else ind_acc[:-1]
+    dd = d.iloc[ind_acc + 1]
+    stay = dd.loc[(dd["stay"] == True), "acc"].mean()
+    switch = dd.loc[(dd["stay"] == False), "acc"].mean()
+    cost_acc_after_correct = stay - switch
+    d["switch_cost_acc_after_correct"] = cost_acc_after_correct
+
+    ind_acc = d.loc[d["acc"] == 0].index
+    ind_acc = ind_acc if ind_acc[-1] < d.shape[0] - 1 else ind_acc[:-1]
+    dd = d.iloc[ind_acc + 1]
+    stay = dd.loc[(dd["stay"] == True), "acc"].mean()
+    switch = dd.loc[(dd["stay"] == False), "acc"].mean()
+    cost_acc_after_incorrect = stay - switch
+    d["switch_cost_acc_after_incorrect"] = cost_acc_after_incorrect
+
+    d["switch_cost_acc_diff"] = cost_acc_after_correct - cost_acc_after_incorrect
+
+    # rt switch cost following correct feedback
+    ind_acc = d.loc[d["acc"] == 1].index
+    ind_acc = ind_acc if ind_acc[-1] < d.shape[0] - 1 else ind_acc[:-1]
+    dd = d.iloc[ind_acc + 1]
+    stay = dd.loc[(dd["stay"] == True), "rt"].mean()
+    switch = dd.loc[(dd["stay"] == False), "rt"].mean()
+    cost_rt_after_correct = stay - switch
+    d["switch_cost_rt_after_correct"] = cost_rt_after_correct
+
+    ind_acc = d.loc[d["acc"] == 0].index
+    ind_acc = ind_acc if ind_acc[-1] < d.shape[0] - 1 else ind_acc[:-1]
+    dd = d.iloc[ind_acc + 1]
+    stay = dd.loc[(dd["stay"] == True), "rt"].mean()
+    switch = dd.loc[(dd["stay"] == False), "rt"].mean()
+    cost_rt_after_incorrect = stay - switch
+    d["switch_cost_rt_after_incorrect"] = cost_rt_after_incorrect
+
+    d["switch_cost_rt_diff"] = cost_rt_after_correct - cost_rt_after_incorrect
+
+    return d
+
+
+def compute_switch_cost_by_type(d):
+    # accuracy switch cost by switch type
+    dd = d.loc[d["switch"] != 1]
+    stay = dd.loc[dd["stay"] == True, "acc"].mean()
+    switch = dd.loc[dd["stay"] == False, "acc"].mean()
+    switch_cost_acc_10 = stay - switch
+    d["switch_cost_acc_10"] = switch_cost_acc_10
+
+    dd = d.loc[d["switch"] != -1]
+    stay = dd.loc[dd["stay"] == True, "acc"].mean()
+    switch = dd.loc[dd["stay"] == False, "acc"].mean()
+    switch_cost_acc_01 = stay - switch
+    d["switch_cost_acc_01"] = switch_cost_acc_01
+
+    d["switch_cost_acc_cue_diff"] = switch_cost_acc_10 - switch_cost_acc_01
+
+    # rt switch cost by switch type
+    dd = d.loc[d["switch"] != 1]
+    stay = dd.loc[dd["stay"] == True, "rt"].mean()
+    switch = dd.loc[dd["stay"] == False, "rt"].mean()
+    switch_cost_rt_10 = stay - switch
+    d["switch_cost_rt_10"] = switch_cost_rt_10
+
+    dd = d.loc[d["switch"] != -1]
+    stay = dd.loc[dd["stay"] == True, "rt"].mean()
+    switch = dd.loc[dd["stay"] == False, "rt"].mean()
+    switch_cost_rt_01 = stay - switch
+    d["switch_cost_rt_01"] = switch_cost_rt_01
+
+    d["switch_cost_rt_cue_diff"] = switch_cost_rt_10 - switch_cost_rt_01
+
+    return d
+
+
+def compute_switch_cost(d):
+    # generic accuracy switch cost
+    stay = d.loc[d["stay"] == True, "acc"].mean()
+    switch = d.loc[d["stay"] == False, "acc"].mean()
+    d["switch_cost_acc"] = stay - switch
+
+    # generic rt switch cost
+    stay = d.loc[d["stay"] == True, "rt"].mean()
+    switch = d.loc[d["stay"] == False, "rt"].mean()
+    d["switch_cost_rt"] = stay - switch
+
+    return d
+
+
+def inspect_interaction_switch_costs(d):
+    d = d[
+        [
+            "condition",
+            "subject",
+            "switch_cost_acc",
+            "switch_cost_rt",
+        ]
+    ].drop_duplicates()
+
+    dvs = ["switch_cost_acc", "switch_cost_rt"]
+    labs = [
+        "Accuracy Switch Cost \n (proportion correct)",
+        "RT Switch Cost \n (seconds)",
+    ]
+    fig, ax = plt.subplots(2, 1, squeeze=False, figsize=(5.33, 8))
+    for i, dv in enumerate(dvs):
+        sns.pointplot(
+            data=d,
+            x="condition",
+            y=dv,
+            ax=ax[i, 0],
+        )
+        ax[i, 0].set_ylabel(labs[i])
+    labs = ["A", "B"]
+    for i, curax in enumerate(ax.flatten()):
+        curax.text(
+            -0.15,
+            1.05,
+            labs[i],
+            fontsize=16,
+            horizontalalignment="center",
+            verticalalignment="center",
+            transform=curax.transAxes,
+        )
+    ax[0, 0].set_title("Switch Cost")
+    plt.tight_layout()
+    plt.savefig("../figures/switch_costs.pdf")
 
 
 def inspect_learning_curves(d):
