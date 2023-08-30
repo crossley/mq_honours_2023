@@ -55,39 +55,11 @@ def load_all_data():
     return d
 
 
-def compute_vel(d):
-    t = d["time"].to_numpy()
-    x = d["x"].to_numpy()
-    y = d["y"].to_numpy()
-    vx = np.gradient(x, t)
-    vy = np.gradient(y, t)
-    v = np.sqrt(vx**2 + vy**2)
-    d["v"] = v
-    d["time"] = d["time"] - d["time"].to_numpy()[0]
-    return d
-
-
-def compute_mv(d):
-    x = d["x"].to_numpy()
-    y = d["y"].to_numpy()
-    theta, radius = cart2pol(x, y, units="deg")
-    imv = theta[radius < 5].mean()
-    emv = theta[-1]
-    d["imv"] = imv
-    d["emv"] = emv
-    return d
-
-
 def interpolate_movements(d):
     t = d["time"]
     x = d["x"]
     y = d["y"]
     v = d["v"]
-
-    # TODO: figure out how to interpolate with
-    # non-strictly increasing or throw those trials away
-    # plt.plot(x, y)
-    # plt.show()
 
     xs = CubicSpline(t, x)
     ys = CubicSpline(t, y)
@@ -104,5 +76,31 @@ def interpolate_movements(d):
     dd["condition"] = d["condition"].unique()[0]
     dd["subject"] = d["subject"].unique()[0]
     dd["trial"] = d["trial"].unique()[0]
+    dd["phase"] = d["phase"].unique()[0]
 
     return dd
+
+
+def compute_kinematics(d):
+    t = d["time"].to_numpy()
+    x = d["x"].to_numpy()
+    y = d["y"].to_numpy()
+
+    vx = np.gradient(x, t)
+    vy = np.gradient(y, t)
+    v = np.sqrt(vx**2 + vy**2)
+    d["v"] = v
+
+    v_peak = v.max()
+    ts = t[v > (0.05 * v_peak)][0]
+
+    radius = np.sqrt(x**2 + y**2)
+    theta = (np.arctan2(y, x)) * 180 / np.pi
+
+    imv = theta[(t >= ts) & (t <= ts + 0.1)].mean()
+    emv = theta[-1]
+
+    d["imv"] = imv
+    d["emv"] = emv
+
+    return d

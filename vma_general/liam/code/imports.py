@@ -4,4 +4,4 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy import signal
 from scipy.interpolate import CubicSpline
-from psychopy.tools.coordinatetools import cart2pol
+
