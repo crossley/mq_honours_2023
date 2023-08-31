@@ -120,11 +120,11 @@ win = visual.Window(size=(700, 700),
                     useFBO=False,
                     units='cm')
 
-search_circle = visual.Circle(win, radius=0.5,lineColor='white', fillColor=None, edges = 200)
-start_circle = visual.Circle(win, radius=0.5, fillColor='blue', edges = 100)
-target_circle = visual.Circle(win, radius=0.5, fillColor='blue', edges = 100)
-feedback_circle = visual.Circle(win, radius=0.35, fillColor='white', edges = 100)
-cursor_circle = visual.Circle(win, radius=0.35, fillColor='white', edges = 100)
+search_circle = visual.Circle(win, radius=0.6,lineColor='white', fillColor=None, edges = 200)
+start_circle = visual.Circle(win, radius=0.6, fillColor='blue', edges = 100)
+target_circle = visual.Circle(win, radius=0.6, fillColor='blue', edges = 100)
+feedback_circle = visual.Circle(win, radius=0.4, fillColor='white', edges = 100)
+cursor_circle = visual.Circle(win, radius=0.4, fillColor='white', edges = 100)
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -163,14 +163,14 @@ num_trials = config.shape[0]
 state = 'trial_init'
 
 t_instruct = 1.0
-t_hold = 1.0
+t_hold = 0.3
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
-t_iti = 1.0
-t_feedback = 1.5
-t_too_fast = 0.1
-t_too_slow = 0.8
+t_iti = 0.3
+t_feedback = 0.5
+t_too_fast = 0.04
+t_too_slow = 0.6
 
-search_near_thresh = 0.1
+search_near_thresh = 0.25
 search_ring_thresh = 1.0
 
 current_trial = 0
@@ -272,7 +272,7 @@ while current_trial < num_trials:
 
         start_circle.draw()
         cursor_circle.draw()
-        if mathtools.distance(start_circle.pos, cursor_circle.pos) >= 0.1:
+        if mathtools.distance(start_circle.pos, cursor_circle.pos) >= 0.25:
             state = 'search_near'
             state_clock.reset()
         elif state_clock.getTime() >= t_hold:
