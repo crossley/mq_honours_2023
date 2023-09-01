@@ -11,7 +11,7 @@ n_clamp = 0
 n_adaptation = 180
 n_wash = 100
 
-rot_amp = -1
+rot_amp = 1
 
 n_uncertainty_condition = 45
 
@@ -123,27 +123,14 @@ d['cycle'] = cycle
 d['target_angle'] = target_angle
 d['target_angle'] = d.groupby(
     ['cycle'])['target_angle'].sample(frac=1).reset_index(drop=True)
-''' 
-d['instruct_phase'] = instruct_phase
-d['instruct_state'] = instruct_state 
 
-nn = [n_fam, n_base, n_clamp, n_adaptation, n_wash]
-nn = [x * n_targets for x in nn]
-labels = ['Familiarisation', 'Baseline', 'Clamp', 'Generalisation', 'Washout']
-labels_x = np.concatenate(([0], np.cumsum(nn)[:-1]))
-fig, ax = plt.subplots(1, 1, squeeze=False)
-ax[0, 0].scatter(trial, rot, c=target_angle)
-ax[0, 0].vlines(labels_x, 0, rot_amp + 5, 'k', '--')
-for i in range(len(labels)):
-    ax[0, 0].text(labels_x[i], np.max(rot) + 5, labels[i], rotation=30)
-ax[0, 0].set_ylabel('Rotation (degrees)')
-ax[0, 0].set_xlabel('Trial')
-plt.show()
-'''
-'''
-n_subs_per_cnd = 20
-conditions = ['explicit_instruct'] * n_subs_per_cnd
-np.random.shuffle(conditions)
-'''
-for sub in range(41):
-    d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+#lookup_df = pd.read_excel('../condition_assignment.xls')
+
+for sub in range(20):
+#     if sub == 0:
+#         d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+#     else:
+#         condition = lookup_df.iloc[sub - 1].experimentalCondition
+#         d['experimental_condition'] = condition
+        d.to_csv('../config/config_reach_' + str(sub) + '.csv', index=False)
+

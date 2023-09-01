@@ -120,11 +120,11 @@ win = visual.Window(size=(700, 700),
                     useFBO=False,
                     units='cm')
 
-search_circle = visual.Circle(win, radius=0.6,lineColor='white', fillColor=None, edges = 200)
-start_circle = visual.Circle(win, radius=0.6, fillColor='blue', edges = 100)
-target_circle = visual.Circle(win, radius=0.6, fillColor='blue', edges = 100)
-feedback_circle = visual.Circle(win, radius=0.4, fillColor='white', edges = 100)
-cursor_circle = visual.Circle(win, radius=0.4, fillColor='white', edges = 100)
+search_circle = visual.Circle(win, radius=1,lineColor='white', fillColor=None, edges = 200)
+start_circle = visual.Circle(win, radius=1, fillColor='blue', edges = 100)
+target_circle = visual.Circle(win, radius=1, fillColor='blue', edges = 100)
+feedback_circle = visual.Circle(win, radius=0.7, fillColor='white', edges = 100)
+cursor_circle = visual.Circle(win, radius=0.7, fillColor='white', edges = 100)
 
 text_stim = visual.TextStim(win=win,
                             ori=0,

@@ -2,15 +2,15 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-n_subs_per_cnd = 5
+n_subs_per_cnd = 16
 conditions = ['low', 'high'] * n_subs_per_cnd
 np.random.shuffle(conditions)
 
 for i in range(len(conditions)):
 
     # Specify possible target angles
-    target_angle = np.arange(0, 180, 15)
-    target_train = target_angle[0]
+    target_angle = np.array([0, 45, 60, 75, 90, 105, 120, 135, 180, 225, 270, 315])
+    target_train = target_angle[4]
     n_targets = target_angle.shape[0]
 
     # Specify the number of times you want to cycle through the targets. Note
@@ -20,10 +20,9 @@ for i in range(len(conditions)):
     n_cycle_baseline_continuous_fb = 2
     n_cycle_baseline_endpoint_fb = 2
     n_cycle_baseline_mixed_fb = 2
-    n_cycle_clamp = 1
     n_cycle_generalisation = 15
     n_cycle_washout_no_fb = 2
-    n_cycle_washout_fb = 5
+    n_cycle_washout_fb = 2
 
     n_gen_tops = n_targets - 1
 
@@ -32,9 +31,8 @@ for i in range(len(conditions)):
     targets_baseline_continuous_fb = target_angle
     targets_baseline_endpoint_fb = target_angle
     targets_baseline_mixed_fb = target_angle
-    targets_clamp = np.array([target_train])
     targets_generalisation = np.concatenate(
-        (np.tile(target_angle[0], n_gen_tops), target_angle[1:]))
+        (np.tile(target_angle[4], n_gen_tops), target_angle[0:4], target_angle[5:]))
     targets_washout_no_fb = target_angle
     targets_washout_fb = target_angle
 
@@ -45,7 +43,6 @@ for i in range(len(conditions)):
                  n_cycle_baseline_continuous_fb),
          np.tile(targets_baseline_endpoint_fb, n_cycle_baseline_endpoint_fb),
          np.tile(targets_baseline_mixed_fb, n_cycle_baseline_mixed_fb),
-         np.tile(targets_clamp, n_cycle_clamp),
          np.tile(targets_generalisation, n_cycle_generalisation),
          np.tile(targets_washout_no_fb, n_cycle_washout_no_fb),
          np.tile(targets_washout_fb, n_cycle_washout_fb)))
@@ -63,8 +60,6 @@ for i in range(len(conditions)):
     cycle_baseline_mixed_fb = np.repeat(
         np.arange(1, n_cycle_baseline_mixed_fb + 1, 1),
         targets_baseline_mixed_fb.shape[0])
-    cycle_clamp = np.repeat(np.arange(1, n_cycle_clamp + 1, 1),
-                            targets_clamp.shape[0])
     cycle_generalisation = np.repeat(
         np.arange(1, n_cycle_generalisation + 1, 1),
         targets_generalisation.shape[0])
@@ -76,7 +71,7 @@ for i in range(len(conditions)):
     # Combine the above into an array that can later be added to the config data frame
     cycle_phase = np.concatenate(
         (cycle_baseline_no_fb, cycle_baseline_continuous_fb,
-         cycle_baseline_endpoint_fb, cycle_baseline_mixed_fb, cycle_clamp,
+         cycle_baseline_endpoint_fb, cycle_baseline_mixed_fb,
          cycle_generalisation, cycle_washout_no_fb, cycle_washout_fb))
 
     # Get the number of trials the previous two chunks yield for each phase
@@ -88,7 +83,6 @@ for i in range(len(conditions)):
         0]
     n_trial_baseline_mixed_fb = n_cycle_baseline_mixed_fb * targets_baseline_mixed_fb.shape[
         0]
-    n_trial_clamp = n_cycle_clamp * targets_clamp.shape[0]
     n_trial_generalisation = n_cycle_generalisation * targets_generalisation.shape[
         0]
     n_trial_washout_no_fb = n_cycle_washout_no_fb * targets_washout_no_fb.shape[
@@ -101,7 +95,6 @@ for i in range(len(conditions)):
     n_trial += n_trial_baseline_continuous_fb
     n_trial += n_trial_baseline_endpoint_fb
     n_trial += n_trial_baseline_mixed_fb
-    n_trial += n_trial_clamp
     n_trial += n_trial_generalisation
     n_trial += n_trial_washout_no_fb
     n_trial += n_trial_washout_fb
@@ -114,8 +107,8 @@ for i in range(len(conditions)):
         (['baseline_no_fb'] * n_trial_baseline_no_fb,
          ['baseline_continuous_fb'] * n_trial_baseline_continuous_fb,
          ['baseline_endpoint_fb'] * n_trial_baseline_endpoint_fb,
-         ['baseline_mixed_fb'] * n_trial_baseline_mixed_fb, ['clamp'] *
-         n_trial_clamp, ['generalisation'] * n_trial_generalisation,
+         ['baseline_mixed_fb'] * n_trial_baseline_mixed_fb, 
+         ['generalisation'] * n_trial_generalisation,
          ['washout_no_fb'] * n_trial_washout_no_fb,
          ['washout_fb'] * n_trial_washout_fb))
 
@@ -123,10 +116,10 @@ for i in range(len(conditions)):
     # during the clamp phase.
     if conditions[i] == 'low':
         rot_mean = 30
-        rot_sig = 1
+        rot_sig = 4
     elif conditions[i] == 'high':
         rot_mean = 30
-        rot_sig = 3
+        rot_sig = 12
 
     # Specify phase-specific instructions.
     instruct_phase = {
@@ -174,7 +167,6 @@ for i in range(len(conditions)):
     ] + [''] * (n_trial_baseline_endpoint_fb - 1)
     instruct_baseline_mixed_fb = [instruct_phase['baseline_mixed_fb']
                                   ] + [''] * (n_trial_baseline_mixed_fb - 1)
-    instruct_clamp = [instruct_phase['clamp']] + [''] * (n_trial_clamp - 1)
     instruct_generalisation = [instruct_phase['generalisation']
                                ] + [''] * (n_trial_generalisation - 1)
     instruct_washout_no_fb = [instruct_phase['washout_no_fb']
@@ -186,8 +178,8 @@ for i in range(len(conditions)):
     # can later be added to the config dataframe.
     instruct_phase = np.concatenate(
         (instruct_baseline_no_fb, instruct_baseline_continuous_fb,
-         instruct_baseline_endpoint_fb, instruct_baseline_mixed_fb,
-         instruct_clamp, instruct_generalisation, instruct_washout_no_fb,
+         instruct_baseline_endpoint_fb, instruct_baseline_mixed_fb, 
+         instruct_generalisation, instruct_washout_no_fb,
          instruct_washout_fb))
 
     # The experiment code also defines instructions that are displayed for
@@ -200,7 +192,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          1 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -209,7 +201,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -218,8 +210,8 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          1 * np.ones(n_trial_baseline_continuous_fb),
          1 * np.ones(n_trial_baseline_endpoint_fb),
-         np.random.permutation([0, 1] * (n_trial_baseline_mixed_fb // 2)),
-         1 * np.ones(n_trial_clamp), 0 * np.ones(n_trial_generalisation),
+         np.random.permutation([0, 1] * (n_trial_baseline_mixed_fb // 2)), 
+         0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 1 * np.ones(n_trial_washout_fb)))
 
     # continuous cursor cloud standard deviation
@@ -227,7 +219,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -236,7 +228,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -245,7 +237,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 0 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          0 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -254,7 +246,7 @@ for i in range(len(conditions)):
         (0 * np.ones(n_trial_baseline_no_fb),
          0 * np.ones(n_trial_baseline_continuous_fb),
          0 * np.ones(n_trial_baseline_endpoint_fb),
-         0 * np.ones(n_trial_baseline_mixed_fb), 1 * np.ones(n_trial_clamp),
+         0 * np.ones(n_trial_baseline_mixed_fb),
          1 * np.ones(n_trial_generalisation),
          0 * np.ones(n_trial_washout_no_fb), 0 * np.ones(n_trial_washout_fb)))
 
@@ -264,7 +256,6 @@ for i in range(len(conditions)):
         np.random.normal(0, rot_sig, n_trial_baseline_continuous_fb),
         np.random.normal(0, rot_sig, n_trial_baseline_endpoint_fb),
         np.random.normal(0, rot_sig, n_trial_baseline_mixed_fb),
-        np.random.normal(rot_mean, rot_sig, n_trial_clamp),
         np.random.normal(rot_mean, rot_sig, n_trial_generalisation),
         np.random.normal(0, rot_sig, n_trial_washout_no_fb),
         np.random.normal(0, rot_sig, n_trial_washout_fb),
