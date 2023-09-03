@@ -121,10 +121,10 @@ win = visual.Window(size=(700, 700),
                     units='cm')
 
 search_circle = visual.Circle(win, radius=1,lineColor='white', fillColor=None, edges = 200)
-start_circle = visual.Circle(win, radius=1, fillColor='blue', edges = 100)
-target_circle = visual.Circle(win, radius=1, fillColor='blue', edges = 100)
-feedback_circle = visual.Circle(win, radius=0.7, fillColor='white', edges = 100)
-cursor_circle = visual.Circle(win, radius=0.7, fillColor='white', edges = 100)
+start_circle = visual.Circle(win, radius=0.6, fillColor='blue', edges = 100)
+target_circle = visual.Circle(win, radius=0.8, fillColor='blue', edges = 100)
+feedback_circle = visual.Circle(win, radius=0.8, fillColor='white', edges = 100)
+cursor_circle = visual.Circle(win, radius=0.2, fillColor='white', edges = 100)
 
 text_stim = visual.TextStim(win=win,
                             ori=0,
@@ -143,7 +143,7 @@ text_stim = visual.TextStim(win=win,
 
 mouse = event.Mouse(visible=False, win=win)
 
-target_distance = 10
+target_distance = 8
 target_circle.pos = (0, target_distance)
 
 config = pd.read_csv(r"C:\Users\laura\OneDrive\Desktop\mq_honours_2023-main\vma_general\laura\config\config_test_" + str(sub_num) + '.csv')
@@ -163,12 +163,12 @@ num_trials = config.shape[0]
 state = 'trial_init'
 
 t_instruct = 1.0
-t_hold = 0.3
+t_hold = 0.2
 t_move_prep = 0.0  # TODO if we choose to use this then we need some go cue
 t_iti = 0.3
-t_feedback = 0.5
+t_feedback = 1
 t_too_fast = 0.04
-t_too_slow = 0.6
+t_too_slow = 0.3
 
 search_near_thresh = 0.25
 search_ring_thresh = 1.0
