@@ -1,36 +1,42 @@
 from imports import *
 from util_funcs_analysis import *
 
-block_size = 28
+# dir_data = '../data/pilot_data/'
+dir_data = "../data/data/"
+d = load_data(dir_data)
 
-dir_data = '../data/pilot_data/'
-d = []
-for i, f in enumerate(os.listdir(dir_data)):
-    if f.endswith('csv'):
-        dd = pd.read_csv(dir_data + f)
-        dd['subject'] = i
-        d.append(dd)
+# fig, ax = plt.subplots(1, 1, squeeze=False)
+# sns.scatterplot(data=d, x="x", y="y", hue="cat")
+# plt.show()
 
-d = pd.concat(d)
+# dd = (
+# d.groupby(["condition", "subject", "sub_task", "block"], group_keys=False)
+# .mean()
+# .reset_index()
+# )
+# print(dd)
 
-n_trials = d['trial'].max()
-block_size = 20
-n_blocks = n_trials // block_size
-n_subs = d['subject'].unique().shape[0]
+d = d.groupby(["condition", "subject", "sub_task"], group_keys=False).apply(
+    fit_func, "acc", tanh_func
+)
+d = d.sort_values(["condition", "subject", "sub_task"])
+d.to_csv("../data_summary/data_summary.csv")
 
-block = np.arange(0, n_blocks, 1)
-block = np.repeat(block, block_size)
-block = np.tile(block, n_subs)
-d['block'] = block
+d = d.groupby(["condition", "subject"], group_keys=False).apply(compute_switch_cost)
 
-d['acc'] = d['acc'] == 'correct'
-d['sub_task'] = d['sub_task'].astype('category')
-d['subject'] = d['subject'].astype('category')
+inspect_interaction_switch_costs(d)
+inspect_interaction_threeway(d)
+inspect_learning_curves(d)
 
-fig, ax = plt.subplots(1, 1, squeeze=False)
-sns.lineplot(data=d,
-             x='block',
-             y='acc',
-             hue='sub_task',
-             ax=ax[0, 0])
-plt.show()
+plt.close("all")
+
+# inspect_interaction(dd, 'fit_a')
+# inspect_interaction(dd, 'fit_b')
+# inspect_interaction(dd, 'fit_c')
+# inspect_interaction(dd, 'fit_ac')
+# inspect_interaction(dd, 'switch_cost_acc')
+# inspect_interaction(dd, 'switch_cost_rt')
+# inspect_interaction(dd, 'switch_cost_acc_diff')
+# inspect_interaction(dd, 'switch_cost_rt_diff')
+# inspect_interaction(dd, 'switch_cost_acc_cue_diff')
+# inspect_interaction(dd, 'switch_cost_rt_cue_diff')
