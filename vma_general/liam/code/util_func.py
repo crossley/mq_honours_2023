@@ -3,7 +3,7 @@ from imports import *
 
 def load_all_data():
     d_list = []
-    for sub_num in np.arange(1, 24, 1):
+    for sub_num in np.arange(1, 31, 1):
         if sub_num % 2 == 0:
             condition = 1
         else:
@@ -12,6 +12,8 @@ def load_all_data():
         d_move = pd.read_csv("../data/data_movements_" + str(sub_num) + ".csv")
         d_config = pd.read_csv("../config/config_reach_" + str(sub_num) + ".csv")
         d_trial = pd.read_csv("../data/data_trials_" + str(sub_num) + ".csv")
+
+        d_move = d_move[d_move["state"] == "reach"]
 
         d_config = d_config[
             [
@@ -24,13 +26,11 @@ def load_all_data():
             ]
         ]
 
+        d_move["trial"] += 1
         d_trial = d_trial[["trial", "endpoint_theta"]]
-
         d = pd.merge(d_move, d_config, on="trial")
         d = pd.merge(d, d_trial, on="trial")
-
         d = d.sort_values(["sample", "time", "trial"])
-        d = d[d["state"] == "reach"]
 
         d = d[
             [
@@ -69,7 +69,7 @@ def compute_kinematics(d):
     ts = t[v > (0.05 * v_peak)][0]
 
     radius = np.sqrt(x**2 + y**2)
-    theta = np.arctan2(y, x) 180 / np.pi
+    theta = np.arctan2(y, x) * 180 / np.pi
 
     imv = theta[(t >= ts) & (t <= ts + 0.1)].mean()
     emv = theta[-1]

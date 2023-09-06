@@ -63,9 +63,13 @@ def simulate_kalman(params, args):
 
     return xs
 
+# TODO: https://github.com/pykalman/pykalman/blob/master/examples/standard/plot_sin.py
+# TODO: https://github.com/pykalman/pykalman/blob/master/examples/standard/plot_em.py
 
 # NOTE: R is measurement noise which is more or less the
-# visual blur of each trial's midpoint feedback.
+# visual blur of each trial's midpoint feedback. But it also
+# seems like it could be motor output noise based on the
+# equations in the documentation.
 R = 5.0
 
 # NOTE: P is state noise which is essentially the variance
@@ -75,9 +79,7 @@ P = 4.0
 
 # NOTE: Q is process noise -- process as in the process that
 # governs how our state estimates transition from one value
-# to the next across trials -- and needs to be treated as a
-# free parameter. It is in some sense equivalent to motor
-# execution noise.
+# to the next across trials
 Q = 0.01
 
 # initial state mean
