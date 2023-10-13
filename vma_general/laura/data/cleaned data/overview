@@ -1,1 +1,5 @@
-Here is the progress of the data trial files - so far I have calculated the endpoint thetas, changed the target angles to align with how they are coded in python and have calculated the difference between target and hand angle for each reach.
+Here is the progress of the data trial files, so far I have:
+  Calculated the endpoint thetas
+  Removed trials where the participant reached too quickly or slowly
+  Changed the target angles to align with how they are coded in python
+  I have also calculated the difference between target and hand angle for each reach
